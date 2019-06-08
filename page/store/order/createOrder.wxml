@@ -1,0 +1,65 @@
+<view wx:if="{{goodsDetail.goodstype=='1'}}">
+    <view class="view_car_item border_bottom">
+        <image class="img_device_heard" mode="aspectFill" src="{{goodsDetail.imagelist[0]}}"></image>
+        <view class="view_device_item_right">
+            <view class="text_device_title">{{goodsDetail.goodsname}}</view>
+            <view class="text_device_perameter">{{goodsDetail.brandname}} | {{goodsDetail.goodscode}} | {{goodsDetail.goodsaddr}}</view>
+            <view class="view_item_right_bottom">
+                <text class="text_device_perameter">售价：</text>
+                <text class="text_device_price">{{goodsDetail.goodspricenum}}万</text>
+                <text class="text_device_time">{{goodsDetail.dateline}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view wx:else>
+    <view class="product_view_item product_border_bottom">
+        <image class="product_img_heard" mode="aspectFill" src="{{goodsDetail.imagelist[0]}}"></image>
+        <view class="product_view_item_right">
+            <view class="product_text_title">{{goodsDetail.goodsname}}</view>
+            <view class="product_row_one">
+                <view class="product_item_type">{{goodsDetail.catname}}</view>
+            </view>
+            <view class="prodcut_row_three">
+                <text>销量：</text>
+                <text>{{goodsDetail.goodssalenum}}</text>
+                <text class="product_price">￥{{goodsDetail.goodspricenum}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="view_set_num">
+    <view>数量：</view>
+    <view class="view_set_num_right">
+        <view bindtap="bindSetGoodsNum" class="view_add_delete" data-setType="delete">-</view>
+        <view class="margin_le_ri">{{goodsNum}}</view>
+        <view bindtap="bindSetGoodsNum" class="view_add_delete" data-setType="add">+</view>
+    </view>
+</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">收货人</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input bindinput="bindInput" class="weui-input" data-name="postusername" placeholder="请输入联系人"></input>
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">联系电话</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input bindinput="bindInput" class="weui-input" data-name="postusermobile" placeholder="请输入联系电话" type="number"></input>
+        </view>
+    </view>
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <textarea bindinput="bindInput" class="weui-textarea" data-name="postuseraddr" placeholder="请输入详细地址" style="height: 5.3em"></textarea>
+        </view>
+    </view>
+</view>
+<view class="view_bottom_fixed">
+    <view class="view_goods_price">￥{{payPrice}}</view>
+    <view bindtap="bindSubmitOrder" class="view_to_pay">立即支付</view>
+</view>

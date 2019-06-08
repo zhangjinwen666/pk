@@ -1,0 +1,18 @@
+<view>
+    <view class="text_top">请绑定持卡人本人的银行卡</view>
+    <form bindsubmit="submit">
+        <view class="view_center">
+            <text class="text_left">持卡人</text>
+            <input class="input_right" name="realname" placeholder="请输入姓名" type="text"></input>
+        </view>
+        <view class="view_center">
+            <text class="text_left">卡号</text>
+            <input class="input_right" name="bankcardno" placeholder="请输入卡号" type="number"></input>
+        </view>
+        <view class="view_center">
+            <text class="text_left">银行名称</text>
+            <input class="input_right" name="bankcnname" placeholder="请输入所属银行" type="text"></input>
+        </view>
+        <button class="button_form_n" formType="submit" hoverClass="button_fixed_bottom_s">确定</button>
+    </form>
+</view>

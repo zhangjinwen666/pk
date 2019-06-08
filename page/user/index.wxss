@@ -1,0 +1,78 @@
+/* page/user/index.wxss */
+.avatar {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.avatar-main {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-top: 50rpx;
+    margin-bottom: 50rpx;
+}
+
+.avatar-image {
+    width: 120rpx;
+    height: 120rpx;
+    -moz-border-radius: 200rpx;
+    -webkit-border-radius: 200rpx;
+    border-radius: 200rpx;
+    border: 5rpx solid whitesmoke;
+    padding: 0 auto;
+}
+
+.avatar-title {
+    margin-top: 10rpx;
+    font-size: 14px;
+    color: white;
+}
+
+.view_tabrow {
+    display: -webkit-flex;
+    display: flex;
+    background: white;
+    font-size: 14px;
+    margin-bottom: 12rpx;
+}
+
+.view_mine_item {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 374rpx;
+    padding-top: 16rpx;
+    padding-bottom: 16rpx;
+}
+
+.img_mine_money {
+    width: 17px;
+    height: 17px;
+    margin-right: 10rpx;
+    margin-bottom: 4rpx;
+}
+
+.view_item_bottom {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.border_right {
+    border-right: 1rpx #ebebeb solid;
+}
+
+.text_margin {
+    margin-right: 6rpx;
+}

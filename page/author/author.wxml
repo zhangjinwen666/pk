@@ -1,0 +1,5 @@
+<view class="alert">
+    <view>微信授权</view>
+    <view style="font-size:24rpx;">{{appname}}需要获取您的公开信息(昵称、头像等)</view>
+</view>
+<button bindgetuserinfo="onGotUserInfo" class="button_common_primary" lang="zh_CN" openType="getUserInfo">现在授权</button>

@@ -1,0 +1,53 @@
+/* page/store/shop/shopInfo.wxss */
+@import "../index.wxss";
+.swiper_view {
+    height: 340rpx;
+    width: 100%;
+}
+
+.margin_bottom {
+    margin-bottom: 0px;
+}
+
+.view_time {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    background: white;
+    font-size: 14px;
+    color: #999;
+    padding-left: 30rpx;
+    padding-bottom: 8rpx;
+}
+
+.img_time {
+    width: 14px;
+    height: 14px;
+    margin-right: 10rpx;
+}
+
+.view_item_title {
+    background: white;
+    font-size: 17px;
+    padding-left: 30rpx;
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
+    border-bottom: 1rpx #ebebeb solid;
+    margin-top: 10rpx;
+}
+
+.text_shop_info {
+    background: white;
+    font-size: 13px;
+    color: #999;
+    padding-top: 12rpx;
+    padding-bottom: 30rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    margin-bottom: 60px;
+}
+
+.background_white {
+    background: white;
+}

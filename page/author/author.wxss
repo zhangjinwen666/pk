@@ -1,0 +1,2 @@
+/* page/author/author.wxss */
+.alert { width: 650rpx; margin-top: 40rpx; margin-left: 30rpx; display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-flex-direction: column; flex-direction: column; background: white; padding: 20rpx; border-radius: 10; }

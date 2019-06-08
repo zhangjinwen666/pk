@@ -1,0 +1,8 @@
+{
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "社区",
+    "usingComponents": {
+        "bbqCell": "/page/home/component/bbqCell",
+        "loadmore": "/page/home/component/loadMore"
+    }
+}

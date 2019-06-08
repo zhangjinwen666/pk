@@ -1,0 +1,28 @@
+/* page/publish/bbq.wxss */
+.list_right {
+    line-height: 1.2em;
+}
+
+.list_bd {
+    padding-bottom: 15rpx;
+    padding-top: 15rpx;
+    min-height: 58rpx;
+}
+
+.weui-select {
+    line-height: 48rpx;
+    min-height: 48rpx;
+    height: auto;
+}
+
+.placeText {
+    color: #80828f;
+}
+wx-button::after {
+    border-radius: 0;
+    border: none;
+}
+wx-button {
+    border-radius: 0;
+    border: none;
+}

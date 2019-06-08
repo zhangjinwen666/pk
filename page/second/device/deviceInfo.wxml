@@ -1,0 +1,93 @@
+<swiper autoplay="true" circular="true" class="swiper" indicatorDots="true" interval="3000">
+    <swiper-item wx:for="{{deviceInfo.imagelist}}">
+        <image bindtap="lookOverImag" class="img_banner" data-index="{{index}}" mode="aspectFill" src="{{item}}"></image>
+    </swiper-item>
+</swiper>
+<view class="view_top">
+    <view class="text1">{{deviceInfo.title}}</view>
+    <view class="view_address">
+        <view class="text2 no_wap">设备所在地：</view>
+        <view bindtap="lookMap" class="right_address">
+            <image class="img_address" src="/image/a-4.png"></image>
+            <view class="text2">{{deviceInfo.address}}</view>
+        </view>
+    </view>
+    <view class="bottom">
+        <view class="text2">发布时间：{{deviceInfo.dateline}}</view>
+    </view>
+    <image class="img_badge" src="/image/a-24.png" wx:if="{{deviceInfo.status==2}}"></image>
+    <view class="view_share_all">
+        <view class="view_share_center">
+            <view class="view_share_button">
+                <image class="view_share_img" src="/image/wx_frend.png"></image>
+                <view>分享微信</view>
+            </view>
+            <button catchtap="none" class="button_share" openType="share"></button>
+            <view class="view_space"></view>
+            <view bindtap="generateCode" class="view_share_button">
+                <image class="view_share_img" src="/image/wx_circle.png"></image>
+                <view>分享二维码</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">品牌</view>
+        <view class="weui-cell__ft">{{deviceInfo.brandname}}</view>
+    </view>
+    <view class="weui-cell">
+        <view class="weui-cell__bd">价格</view>
+        <view class="weui-cell__ft text6">{{deviceInfo.sellmoney}}万</view>
+    </view>
+    <view class="weui-cell" wx:for="{{typeList}}">
+        <view class="weui-cell__bd">{{item.left}}</view>
+        <view class="weui-cell__ft">{{item.right}}</view>
+    </view>
+    <navigator class="weui-cell weui-cell_access" hoverClass="weui-cell_active" url="../user/userInfo?userid={{deviceInfo.userid}}">
+        <view class="weui-cell__bd">机主</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{deviceInfo.username}}</view>
+    </navigator>
+</view>
+<view class="view_center">
+    <view class="text4">设备介绍</view>
+    <view class="text5">{{deviceInfo.brief}}</view>
+</view>
+<view class="view_center" wx:if="{{deviceList.length>0}}">
+    <view class="text4">该用户其它设备</view>
+    <navigator class="view_item" url="deviceInfo?sellid={{item.sellid}}" wx:for="{{deviceList}}">
+        <image class="img_device" mode="aspectFill" src="{{item.image}}"></image>
+        <view class="right">
+            <view class="text7">{{item.title}}</view>
+            <view class="text8 text_ellipsis">{{item.brief}}</view>
+            <view class="text9">{{item.sellmoney}}万</view>
+            <view class="bottom">
+                <view class="text8">{{item.dateline}}</view>
+                <image class="img_look" src="/image/a-6.png"></image>
+                <view class="text8">浏览{{item.readnum}}次</view>
+            </view>
+        </view>
+    </navigator>
+</view>
+<view class="view_center" style="padding-bottom:50px">
+    <view class="text4 boder_bottom">交易提醒</view>
+    <view class="view_tip_itme" wx:for="{{pointList}}">{{item}}</view>
+</view>
+<view class="view_bottom">
+    <view bindtap="callPhone" class="right">打电话</view>
+    <view bindtap="goHome" class="right_home">去首页</view>
+</view>
+<view bindtap="hiddenCallDialog" class="dialog_view_call_float" wx:if="{{showEnterStatus}}"></view>
+<view class="dialog_drawer_box_enter" wx:if="{{showEnterStatus}}">
+    <view class="dialog_top_tip">
+        <text class="dialog_text_title">温馨提示</text>
+        <image bindtap="hiddenCallDialog" class="dialog_img_close" src="/image/a-25.png"></image>
+    </view>
+    <text class="dialog_text_tip_show">该车主身份已认证，打赏平台{{callPrice}}元或分享到行业群，即可直接联系车主</text>
+    <view class="dialog_bottom_button">
+        <view class="dialog_button_right">
+            <button bindtap="payCall" class="weui-btn mini-btn dialog_button_left" size="mini" type="default">付费拨打</button>
+            <button class="weui-btn mini-btn " data-clickType="callPhone" openType="share" size="mini" type="primary">分享后免费拨打</button>
+        </view>
+    </view>
+</view>

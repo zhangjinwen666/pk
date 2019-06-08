@@ -1,0 +1,89 @@
+/* page/user/common/login.wxss */
+body {
+    background-color: #eee;
+}
+
+.logo {
+    width: 750rpx;
+    height: 400rpx;
+    padding: 0 auto;
+}
+
+.logo wx-image {
+    margin: 100rpx 250rpx;
+    width: 250rpx;
+    height: 250rpx;
+}
+
+.appname {
+    width: 450rpx;
+    height: 100rpx;
+    margin: 150rpx;
+    text-align: center;
+    font-size: 36rpx;
+}
+
+.login {
+    margin-top: 150rpx;
+    color: #fff;
+    background-color: #da423c;
+    width: 700rpx;
+}
+
+.form {
+    height: 600rpx;
+    background-color: #fff;
+    margin: 50rpx 25rpx;
+    border-radius: 5px;
+    padding: 0rpx;
+}
+
+.section-up {
+    height: 100rpx;
+}
+
+.section-down {
+    height: 101rpx;
+    padding-top: 1px;
+    border-top: solid #eee 1px;
+}
+wx-input {
+    padding-top: 20rpx;
+    margin-left: 20rpx;
+    height: 60rpx;
+    max-height: 60rpx;
+}
+
+.wire-fr {
+    float: right;
+    margin-top: 5rpx;
+    margin-right: 10rpx;
+    height: 80rpx;
+}
+
+.input-verify {
+    float: left;
+    width: 300rpx;
+}
+
+.btn-verify {
+    width: 300rpx;
+    height: 70rpx;
+    margin: 5rpx;
+    padding: 5rpx;
+    font-size: 32rpx;
+    line-height: 60rpx;
+}
+
+.weui-textarea { 
+  display: block; 
+  width: 95%; 
+  margin-top:20rpx;
+  margin-left:20rpx;
+
+}
+.weui-textarea-counter { 
+  color: #b2b2b2; 
+  text-align: right; 
+  margin-right: 20rpx;
+}

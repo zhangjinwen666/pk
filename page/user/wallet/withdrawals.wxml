@@ -1,0 +1,23 @@
+<view>
+    <view class="text_top">提现到银行卡</view>
+    <form bindsubmit="onWithdrawals">
+        <view class="veiw_center">
+            <text class="text_rmb">¥</text>
+            <input class="input_text" name="moneynum" placeholder="最多可提现{{userInfo.fee.moneycurrent}}" type="digit" value="{{moneynum}}"></input>
+            <view bindtap="allWithd" class="text_right">全部转出</view>
+        </view>
+        <view class="view_center">
+            <text class="text_left">持卡人</text>
+            <input class="input_right" name="realname" placeholder="请输入姓名" type="text" value="{{userInfo.realname}}"></input>
+        </view>
+        <view class="view_center">
+            <text class="text_left">卡号</text>
+            <input class="input_right" name="cardno" placeholder="请输入卡号" type="number" value="{{userInfo.bankcardno}}"></input>
+        </view>
+        <view class="view_center">
+            <text class="text_left">银行名称</text>
+            <input class="input_right" name="bankname" placeholder="请输入所属银行" type="text" value="{{userInfo.bankname}}"></input>
+        </view>
+        <button class="button_form_n" formType="submit" hoverClass="button_fixed_bottom_s">确定提现</button>
+    </form>
+</view>

@@ -1,0 +1,71 @@
+<form bindsubmit="formSubmit">
+    <view class="button_padding_botttom">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea bindinput="inputchanged" class="weui-textarea" maxlength="200" name="content" placeholder="请输入设备介绍" style="height: 5.2em;line-height:1.4em" value="{{brief}}"></textarea>
+                    <view class="weui-textarea-counter">{{textcount}}/200</view>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__hd">
+                            <view class="weui-uploader__title">图片上传</view>
+                        </view>
+                        <view class="weui-uploader__bd">
+                            <uploader id="image" uploadtype="image"></uploader>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_select list_bd" hoverClass="weui-cell_active" wx:if="{{subblocks.length>0}}">
+                <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                    <view class="weui-label">选择分类</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker bindchange="subblocksChanged" range="{{subblocks}}" rangeKey="navname">
+                        <view class="weui-select list_right">
+                            <text wx:if="{{selectedBlock}}">{{selectedBlock.navname}}</text>
+                            <text class="placeText" wx:else>请选择分类</text>
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <view bindtap="chooseLocation" class="weui-cell weui-cell_select list_bd" hoverClass="weui-cell_active">
+                <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                    <view class="weui-label">选择位置</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <view class="weui-select list_right">
+                        <text wx:if="{{address}}">{{address.address}}</text>
+                        <text class="placeText" wx:else>请选择位置</text>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_select list_bd" hoverClass="weui-cell_active" wx:if="{{isTop&&topDays.length>0}}">
+                <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                    <view class="weui-label">置顶天数</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker bindchange="topDaysChanged" range="{{topDays}}" rangeKey="configkey">
+                        <view class="weui-select list_right">
+                            <text>选择置顶天数:</text>
+                            <text class="system_color">{{selectedDay}}</text>
+                            <text>天</text>
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <view class="weui-cell" wx:if="{{isTop}}">
+                <view class="weui-cell__bd">价格</view>
+                <view class="weui-cell__ft">
+                    <text>￥：</text>
+                    <text class="system_color">{{topMoney}}</text>
+                    <text>元</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <button class="button_common" formType="submit" hoverClass="button_hover_class">发布</button>
+</form>

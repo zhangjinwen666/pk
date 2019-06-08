@@ -1,0 +1,95 @@
+/* page/home/index.wxss */
+page{
+  background: #f1f1f1;
+}
+.weui-search-bar {
+    position: relative;
+    padding: 8px 10px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    box-sizing: border-box;
+    background-color: #efeff4;
+    border-top: 1rpx solid #d7d6dc;
+    border-bottom: 1rpx solid #d7d6dc;
+}
+
+.weui-search-bar__form {
+    position: relative;
+    -webkit-box-flex: 1;
+    -webkit-flex: auto;
+    flex: auto;
+    border-radius: 5px;
+    background: #fff;
+    border: 1rpx solid #e6e6ea;
+}
+
+.weui-search-bar__box {
+    position: relative;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.weui-icon-search_in-box {
+    position: absolute;
+    left: 10px;
+    top: 7px;
+}
+
+.weui-search-bar__input {
+    height: 28px;
+    line-height: 28px;
+    font-size: 14px;
+}
+
+.weui-search-bar__label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    border-radius: 3px;
+    text-align: center;
+    color: #9b9b9b;
+    background: #fff;
+    line-height: 28px;
+}
+
+.weui-icon-search {
+    margin-right: 8rpx;
+    font-size: inherit;
+}
+
+.weui-search-bar__text {
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.weui-search-bar__cancel-btn {
+    margin-left: 10px;
+    line-height: 28px;
+    color: #09bb07;
+    white-space: nowrap;
+}
+.banner { width: 750rpx; height: 340rpx; }
+.iconBottom { margin-top: 20rpx; display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; -webkit-flex-wrap: wrap; flex-wrap: wrap; background: white; width: 100%; padding: 10rpx 0; }
+
+.iconItem { width: 187rpx; height: 154rpx; display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; }
+.icon { width: 80rpx; height: 80rpx; border-radius: 40rpx; }
+.iconTitle { margin-top: 8rpx; font-size: 20rpx; color: #333; }
+.toolRight { width: 314rpx; height:115rpx; }
+.toolItem { width: 314rpx; height: 115rpx; margin: 10rpx 0; display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; }.toolLeft { width: 140rpx; height: 80rpx; display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; position: absolute; margin-left: -60rpx; }
+.toolTitle { font-size: 28rpx; color: white; }
+.toolSubtitle { font-size: 20rpx; color: white; width: 130rpx; height: 26rpx; line-height: 26rpx; }
+.fixBar { position: fixed; bottom: 40rpx; right: 40rpx; width: 60rpx; display: -webkit-flex; display: flex; -webkit-flex-direction: column-reverse; flex-direction: column-reverse; }
+.fixItem { width: 72rpx; height: 72rpx; border-radius: 36rpx; color: white; font-size: 22rpx; display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; background: #6DC4F7; }
+.fixBarImage { width: 100%; height: 100%; }
+.fixMargin { margin-bottom: 18rpx; }
+.share { width: 72rpx; height: 72rpx; background: rgba(0, 0, 0, 0); position: absolute; bottom: 90rpx; }
+.hot { font-size: 32rpx; color: #4d4d4d; height: 80rpx; line-height: 80rpx; text-align: center; background: white; margin-top: 25rpx; }
+.wx-button::after { border: none; }

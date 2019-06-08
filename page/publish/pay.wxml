@@ -1,0 +1,23 @@
+<view class="btm">
+    <view class="cell">请选择支付方式</view>
+    <view bindtap="payTypeChoose" class="cell" data-paytype="money">
+        <view class="cell_left">
+            <image class="icon" src="/image/paytype_money.png"></image>
+            <view>余额支付
+                <text class="money" wx:if="{{money>0}}">({{money}}元)</text>
+            </view>
+        </view>
+        <image class="select" src="/image/selection_{{paytype=='money'?'selected':'none'}}.png"></image>
+    </view>
+    <view bindtap="payTypeChoose" class="cell" data-paytype="weixin">
+        <view class="cell_left">
+            <image class="icon" src="/image/paytype_weixin.png"></image>
+            <view>微信支付</view>
+        </view>
+        <image class="select" src="/image/selection_{{paytype=='weixin'?'selected':'none'}}.png"></image>
+    </view>
+</view>
+<view class="btmFixd">
+    <view class="left item">支付:{{payamount}}元</view>
+    <view bindtap="startPay" class="right item" hoverClass="right_hover">确定支付</view>
+</view>

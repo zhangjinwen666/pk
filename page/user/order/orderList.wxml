@@ -1,0 +1,31 @@
+<view class="view_order_item" wx:for="{{orderList}}">
+    <view class="view_item_left">
+        <image class="img_heard" src="{{item.useravatar_link}}"></image>
+        <view class="text_user_name">{{item.username}}</view>
+    </view>
+    <view class="view_item_right">
+        <view class="view_row_one">
+            <view class="text_goods_title">{{item.item[0].goodsname}}</view>
+            <view class="text_time">{{item.dateline}}</view>
+        </view>
+        <view class="text_total_price">订单总价￥：{{item.totalamount}}元</view>
+        <view class="view_row_three">
+            <view class="text_public">订单详情：</view>
+            <view class="view_pay_type">{{item.orderstatus=='2'?'已支付':'未支付'}}</view>
+        </view>
+        <view class="text_goods_num">超级配件 {{item.item[0].goodsprice}}元*{{item.item[0].goodsnum}}</view>
+        <view class="text_public"> 收件人：{{item.postusername}}</view>
+        <view class="text_public">电话：{{item.postusermobile}}</view>
+        <view class="text_public">收件地址：{{item.postuseraddr}}</view>
+        <view class="text_public">订单编号：{{item.orderno}}</view>
+    </view>
+</view>
+<view class="page__bd">
+    <view class="weui-loadmore" wx:if="{{loadMoreType}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" wx:else>
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{loadText}}</view>
+    </view>
+</view>

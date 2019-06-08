@@ -1,0 +1,9 @@
+<view class="headerBtm common_padding">
+    <view bindtap="headerClick" class="common_padding {{selectedIndex==index?'header system_color':''}}" data-index="{{index}}" wx:for="{{headers}}" wx:key="{{this}}">{{item.title}}</view>
+</view>
+<view style="padding-top:102rpx">
+    <view class="weui-cells weui-cells_after-title">
+        <bbqCell bindchangedata="changeData" data="{{item}}" index="{{index}}" wx:for="{{headers[selectedIndex].list}}" wx:key="{{this}}"></bbqCell>
+    </view>
+    <loadmore loadstatus="{{headers[selectedIndex].loadstatus}}"></loadmore>
+</view>

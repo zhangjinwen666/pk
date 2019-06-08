@@ -1,0 +1,50 @@
+<view class="view_top">
+    <image class="img_banner system_background"></image>
+    <view class="left_info">
+        <image class="img_user_head" src="{{userInfo.useravatar_link!=null?userInfo.useravatar_link:userInfo.useravatar_middle}}"></image>
+        <view>
+            <view class="text_name">{{userInfo.username}}</view>
+            <view class="text_address" wx:if="{{userInfo.usermapaddr!=null}}">{{userInfo.usermapaddr}}</view>
+        </view>
+    </view>
+</view>
+<navigator class="view_item" url="../device/deviceInfo?sellid={{item.sellid}}" wx:for="{{deviceList}}">
+    <image class="img_device" mode="aspectFill" src="{{item.image}}"></image>
+    <view class="right">
+        <view class="text1">{{item.title}}</view>
+        <view class="text2 text_ellipsis">{{item.brief}}</view>
+        <view class="text3">{{item.sellmoney}}万</view>
+        <view class="bottom">
+            <view class="text2">{{item.dateline}}</view>
+            <image class="img_look" src="/image/a-6.png"></image>
+            <view class="text2">浏览{{item.readnum}}次</view>
+        </view>
+    </view>
+</navigator>
+<view class="page__bd margin_bottom">
+    <view class="weui-loadmore" wx:if="{{loadMoreType}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" wx:else>
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{loadText}}</view>
+    </view>
+</view>
+<view class="view_bottom">
+    <view bindtap="callPhone" class="right">打电话</view>
+    <view bindtap="goHome" class="right_home">去首页</view>
+</view>
+<view bindtap="hiddenCallDialog" class="dialog_view_call_float" wx:if="{{showEnterStatus}}"></view>
+<view class="dialog_drawer_box_enter" wx:if="{{showEnterStatus}}">
+    <view class="dialog_top_tip">
+        <text class="dialog_text_title">温馨提示</text>
+        <image bindtap="hiddenCallDialog" class="dialog_img_close" src="/image/a-25.png"></image>
+    </view>
+    <text class="dialog_text_tip_show">该车主身份已认证，打赏平台{{callPrice}}元或分享到行业群，即可直接联系车主</text>
+    <view class="dialog_bottom_button">
+        <view class="dialog_button_right">
+            <button bindtap="payCall" class="weui-btn mini-btn dialog_button_left" size="mini" type="default">付费拨打</button>
+            <button class="weui-btn mini-btn " data-clickType="callPhone" openType="share" size="mini" type="primary">分享后免费拨打</button>
+        </view>
+    </view>
+</view>

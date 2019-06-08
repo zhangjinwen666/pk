@@ -1,0 +1,45 @@
+<view>
+    <navigator url="shopInfo">
+        <view class="view_shop_item">
+            <image class="img_shop_heard"></image>
+            <view class="view_shop_item_right">
+                <view class="item_row_one">店铺名</view>
+                <view class="item_row_two">
+                    <image class="img_star"></image>
+                    <text class="text_margin">销量：</text>
+                    <text>20</text>
+                    <text class="text_margin">人气：</text>
+                    <text>20</text>
+                </view>
+                <view class="row_three">
+                    <image class="img_address"></image>
+                    <view class="text_address">长沙市芙蓉区睡觉了快递费就卡萨丁就飞放假啦思考的减肥</view>
+                </view>
+                <view class="row_four">
+                    <view class="item_type">地盘配件</view>
+                </view>
+                <image class="img_call_phone"></image>
+            </view>
+        </view>
+    </navigator>
+    <view class="view_shop_item">
+        <image class="img_shop_heard"></image>
+        <view class="view_shop_item_right">
+            <view class="item_row_one">店铺名</view>
+            <view class="item_row_two">
+                <image class="img_star"></image>
+                <text class="text_margin">销量：</text>
+                <text>20</text>
+                <text class="text_margin">人气：</text>
+                <text>20</text>
+            </view>
+            <view class="row_three">
+                <image class="img_address"></image>
+                <view class="text_address">长沙市芙蓉区睡觉了快递费就卡萨丁就飞放假啦思考的减肥</view>
+            </view>
+            <view class="row_four">
+                <view class="item_type">地盘配件</view>
+            </view>
+        </view>
+    </view>
+</view>

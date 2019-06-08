@@ -1,0 +1,92 @@
+{
+  "pages": [
+    "page/home/index",
+    "page/home/detail",
+    "page/bbq/index",
+    "page/publish/index",
+    "page/store/index",
+    "page/store/shop/shopList",
+    "page/user/index",
+    "page/author/author",
+    "page/store/shop/shopInfo",
+    "page/store/product/commodityDetail",
+    "page/store/product/deviceDetail",
+    "page/store/product/moreImg",
+    "page/store/shop/shopStation",
+    "page/home/tool/introduce",
+    "page/home/tool/fincial",
+    "page/home/tool/assess",
+    "page/publish/bbq",
+    "page/user/wallet/wallet",
+    "page/user/shopManage/shopManage",
+    "page/user/shopManage/myShopList",
+    "page/user/shopManage/releaseProduct",
+    "page/user/shopManage/releaseDevice",
+    "page/user/video/videoPlay",
+    "page/user/collection/collection",
+    "page/user/admiration/myAdmiration",
+    "page/user/wallet/recharge",
+    "page/user/wallet/addbankcard",
+    "page/user/wallet/withdrawals",
+    "page/user/wallet/billList",
+    "page/user/order/orderList",
+    "page/user/myRelease/myRelease",
+    "page/user/shopManage/productManage",
+    "page/user/shopManage/shopOrder/shopOrderList",
+    "page/home/list",
+    "page/user/common/login",
+    "page/store/order/createOrder",
+    "page/publish/pay",
+    "page/second/index",
+    "page/second/device/deviceInfo",
+    "page/second/mypublish/edit",
+    "page/second/mypublish/pulish",
+    "page/second/publish/publish",
+    "page/second/user/userInfo",
+    "page/message/auth/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#23c0f4",
+    "navigationBarTitleText": "泵车无忧信息平台",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#2c2c2c",
+    "selectedColor": "#23c0f4",
+    "list": [
+      {
+        "pagePath": "page/home/index",
+        "text": "首页",
+        "iconPath": "image/tabBar/t-2.png",
+        "selectedIconPath": "image/tabBar/t-1.png"
+      },
+      {
+        "pagePath": "page/publish/index",
+        "text": "发布",
+        "iconPath": "image/tabBar/t-4.png",
+        "selectedIconPath": "image/tabBar/t-3.png"
+      },
+      {
+        "pagePath": "page/store/index",
+        "text": "商城",
+        "iconPath": "image/tabBar/t-6.png",
+        "selectedIconPath": "image/tabBar/t-5.png"
+      },
+      {
+        "pagePath": "page/bbq/index",
+        "text": "社区",
+        "iconPath": "image/tabBar/t-8.png",
+        "selectedIconPath": "image/tabBar/t-7.png"
+      },
+      {
+        "pagePath": "page/user/index",
+        "text": "我的",
+        "iconPath": "image/tabBar/t-10.png",
+        "selectedIconPath": "image/tabBar/t-9.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,107 @@
+<view catchtap="cellClick" class="weui-cell listCell" hoverClass="weui-cell_active">
+    <view class="listTop">
+        <view class="listTopLeft">
+            <image class="avatar" src="{{data.avatar}}"></image>
+            <view class="listInfoBtm">
+                <view class="listInfoTitle">{{data.nickname}}</view>
+                <view class="listTagBtm">
+                    <view class="tag" wx:if="{{data.topflag==1}}">置顶</view>
+                    <view class="tag">{{data.navname}}</view>
+                </view>
+            </view>
+        </view>
+        <view catchtap="call" class="callBtm">
+            <image class="call" src="/image/list_call.png"></image>
+        </view>
+    </view>
+    <view class="listTitle">{{data.content}}</view>
+    <view class="listImageBtm">
+        <image catchtap="imagePreview" class="listImage" data-image="{{item}}" src="{{item}}" wx:for="{{data.imagelist}}" wx:key="{{this}}"></image>
+    </view>
+    <view class="listTop">
+        <view catchtap="addressClick" class="listTopLeft">
+            <image class="locationIcon" src="/image/list_address.png"></image>
+            <view class="locationTitle">{{data.address}}</view>
+        </view>
+        <view class="submitTime">{{data.createtime}}</view>
+    </view>
+    <image class="statusImageBtm" wx:if="{{mine==false}}"></image>
+    <view class="listTop" style="{{mine==false?'margin-top:-60rpx':''}}">
+        <block wx:if="{{mine}}">
+            <view class="editBtm">
+                <view catchtap="deleteAction" class="delete customButton">删除</view>
+                <view catchtap="editAction" class="buttonMargin customButton">编辑</view>
+                <view catchtap="reloadAction" class="buttonMargin customButton">刷新</view>
+            </view>
+            <view class="editBtm">
+                <view class="statusBtm">
+                    <image class="statusIcon" src="/image/list_looked.png"></image>
+                    <view class="statusTitle">{{data.viewcnt}}</view>
+                </view>
+                <view catchtap="likeClick" class="statusBtm numberMargin">
+                    <image class="statusIcon" src="/image/{{data.clickupid>0?'d-1':'list_click'}}.png"></image>
+                    <view class="statusTitle">{{data.clickupcnt}}</view>
+                </view>
+                <view catchtap="commentClick" class="statusBtm numberMargin" data-target="{{data.username}}" data-touserid="">
+                    <image class="statusIcon" src="/image/list_comment.png"></image>
+                    <view class="statusTitle">{{data.postcnt}}</view>
+                </view>
+                <view catchtap="showTipsView" class="statusBtm numberMargin">
+                    <image class="statusIcon" src="/image/list_tips.png"></image>
+                    <view class="statusTitle">{{data.tipcnt}}</view>
+                </view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="statusBtm">
+                <image class="statusIcon" src="/image/list_looked.png"></image>
+                <view class="statusTitle">{{data.viewcnt}}人浏览</view>
+            </view>
+            <view catchtap="likeClick" class="statusBtm">
+                <image class="statusIcon" src="/image/{{data.clickupid>0?'d-1':'list_click'}}.png"></image>
+                <view class="statusTitle">{{data.clickupcnt}}人点赞</view>
+            </view>
+            <view catchtap="commentClick" class="statusBtm" data-target="{{data.username}}" data-touserid="">
+                <image class="statusIcon" src="/image/list_comment.png"></image>
+                <view class="statusTitle">{{data.postcnt}}人评论</view>
+            </view>
+            <view catchtap="showTipsView" class="statusBtm">
+                <image class="statusIcon" src="/image/list_tips.png"></image>
+                <view class="statusTitle">{{data.tipcnt}}人打赏</view>
+            </view>
+        </block>
+    </view>
+    <view catchtap="none" class="commentBtm" wx:if="{{data.postlist.length>0&&mine==false}}">
+        <view catchtap="commentClick" class="comment" data-idx="{{index}}" data-postid="{{item.postid}}" data-target="{{item.username}}" data-touserid="{{item.userid}}" wx:for="{{data.postlist}}" wx:key="{{this}}">
+            <text class="userName">{{item.username}}</text>
+            <text class="commentText" wx:if="{{item.touserid>0}}">回复</text>
+            <text class="userName" wx:if="{{item.touserid>0}}">{{item.tousername}}</text>
+            <text class="commentText">:{{item.message}}</text>
+        </view>
+    </view>
+</view>
+<view catchtap="hideView" class="c_backgroundView c_column_reverse" data-view="showCommentView" wx:if="{{showCommentView}}">
+    <view catchtap="none" class="commentView">
+        <input bindconfirm="sendComment" bindinput="commentInput" class="commentField" confirmType="send" focus="true" placeholder="回复\"{{commentplaceholder}}\"的评论"></input>
+        <view bindtap="sendComment" class="commentBtn">发送</view>
+    </view>
+</view>
+<view catchtap="hideView" class="c_all_center c_backgroundView" data-view="showTips" wx:if="{{showTips}}">
+    <view catchtap="none" class="tipView">
+        <view class="tipsTitle">打赏</view>
+        <view class="tipsArrInfo">请选择打赏金额</view>
+        <view class="tipsItems">
+            <view catchtap="tipsClick" class="tipsItem {{tipsIndex==index?'selectedTips':'emptyTips'}}" data-index="{{index}}" wx:for="{{tips}}" wx:key="{{this}}">{{item.configkey}}元</view>
+        </view>
+        <view class="tipsArrInfo">土豪请随意</view>
+        <form bindsubmit="tipsSubmit">
+            <view class="tipsInputBtm">
+                <input bindfocus="startInputTips" name="tips" placeholder="请输入打赏金额，至少1元" style="width:400rpx" type="digit" value="{{tipInput}}"></input>
+                <view>元</view>
+            </view>
+            <view class="tipsButtonBottom">
+                <button class="tipsButton" formType="submit" size="mini">确认支付</button>
+            </view>
+        </form>
+    </view>
+</view>

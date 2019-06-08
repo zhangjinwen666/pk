@@ -1,0 +1,32 @@
+/* page/bbq/index.wxss */
+.header {
+    width: 100%;
+    background: white;
+    height: 82rpx;
+    white-space: nowrap;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.headerItem {
+    font-size: 30rpx;
+    display: inline-block;
+    margin: 0 20rpx;
+    line-height: 80rpx;
+    height: 78rpx;
+}
+
+.headerSelected {
+    border-bottom: 2rpx solid #23c0f4;
+}
+
+.listBtm {
+    padding-top: 82rpx;
+}

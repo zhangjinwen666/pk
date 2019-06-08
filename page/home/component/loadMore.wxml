@@ -1,0 +1,15 @@
+<view class="">
+    <view class="loadView" wx:if="{{loadstatus==1}}">
+        <view class="loadLine"></view>
+        <view class="loadText loadMargin" style="background:{{bgcolor}}">
+            <image class="loadGIF" src="/image/loading.gif"></image>
+        正在加载
+        </view>
+        <view class="loadLine loadMargin"></view>
+    </view>
+    <view class="loadView" wx:if="{{loadstatus==2}}">
+        <view class="loadLine"></view>
+        <view class="loadText loadMargin" style="background:{{bgcolor}}">没有更多数据</view>
+        <view class="loadLine loadMargin"></view>
+    </view>
+</view>

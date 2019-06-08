@@ -1,0 +1,44 @@
+<form bindsubmit="submitAction" class="button_padding_botttom">
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name="shopname" placeholder="请输入姓名"></input>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell__hd">
+                <view class="weui-label">贷款金额</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name="applymoney" placeholder="请输入贷款金额" type="digit"></input>
+            </view>
+            <view class="weui-cell__ft">
+                <view class="weui-label" style="margin:0 20rpx;color:#333">万</view>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">联系电话</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input bindinput="phoneChanged" class="weui-input" name="{{bannerIndex==1?'shoptel':'usermobile'}}" placeholder="请输入联系电话" type="number"></input>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input weui-cell_vcode" wx:if="{{bannerIndex!=1}}">
+            <view class="weui-cell__hd">
+                <view class="weui-label">验证码</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name="verify" placeholder="请输验证码" type="number"></input>
+            </view>
+            <view class="weui-cell__ft">
+                <view class="code code_time" wx:if="{{waitTime>0}}">{{waitTime}}秒后重发</view>
+                <view bindtap="codeSend" class="code" hoverClass="hover_code" wx:else>发送验证码</view>
+            </view>
+        </view>
+    </view>
+    <button class="button_common" formType="submit" hoverClass="button_hover_class">提交申请</button>
+</form>

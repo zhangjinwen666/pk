@@ -1,0 +1,76 @@
+<view class="view_relative">
+    <swiper autoplay="true" circular="true" class="swiper_view" indicatorDots="true">
+        <swiper-item wx:for="{{goodsDetail.imagelist}}">
+            <image bindtap="bindPreviewImg" class="swiper_view" data-index="{{index}}" mode="aspectFill" src="{{item}}"></image>
+        </swiper-item>
+    </swiper>
+    <image bindtap="openMore" class="img_more" src="/image/a-23.png"></image>
+</view>
+<view class="view_introduction">
+    <view class="view_shop_name">
+        <image class="img_heard_shop" src="{{shopDetail.shopavatar_small}}"></image>
+        <view class="text_shop_name">{{shopDetail.shopname}}</view>
+        <image bindtap="bindCallMobie" class="img_heard_shop" src="/image/b-14.png"></image>
+    </view>
+    <view bindtap="bindOpenMap" class="view_address">
+        <image class="img_address_left" src="/image/list_address.png"></image>
+        <view>{{shopDetail.address}}</view>
+    </view>
+    <view class="text_price">￥{{goodsDetail.goodspricenum}}万</view>
+    <view class="text_goods_name">{{goodsDetail.goodsname}}</view>
+    <view class="view_table">
+        <view class="view_table_item {{(index+1)%2==0?'':'table_border_right'}} table_border_bottom" wx:for="{{goodsDetail.goodsprop}}">
+            <view class="view_table_item_left">{{item.propname}}</view>
+            <view class="view_table_item_right">{{item.propvalue}}</view>
+        </view>
+    </view>
+    <view class="view_device_introduction">{{goodsDetail.goodsdesc}} </view>
+    <view class="view_share_all">
+        <view class="view_share_center">
+            <view class="view_share_button">
+                <image class="view_share_img" src="/image/wx_frend.png"></image>
+                <view>分享微信</view>
+            </view>
+            <button catchtap="none" class="button_share" openType="share"></button>
+            <view class="view_space"></view>
+            <view bindtap="generateCode" class="view_share_button">
+                <image class="view_share_img" src="/image/wx_circle.png"></image>
+                <view>分享二维码</view>
+            </view>
+        </view>
+    </view>
+</view>
+<block wx:if="{{productList.length>0}}">
+    <view class="view_item_title">相似车源</view>
+    <view class="view_new_car view_margin_bottom">
+        <navigator url="deviceDetail?goodsid={{item.goodsid}}" wx:for="{{productList}}">
+            <view class="view_car_item border_bottom">
+                <image class="img_device_heard" mode="aspectFill" src="{{item.goodscover}}"></image>
+                <view class="view_device_item_right">
+                    <view class="text_device_title">{{item.goodsname}}</view>
+                    <view class="text_device_perameter">{{item.brandname}} | {{item.goodscode}} | {{item.goodsaddr}}</view>
+                    <view class="view_item_right_bottom">
+                        <text class="text_device_perameter">售价：</text>
+                        <text class="text_device_price">{{item.goodspricenum}}万</text>
+                        <text class="text_device_time">{{item.dateline}}</text>
+                    </view>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</block>
+<view class="view_margin_bottom" wx:else></view>
+<view class="view_bottom_botton">
+    <view bindtap="bindCollection" class="botton_call button_background" wx:if="{{goodsDetail.favoriteid==0}}">
+        <image class="img_call" src="/image/d-3.png"></image>
+        <view>收藏</view>
+    </view>
+    <view bindtap="bindCollection" class="botton_call background_white" wx:else>
+        <image class="img_call" src="/image/shoucang.png"></image>
+        <view class="system_color">已收藏</view>
+    </view>
+    <view bindtap="callMobie" class="botton_call button_background2">
+        <image class="img_call" src="/image/bottom_call.png"></image>
+        <view>打电话</view>
+    </view>
+</view>

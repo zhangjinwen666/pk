@@ -1,0 +1,53 @@
+<view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+            <icon class="weui-icon-search_in-box" size="14" type="search"></icon>
+            <input bindblur="hideInput" bindconfirm="inputTyping" bindinput="searchChanged" class="weui-search-bar__input" confirmType="search" focus="{{inputShowed}}" id="searchinput" placeholder="搜索" type="text" value="{{inputVal}}"></input>
+            <view bindtap="clearInput" class="weui-icon-clear" wx:if="{{inputVal.length>0}}">
+                <icon size="14" type="clear"></icon>
+            </view>
+        </view>
+        <label bindtap="showInput" class="weui-search-bar__label" hidden="{{inputShowed}}">
+            <icon class="weui-icon-search" size="14" type="search"></icon>
+            <view class="weui-search-bar__text">搜索</view>
+        </label>
+    </view>
+    <view bindtap="hideInput" class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}">搜索</view>
+</view>
+<swiper class="banner" wx:if="{{banner.length>0}}">
+    <swiper-item wx:for="{{banner}}" wx:key="{{this}}">
+        <image class="banner" src="{{item.thumb}}"></image>
+    </swiper-item>
+</swiper>
+<view class="iconBottom" wx:if="{{icons.length>0}}">
+    <navigator bindtap="iconsClick" class="iconItem" data-iswxapp="{{item.iswxapp}}" data-index="{{item.url}}" wx:for="{{icons}}" wx:key="{{this}}">
+        <image class="icon" src="{{item.icon}}"></image>
+        <view class="iconTitle">{{item.navname}}</view>
+    </navigator>
+</view>
+<view class="iconBottom" style="justify-content: space-around;">
+    <navigator class="toolItem" style="background: linear-gradient(to bottom right, {{item.colorF}} , {{item.colorT}});" url="{{item.url}}" wx:for="{{tools}}" wx:key="{{this}}">
+        <image class="toolRight" src="/image/home_item_{{index}}.png"></image>
+        <view class="toolLeft">
+            <view class="toolTitle">{{item.title}}</view>
+            <view class="toolSubtitle">{{item.subtitle}}</view>
+        </view>
+    </navigator>
+</view>
+<view class="hot">热门推荐</view>
+<view class="weui-cells weui-cells_after-title">
+    <bbqCell bindchangedata="changeData" data="{{item}}" index="{{index}}" wx:for="{{list}}" wx:key="{{this}}"></bbqCell>
+</view>
+<loadmore loadstatus="{{loadstatus}}"></loadmore>
+<view class="fixBar">
+    <view catchtap="fixBarStatusChange" class="fixItem">
+        <image class="fixBarImage" mode="aspectFill" src="/image/fix_bar_close.png" wx:if="{{fixBar}}"></image>
+        <image class="fixBarImage" mode="aspectFill" src="/image/fix_bar_open.png" wx:else></image>
+    </view>
+    <block wx:if="{{fixBar}}">
+        <view class="fixItem fixMargin" data-tabbar="/page/store/index">分享</view>
+        <view catchtap="gotoTabbar" class="fixItem fixMargin" data-tabbar="/page/store/index">商城</view>
+        <view catchtap="gotoTabbar" class="fixItem fixMargin" data-tabbar="/page/publish/index">发布</view>
+        <button class="share" openType="share"></button>
+    </block>
+</view>

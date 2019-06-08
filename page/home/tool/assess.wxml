@@ -1,0 +1,21 @@
+<form bindsubmit="submitAction" class="button_padding_botttom">
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name="" placeholder="请输入姓名"></input>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">联系电话</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input bindinput="phoneChanged" class="weui-input" name="" placeholder="请输入联系电话" type="number"></input>
+            </view>
+        </view>
+    </view>
+    <button class="button_common" formType="submit" hoverClass="button_hover_class">提交申请</button>
+</form>

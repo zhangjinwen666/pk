@@ -1,0 +1,36 @@
+<view class="product_view_all">
+    <navigator url="../product/commodityDetail">
+        <view class="product_view_item product_border_bottom">
+            <image class="product_img_heard"></image>
+            <view class="product_view_item_right">
+                <view class="product_text_title">2010 中联 15方 搅拌车</view>
+                <view class="product_row_one">
+                    <view class="product_item_type view_background">地盘配件</view>
+                </view>
+                <view class="prodcut_row_three">
+                    <text>赞赏：</text>
+                    <text>20</text>
+                    <text class="product_text_margin">评论：</text>
+                    <text>20</text>
+                    <text class="product_item_type view_item_price">已赞赏5元</text>
+                </view>
+            </view>
+        </view>
+    </navigator>
+    <view class="product_view_item product_border_bottom">
+        <image class="product_img_heard"></image>
+        <view class="product_view_item_right">
+            <view class="product_text_title">2010 中联 15方 搅拌车</view>
+            <view class="product_row_one">
+                <view class="product_item_type view_background">地盘配件</view>
+            </view>
+            <view class="prodcut_row_three">
+                <text>赞赏：</text>
+                <text>20</text>
+                <text class="product_text_margin">评论：</text>
+                <text>20</text>
+                <text class="product_item_type view_item_price">已赞赏5元</text>
+            </view>
+        </view>
+    </view>
+</view>

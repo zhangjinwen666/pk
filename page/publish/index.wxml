@@ -1,0 +1,16 @@
+<navigator bindtap="onStation" class="join rs">
+    <view class="r">
+        <image class="logo" src="/image/c-1.png"></image>
+        <view class="cc" style="margin-left:15rpx">
+            <view class="joinTitle">商家入驻,点击申请入驻！</view>
+            <view class="joinSubtitle">商品出售，简单有效，方便快捷</view>
+        </view>
+    </view>
+    <image class="arrow" src="{{imageHeader}}arrow_gray_right.png"></image>
+</navigator>
+<view class="iconBottom">
+    <navigator class="iconItem" url="bbq?blockid={{item.id}}&blockname={{item.navname}}" wx:for="{{icons}}" wx:key="{{this}}">
+        <image class="icon" src="{{item.icon}}"></image>
+        <view class="iconTitle">{{item.navname}}</view>
+    </navigator>
+</view> 

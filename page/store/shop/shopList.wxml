@@ -1,0 +1,32 @@
+<view>
+    <navigator url="shopInfo?shopid={{item.shopid}}" wx:for="{{shopList}}">
+        <view class="view_shop_item">
+            <image class="img_shop_heard" src="{{item.shopavatar_small}}"></image>
+            <view class="view_shop_item_right">
+                <view class="item_row_one">{{item.shopname}}</view>
+                <view class="item_row_two">
+                    <image class="img_star" src="/image/shop_star.png"></image>
+                    <text class="text_margin">销量：</text>
+                    <text>{{item.salenum}}</text>
+                </view>
+                <view catchtap="onPreviewMap" class="row_three" data-maplat="{{item.maplat}}" data-maplong="{{item.maplong}}">
+                    <image class="img_address" src="/image/list_address.png"></image>
+                    <view class="text_address">{{item.address}}</view>
+                </view>
+                <view class="row_four">
+                    <view class="item_type">{{item.catname}}</view>
+                </view>
+                <image catchtap="onCallClick" class="img_call_phone" data-mobie="{{item.shoptel}}" src="/image/b-14.png"></image>
+            </view>
+        </view>
+    </navigator>
+</view>
+<view class="page__bd">
+    <view class="weui-loadmore" wx:if="{{loadMoreType}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" wx:else>
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{loadText}}</view>
+    </view>
+</view>

@@ -1,0 +1,32 @@
+<navigator class="list flex_between" url="/page/second/device/deviceInfo?sellid={{item.sellid}}" wx:for="{{list}}">
+    <image class="left_image" mode="aspectFill" src="{{item.image}}"></image>
+    <view class="right" style="width:460rpx">
+        <view class="title">{{item.title}}</view>
+        <view class="subtitle">{{item.brief}}</view>
+        <view class="price">{{item.sellmoney}}万</view>
+        <view class="time">{{item.time}},浏览{{item.readnum}}次,收藏{{item.favoritenum}}次</view>
+        <view>
+            <button catchtap="statusChange" class="mini-btn" data-btntype="edit" data-index="{{index}}" data-sellid="{{item.sellid}}" size="mini" style="background:#FF0000" type="primary" wx:if="{{item.status==1}}">编辑</button>
+            <button catchtap="statusChange" class="mini-btn" data-btntype="delete" data-index="{{index}}" data-sellid="{{item.sellid}}" size="mini" style="background:#FF8900" type="primary">删除</button>
+            <button catchtap="statusChange" class="mini-btn" data-btntype="change" data-index="{{index}}" data-sellid="{{item.sellid}}" size="mini" style="background:#FF8900" type="primary" wx:if="{{item.status==1}}">已售</button>
+        </view>
+        <view class="seal" wx:if="{{item.status==2}}">
+            <image src="/image/a-24.png" style="width:100%;height:100%"></image>
+        </view>
+        <view style="margin-top:-100rpx" wx:if="{{item.status==2}}"></view>
+    </view>
+</navigator>
+<view class="empty" wx:if="{{empty}}">
+    <image class="empty_icon" src="/image/a-31.png"></image>
+    <view class="empty_title">您尚未发布设备</view>
+    <navigator class="publish system_background" url="edit">立即发布</navigator>
+</view>
+<view wx:else>
+    <view class="weui-loadmore" wx:if="{{loadstatus==1}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" wx:elif="{{loadstatus==2}}">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+    </view>
+</view>

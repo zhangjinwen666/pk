@@ -1,0 +1,13 @@
+<navigator bindtap="onMyShop" class="view_item margin_bottom2">
+    <image class="img_left" src="/image/c-1.png"></image>
+    <view>
+        <view>我的店铺</view>
+        <view class="text_tip">店铺信息修改、门店照片修改</view>
+    </view>
+    <image class="img_right" src="/image/arrow.png"></image>
+</navigator>
+<navigator bindtap="onNavigator" class="view_item margin_bottom" data-url="{{item.url}}" wx:for="{{moduleList}}">
+    <image class="img_left" src="{{item.img}}"></image>
+    <view>{{item.title}}</view>
+    <image class="img_right" src="/image/arrow.png"></image>
+</navigator>

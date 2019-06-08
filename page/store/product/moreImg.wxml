@@ -1,0 +1,10 @@
+<view class="view_list">
+    <view class="view_item" wx:for="{{videolist}}">
+        <video class="video" objectFit="cover" src="{{item}}">
+            <cover-view bindtap="watchVideo" class="video" data-url="{{item}}"></cover-view>
+        </video>
+    </view>
+    <view class="view_item" wx:for="{{imagelist}}">
+        <image bindtap="watchImg" class=" img_item " data-index="{{index}}" mode="aspectFill" src="{{item}}"></image>
+    </view>
+</view>

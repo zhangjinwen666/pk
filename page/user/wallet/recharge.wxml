@@ -1,0 +1,17 @@
+<view class="content">
+    <view class="yue">
+        <view class="name">当前余额</view>
+        <view class="money">{{money}}</view>
+    </view>
+    <view class="module">
+        <view bindtap="chooseMOney" class="number {{currentIndex==index?'active':''}}" data-index="{{index}}" wx:for="{{moneys}}" wx:key="{{this}}">
+            <text class="data">{{item.title}}</text>
+        </view>
+    </view>
+    <view class="yue">
+        <view class="name">应付金额</view>
+        <view class="money">{{moneys[currentIndex].payamount}}</view>
+    </view>
+    <view class="recharge"></view>
+</view>
+<button bindtap="recharge" class="button_page_bottom" hoverClass="button_page_bottom_un">立即支付</button>

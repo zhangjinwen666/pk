@@ -1,0 +1,104 @@
+<view class="info" wx:if="{{thread}}">
+    <view class="infoHeader">
+        <view class="listTop">
+            <view class="listTopLeft">
+                <image class="avatar" src="{{thread.avatar}}"></image>
+                <view class="listInfoBtm">
+                    <view class="listInfoTitle">{{thread.nickname}}</view>
+                    <view class="submitTime">{{thread.createtime}}</view>
+                </view>
+            </view>
+            <view class="cc">
+                <view class="cachet">
+                    <view>分享</view>
+                    <image class="cachetImage" src="/image/wx_frend.png"></image>
+                </view>
+                <button class="shareBtn" openType="share"></button>
+            </view>
+        </view>
+    </view>
+    <view class="line"></view>
+    <view class="content">{{thread.content}}</view>
+    <image bindtap="imagePreview" class="contentImage" data-current="{{item}}" mode="widthFix" src="{{item}}" wx:for="{{thread.imagelist}}" wx:key="{{this}}"></image>
+    <view class="listTop" style="margin-left:30rpx;width:690rpx">
+        <view class="listTopLeft" style="font-size:24rpx;color:#666">
+            <image src="/image/list_looked.png" style="width:32rpx;height:24rpx"></image>
+            <view style="margin-left:10rpx">{{thread.viewcnt}}</view>
+            <view bindtap="showTipsView" class="listTopLeft">
+                <image src="/image/list_tips.png" style="width:26rpx;height:30rpx;margin-left:30rpx"></image>
+                <view style="margin-left:10rpx">{{thread.tipcnt}}</view>
+            </view>
+        </view>
+        <view bindtap="showLocation" class="listTopLeft">
+            <image class="locationIcon" src="/image/list_address.png"></image>
+            <view class="locationTitle">{{thread.address}}</view>
+        </view>
+    </view>
+    <view class="cc" style="padding:20rpx 0;">
+        <view bindtap="clickupClick" class="clickup">
+            <image class="clickupImage" src="/image/{{thread.clickupid>0?'d-1':'list_click'}}.png"></image>
+            <view style="margin-left:20rpx">{{thread.clickupcnt}}</view>
+        </view>
+    </view>
+</view>
+<view style="padding-bottom:90rpx">
+    <view class="commentHeader">
+        <view>评论({{total}})</view>
+        <view bindtap="showCommentView" class="addComment" data-touserid="0" data-tousername="帖子">
+            <image src="/image/comment.png" style="width:30rpx;height:26rpx"></image>
+            <text style="margin-left:15rpx;">添加评论</text>
+        </view>
+    </view>
+    <view bindtap="showCommentView" class="commentCell" data-idx="{{index}}" data-postid="{{item.postid}}" data-touserid="{{item.userid}}" data-tousername="{{item.nickname}}" wx:for="{{list}}" wx:key="{{this}}">
+        <image class="avatar" src="{{item.avatar}}"></image>
+        <view class="commentRight">
+            <view class="commentNickname nickname">
+                <view>
+                    <text class="userName">{{item.nickname}}</text>
+                    <block wx:if="{{item.touserid>0}}">
+                        <text class="commentText">回复</text>
+                        <text catchtap="showCommentView" class="userName" data-touserid="{{item.touserid}}" data-tousername="{{item.tousername}}">{{item.tousername}}</text>
+                    </block>
+                </view>
+                <view>{{item.time}}</view>
+            </view>
+            <view class="commentContent">{{item.message}}</view>
+        </view>
+    </view>
+    <loadmore loadstatus="{{loadstatus}}"></loadmore>
+</view>
+<view class="view_bottom">
+    <view bindtap="favoriteClick" class="bottomRow" style="background:#F60000">
+        <image class="bottomImage" src="/image/d-3.png"></image>
+        <view style="margin-left:18rpx">{{thread.favoriteid>0?'已':''}}收藏</view>
+    </view>
+    <view bindtap="call" class="bottomRow" style="background:#00C1FC">
+        <image class="bottomImage" src="/image/bottom_call.png"></image>
+        <view style="margin-left:18rpx">打电话</view>
+    </view>
+</view>
+<view catchtap="hideView" class="c_backgroundView c_column_reverse" data-view="showCommentView" wx:if="{{showCommentView}}">
+    <view catchtap="none" class="commentView">
+        <input bindconfirm="sendComment" bindinput="commentInput" class="commentField" confirmType="send" focus="true" placeholder="回复{{target}}的评论"></input>
+        <view bindtap="sendComment" class="commentBtn">发送</view>
+    </view>
+</view>
+<view catchtap="hideView" class="c_all_center c_backgroundView" data-view="showTips" wx:if="{{showTips}}">
+    <view catchtap="none" class="tipView">
+        <view class="tipsTitle">打赏</view>
+        <view class="tipsArrInfo">请选择打赏金额</view>
+        <view class="tipsItems">
+            <view catchtap="tipsClick" class="tipsItem {{tipsIndex==index?'selectedTips':'emptyTips'}}" data-index="{{index}}" wx:for="{{tips}}" wx:key="{{this}}">{{item.configkey}}元</view>
+        </view>
+        <view class="tipsArrInfo">土豪请随意</view>
+        <form bindsubmit="tipsSubmit">
+            <view class="tipsInputBtm">
+                <input bindfocus="startInputTips" name="tips" placeholder="请输入打赏金额，至少1元" style="width:400rpx" type="digit" value="{{tipInput}}"></input>
+                <view>元</view>
+            </view>
+            <view class="tipsButtonBottom">
+                <button class="tipsButton" formType="submit" size="mini">确认支付</button>
+            </view>
+        </form>
+    </view>
+</view>

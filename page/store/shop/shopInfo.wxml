@@ -1,0 +1,79 @@
+<swiper autoplay="true" circular="true" class="swiper_view" indicatorDots="true">
+    <swiper-item wx:for="{{shopDetail.imagelist}}">
+        <image bindtap="onBannerClick" class="swiper_view" data-index="{{index}}" mode="aspectFill" src="{{item}}"></image>
+    </swiper-item>
+</swiper>
+<view class="view_shop_item margin_bottom">
+    <image class="img_shop_heard" src="{{shopDetail.shopavatar_small}}"></image>
+    <view class="view_shop_item_right">
+        <view class="item_row_one">{{shopDetail.shopname}}</view>
+        <view class="item_row_two">
+            <image class="img_star" src="/image/shop_star.png"></image>
+            <text class="text_margin">销量：</text>
+            <text>{{shopDetail.salenum}}</text>
+        </view>
+        <view bindtap="viewMap" class="row_three">
+            <image class="img_address" src="/image/list_address.png"></image>
+            <view class="text_address">{{shopDetail.address}}</view>
+        </view>
+        <view class="row_four">
+            <view class="item_type">{{shopDetail.catname}}</view>
+        </view>
+        <image bindtap="callMobie" class="img_call_phone" src="/image/b-14.png"></image>
+    </view>
+</view>
+<view class="view_time">
+    <image class="img_time" src="/image/shop_time.png"></image>
+    <view>{{shopDetail.shophourstart}}-{{shopDetail.shophourend}} 营业</view>
+</view>
+<view class="view_item_title">在售商品/设备</view>
+<view class="view_new_car">
+    <block wx:for="{{productList}}">
+        <navigator url="../product/deviceDetail?goodsid={{item.goodsid}}" wx:if="{{item.goodstype=='1'}}">
+            <view class="view_car_item border_bottom">
+                <image class="img_device_heard" mode="aspectFill" src="{{item.goodscover}}"></image>
+                <view class="view_device_item_right">
+                    <view class="text_device_title">{{item.goodsname}}</view>
+                    <view class="text_device_perameter">{{item.brandname}} | {{item.goodscode}} | {{item.goodsaddr}}</view>
+                    <view class="view_item_right_bottom">
+                        <text class="text_device_perameter">售价：</text>
+                        <text class="text_device_price">{{item.goodspricenum}}万</text>
+                        <text class="text_device_time">{{item.dateline}}</text>
+                    </view>
+                </view>
+            </view>
+        </navigator>
+        <navigator url="/page/store/product/commodityDetail?goodsid={{item.goodsid}}" wx:else>
+            <view class="product_view_item product_border_bottom">
+                <image class="product_img_heard" mode="aspectFill" src="{{item.goodscover}}"></image>
+                <view class="product_view_item_right">
+                    <view class="product_text_title">{{item.goodsname}}</view>
+                    <view class="product_row_one">
+                        <view class="product_item_type">{{item.catname}}</view>
+                    </view>
+                    <view class="prodcut_row_three">
+                        <text>销量：</text>
+                        <text>{{item.goodssalenum}}</text>
+                        <text class="product_price">￥{{item.goodspricenum}}</text>
+                    </view>
+                </view>
+            </view>
+        </navigator>
+    </block>
+</view>
+<view class="view_item_title">商家介绍</view>
+<view class="text_shop_info">{{shopDetail.shopcontent}}</view>
+<view class="view_bottom_botton">
+    <view bindtap="bindCollection" class="botton_call button_background" wx:if="{{shopDetail.favoriteid==0}}">
+        <image class="img_call" src="/image/d-3.png"></image>
+        <view>收藏</view>
+    </view>
+    <view bindtap="bindCollection" class="botton_call background_white" wx:else>
+        <image class="img_call" src="/image/shoucang.png"></image>
+        <view class="system_color">已收藏</view>
+    </view>
+    <view bindtap="callMobie" class="botton_call button_background2">
+        <image class="img_call" src="/image/bottom_call.png"></image>
+        <view>打电话</view>
+    </view>
+</view>

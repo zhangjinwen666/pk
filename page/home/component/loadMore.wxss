@@ -1,0 +1,23 @@
+.loadView {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding: 25rpx 0;
+}
+
+.loadLine { width: 150rpx; background: #ddd; height: 2rpx; } 
+
+.loadText {
+    font-size: 28rpx;
+    color: #999;
+}
+
+.loadMargin { margin-left: 18rpx; } 
+
+.loadGIF {
+    width: 26rpx;
+    height: 26rpx;
+}

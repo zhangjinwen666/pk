@@ -1,0 +1,31 @@
+<view class="page">
+    <form bindsubmit="submitForm">
+        <view class="logo" wx:if="{{logoUrl!=null}}">
+            <image src="{{logoUrl}}"></image>
+        </view>
+        <view class="appname" wx:else>
+                {{appName}}
+            </view>
+        <view class="form">
+            <view class="section-up">
+                <input maxlength="11" name="mobile" placeholder="请输入手机号码" type="digit" value=""></input>
+            </view>
+            <view class="section-down">
+                <input class="input-verify" maxlength="6" name="verify" placeholder="请输入手机验证码" type="digit" value=""></input>
+                <view class="wire-fr">
+                    <button class="btn-verify" wx:if="{{btnVerifyDisabled}}">{{btnVerifyText}}</button>
+                    <button class="btn-verify" formType="submit" id="btnverify" wx:else>获取验证码</button>
+                </view>
+            </view>
+            <view class="section-down" style='height:5.2em;'>
+                <textarea bindinput="inputchanged" class="weui-textarea" maxlength="200" name="worktextcount" placeholder="请输入工作经验" style="height: 3.2em;line-height:1.4em" value="{{brief}}" data-index="worktextcount"></textarea>
+                    <view class="weui-textarea-counter">{{worktextcount}}/200</view>
+            </view>
+            <view class="section-down" style='height:3.2em;'>
+                <textarea bindinput="inputchanged" class="weui-textarea" maxlength="100" name="occupation" placeholder="请输入职业" style="height: 3.2em;line-height:1.4em" value="{{brief}}" data-index="occupation"></textarea>
+                    <view class="weui-textarea-counter">{{occupation}}/100</view>
+            </view>
+        </view>
+        <button class="button_common_primary" formType="submit" id="btnsubmit">立即绑定</button>
+    </form>
+</view>

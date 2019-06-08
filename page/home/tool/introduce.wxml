@@ -1,0 +1,4 @@
+<view class="imgBtm {{url.length>0?'paddingBtm':''}}">
+    <image class="infoImage" mode="widthFix" src="{{src}}"></image>
+</view>
+<navigator class="c_fix_bottom_button" url="{{url}}" wx:if="{{url}}">{{buttonTitle}}</navigator>
