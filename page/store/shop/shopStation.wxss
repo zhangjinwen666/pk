@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-/* page/store/shop/shopStation.wxss */
-=======
+
 /* page/store/shop/shopStation.wxss */
 @import "../../home/component/uploader.wxss";
 .view_title {
@@ -63,4 +61,3 @@
     word-break: keep-all;
     white-space: nowrap;
 }
->>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214

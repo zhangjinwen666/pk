@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-/* page/user/wallet/wallet.wxss */
-=======
+
 /* page/user/wallet/wallet.wxss */
 .avatar {
     display: -webkit-flex;
@@ -64,4 +62,3 @@
     padding-bottom: 17rpx;
     color: #787878;
 }
->>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214

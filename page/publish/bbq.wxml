@@ -24,15 +24,9 @@
                     <view class="weui-label">选择分类</view>
                 </view>
                 <view class="weui-cell__bd">
-<<<<<<< HEAD
                     <picker bindchange="subblocksChanged" range="{{subblocks}}" rangeKey="navname">
                         <view class="weui-select list_right">
                             <text wx:if="{{selectedBlock}}">{{selectedBlock.navname}}</text>
-=======
-                    <picker bindchange="subblocksChanged" range="{{subblocks}}" rangeKey="blockname">
-                        <view class="weui-select list_right">
-                            <text wx:if="{{selectedBlock}}">{{selectedBlock.blockname}}</text>
->>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
                             <text class="placeText" wx:else>请选择分类</text>
                         </view>
                     </picker>

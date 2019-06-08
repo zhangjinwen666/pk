@@ -38,18 +38,12 @@
 			"list": []
 		},
 		"miniprogram": {
-<<<<<<< HEAD
 			"current": 0,
-=======
-			"current": 3,
->>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
 			"list": [
 				{
 					"id": -1,
 					"name": "登录",
 					"pathName": "page/user/common/login",
-<<<<<<< HEAD
-=======
 					"query": "",
 					"scene": null
 				},
@@ -72,7 +66,6 @@
 					"name": "入驻",
 					"pathName": "page/store/shop/shopStation",
 					"query": "",
->>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
 					"scene": null
 				}
 			]

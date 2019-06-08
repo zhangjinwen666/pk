@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-/* page/user/shopManage/shopManage.wxss */
-=======
-/* page/user/shopManage/shopManage.wxss */
+
 .view_item {
     padding-top: 20rpx;
     padding-bottom: 20rpx;
@@ -41,4 +38,3 @@
     font-size: 14px;
     color: #999;
 }
->>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
