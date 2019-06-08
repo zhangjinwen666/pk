@@ -1,1 +1,67 @@
+<<<<<<< HEAD
 /* page/user/wallet/wallet.wxss */
+=======
+/* page/user/wallet/wallet.wxss */
+.avatar {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.avatar-main {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-top: 50rpx;
+    margin-bottom: 50rpx;
+}
+
+.avatar-image {
+    width: 120rpx;
+    height: 120rpx;
+    -moz-border-radius: 200rpx;
+    -webkit-border-radius: 200rpx;
+    border-radius: 200rpx;
+    border: 5rpx solid whitesmoke;
+    padding: 0 auto;
+}
+
+.avatar-title {
+    margin-top: 10rpx;
+    font-size: 14px;
+    color: white;
+}
+
+.view_top {
+    padding-top: 30rpx;
+    padding-bottom: 30rpx;
+    background: white;
+    display: -webkit-flex;
+    display: flex;
+    color: #787878;
+    font-size: 16px;
+}
+
+.view_top_item {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.view_titel {
+    font-size: 16px;
+    padding-left: 30rpx;
+    padding-top: 17rpx;
+    padding-bottom: 17rpx;
+    color: #787878;
+}
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214

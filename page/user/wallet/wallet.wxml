@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <view class="avatar system_background">
     <view class="avatar-main">
         <image class="avatar-image" src="{{userInfo.useravatar}}"></image>
@@ -34,3 +35,41 @@
         <view class="weui-cell__bd">账单信息</view>
     </navigator>
 </view>
+=======
+<view class="avatar system_background">
+    <view class="avatar-main">
+        <image class="avatar-image" src="{{userInfo.avatarUrl}}"></image>
+        <view class="avatar-title">{{userInfo.nickName}}</view>
+    </view>
+</view>
+<view class="view_top">
+    <view class="view_top_item">
+        <view>{{userFee.moneytotal}}</view>
+        <view>积分余额</view>
+    </view>
+</view>
+<view class="view_titel">账户操作</view>
+<view class="weui-cells weui-cells_after-title">
+    <navigator class="weui-cell weui-cell_access" hoverClass="weui-cell_active" url="recharge">
+        <view class="weui-cell__hd">
+            <image src="/image/m-10.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">账户充值</view>
+    </navigator>
+    <navigator bindtap="withdrawals" class="weui-cell weui-cell_access" hoverClass="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image src="/image/m-11.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">账户提现</view>
+    </navigator>
+</view>
+<view class="view_titel">消费信息</view>
+<view class="weui-cells weui-cells_after-title">
+    <navigator class="weui-cell weui-cell_access" hoverClass="weui-cell_active" url="billList">
+        <view class="weui-cell__hd">
+            <image src="/image/m-12.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">账单信息</view>
+    </navigator>
+</view>
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214

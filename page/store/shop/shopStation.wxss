@@ -1,1 +1,66 @@
+<<<<<<< HEAD
 /* page/store/shop/shopStation.wxss */
+=======
+/* page/store/shop/shopStation.wxss */
+@import "../../home/component/uploader.wxss";
+.view_title {
+    background: #ccc;
+    font-size: 14px;
+    padding-left: 30rpx;
+    padding-top: 16rpx;
+    padding-bottom: 16rpx;
+}
+
+.img_up {
+    width: 16px;
+    height: 16px;
+    margin-left: 10rpx;
+}
+
+.view_business_hours {
+    display: -webkit-flex;
+    display: flex;
+    color: #999;
+    font-size: 14px;
+}
+
+.view_start_time {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.margin_left {
+    margin-left: 50rpx;
+}
+
+.text_area {
+    height: 100px;
+    width: 100%;
+}
+
+.view_station_price {
+    background: white;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    padding-bottom: 20rpx;
+    border-bottom: 1rpx #ebebeb solid;
+    font-size: 14px;
+    color: #999;
+}
+
+.text_price {
+    color: red;
+}
+
+.view_margin_bottom {
+    margin-left: 30rpx;
+    margin-bottom: 20rpx;
+}
+
+.text_no_worp {
+    word-break: keep-all;
+    white-space: nowrap;
+}
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214

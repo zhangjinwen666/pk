@@ -120,18 +120,30 @@ Page({
         });
     },
     formSubmit: function(t) {
+<<<<<<< HEAD
        
+=======
+        
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
         var i = t.detail.value;
         if (i.navid = this.blockid, e.empty(this.threadid) || (i.threadid = this.threadid), 
         e.empty(this.data.address)) e.showError("请选择位置"); else {
             var s = this.data.address;
             if (i.maplat = s.latitude, i.maplong = s.longitude, i.address = s.address, !e.empty(this.data.subblocks) && this.data.subblocks.length > 0) {
                 if (e.empty(this.data.selectedBlock)) return void e.showError("请选择子分类");
+<<<<<<< HEAD
                 i.subnavid = this.data.selectedBlock.id;
           } 
             this.data.isTop && (i.topday = this.data.selectedDay);
             var d = this;
           
+=======
+                i.navid = this.data.selectedBlock.blockid;
+          } 
+            this.data.isTop && (i.topday = this.data.selectedDay);
+            var d = this;
+            
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
             this.selectComponent("#image").uploadImage(function(t) {
             
                 i.imagelist = t, wx.showLoading({

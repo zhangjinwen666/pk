@@ -1,5 +1,4 @@
 var e = require("utils/core.js");
-
 App({
   onShow: function () {
     this.onLaunch();

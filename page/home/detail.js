@@ -9,7 +9,10 @@ function t(t, a, e) {
 
 function a(t) {
     var a = getCurrentPages(), e = a[a.length - 2];
+<<<<<<< HEAD
     console.log(e)
+=======
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
     if ("function" == typeof e.changeData) {
         var i = t.data.thread;
         i.postlist = [];
@@ -23,6 +26,7 @@ function a(t) {
 }
 
 function e(t) {
+<<<<<<< HEAD
     // r.client.request({
     //     url: "d=wxapi&c=forum_thread&m=thread_byid",
     //     data: {
@@ -43,6 +47,21 @@ function e(t) {
         t.setData({
           thread: i
         }), a(t);
+=======
+    r.client.request({
+        url: "d=wxapi&c=forum_thread&m=thread_byid",
+        data: {
+            threadid: t.threadid
+        },
+        success: function(e) {
+            console.log(e);
+            var i = e.data;
+            i.imagelist = r.client.getFileUrl(i.imagelist), i.time = r.util.formatDateTime(i.dateline), 
+            t.setData({
+                thread: i
+            }), a(t);
+        }
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
     });
 }
 
@@ -75,7 +94,11 @@ function s(t) {
     }));
 }
 
+<<<<<<< HEAD
 var o, r = getApp(), d = require("./block"),core = require('../../utils/core');
+=======
+var o, r = getApp(), d = require("./block");
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
 
 Page((o = {
     data: {
@@ -83,7 +106,11 @@ Page((o = {
         tipsIndex: 0
     },
     onLoad: function(t) {
+<<<<<<< HEAD
         console.log(t), this.threadid = t.threadid, r.empty(this.threadid) && (this.threadid = decodeURIComponent(t.scene)), 
+=======
+        console.log(t), this.threadid = t.threadid, r.util.empty(this.threadid) && (this.threadid = decodeURIComponent(t.scene)), 
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
         e(this), i(this);
     },
     onPullDownRefresh: function() {},

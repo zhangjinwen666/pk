@@ -150,15 +150,23 @@ Component({
             });
         },
         call: function(t) {
+<<<<<<< HEAD
             var a = this.data.data.mobile;
           
+=======
+            var a = this.data.data.usermobile;
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
             wx.makePhoneCall({
                 phoneNumber: a
             });
         },
         none: function(t) {},
         cellClick: function(t) {
+<<<<<<< HEAD
             var a = this.data.data.id, e = this.data.index;
+=======
+            var a = this.data.data.threadid, e = this.data.index;
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
             wx.navigateTo({
                 url: "/page/home/detail?threadid=" + a + "&index=" + e
             });

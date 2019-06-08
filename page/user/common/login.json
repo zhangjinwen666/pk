@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 {
     "navigationBarTitleText": "微信绑定"
+=======
+{
+    "navigationBarTitleText": "微信绑定",
+    "usingComponents": {}
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
 }

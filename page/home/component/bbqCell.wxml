@@ -1,12 +1,21 @@
 <view catchtap="cellClick" class="weui-cell listCell" hoverClass="weui-cell_active">
     <view class="listTop">
         <view class="listTopLeft">
+<<<<<<< HEAD
             <image class="avatar" src="{{data.avatar}}"></image>
             <view class="listInfoBtm">
                 <view class="listInfoTitle">{{data.nickname}}</view>
                 <view class="listTagBtm">
                     <view class="tag" wx:if="{{data.topflag==1}}">置顶</view>
                     <view class="tag">{{data.navname}}</view>
+=======
+            <image class="avatar" src="{{data.useravatar_link}}"></image>
+            <view class="listInfoBtm">
+                <view class="listInfoTitle">{{data.username}}</view>
+                <view class="listTagBtm">
+                    <view class="tag" wx:if="{{data.topflag==1}}">置顶</view>
+                    <view class="tag">{{data.blockname}}</view>
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
                 </view>
             </view>
         </view>
@@ -14,16 +23,26 @@
             <image class="call" src="/image/list_call.png"></image>
         </view>
     </view>
+<<<<<<< HEAD
     <view class="listTitle">{{data.content}}</view>
     <view class="listImageBtm">
         <image catchtap="imagePreview" class="listImage" data-image="{{item}}" src="{{item}}" wx:for="{{data.imagelist}}" wx:key="{{this}}"></image>
+=======
+    <view class="listTitle">{{data.brief}}</view>
+    <view class="listImageBtm">
+        <image catchtap="imagePreview" class="listImage" data-image="{{item}}" src="{{item}}.thumb.jpg" wx:for="{{data.imageList}}" wx:key="{{this}}"></image>
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
     </view>
     <view class="listTop">
         <view catchtap="addressClick" class="listTopLeft">
             <image class="locationIcon" src="/image/list_address.png"></image>
             <view class="locationTitle">{{data.address}}</view>
         </view>
+<<<<<<< HEAD
         <view class="submitTime">{{data.createtime}}</view>
+=======
+        <view class="submitTime">{{data.time}}</view>
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
     </view>
     <image class="statusImageBtm" wx:if="{{mine==false}}"></image>
     <view class="listTop" style="{{mine==false?'margin-top:-60rpx':''}}">

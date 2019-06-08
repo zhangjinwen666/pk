@@ -1,1 +1,44 @@
+<<<<<<< HEAD
 /* page/user/shopManage/shopManage.wxss */
+=======
+/* page/user/shopManage/shopManage.wxss */
+.view_item {
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    position: relative;
+    background: white;
+    font-size: 16px;
+}
+
+.img_left {
+    width: 40px;
+    height: 40px;
+    margin-left: 30rpx;
+    margin-right: 14rpx;
+}
+
+.img_right {
+    right: 0;
+    margin-right: 30rpx;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+.margin_bottom {
+    margin-bottom: 20rpx;
+}
+
+.margin_bottom2 {
+    margin-bottom: 10rpx;
+}
+
+.text_tip {
+    font-size: 14px;
+    color: #999;
+}
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214

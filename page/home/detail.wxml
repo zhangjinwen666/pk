@@ -2,10 +2,17 @@
     <view class="infoHeader">
         <view class="listTop">
             <view class="listTopLeft">
+<<<<<<< HEAD
                 <image class="avatar" src="{{thread.avatar}}"></image>
                 <view class="listInfoBtm">
                     <view class="listInfoTitle">{{thread.nickname}}</view>
                     <view class="submitTime">{{thread.createtime}}</view>
+=======
+                <image class="avatar" src="{{thread.useravatar_link}}"></image>
+                <view class="listInfoBtm">
+                    <view class="listInfoTitle">{{thread.username}}</view>
+                    <view class="submitTime">{{thread.time}}</view>
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
                 </view>
             </view>
             <view class="cc">
@@ -49,12 +56,21 @@
             <text style="margin-left:15rpx;">添加评论</text>
         </view>
     </view>
+<<<<<<< HEAD
     <view bindtap="showCommentView" class="commentCell" data-idx="{{index}}" data-postid="{{item.postid}}" data-touserid="{{item.userid}}" data-tousername="{{item.nickname}}" wx:for="{{list}}" wx:key="{{this}}">
         <image class="avatar" src="{{item.avatar}}"></image>
         <view class="commentRight">
             <view class="commentNickname nickname">
                 <view>
                     <text class="userName">{{item.nickname}}</text>
+=======
+    <view bindtap="showCommentView" class="commentCell" data-idx="{{index}}" data-postid="{{item.postid}}" data-touserid="{{item.userid}}" data-tousername="{{item.username}}" wx:for="{{list}}" wx:key="{{this}}">
+        <image class="avatar" src="{{item.useravatar_link}}"></image>
+        <view class="commentRight">
+            <view class="commentNickname nickname">
+                <view>
+                    <text class="userName">{{item.username}}</text>
+>>>>>>> e69d8bd868f3a96d2d392bc1beba334c58671214
                     <block wx:if="{{item.touserid>0}}">
                         <text class="commentText">回复</text>
                         <text catchtap="showCommentView" class="userName" data-touserid="{{item.touserid}}" data-tousername="{{item.tousername}}">{{item.tousername}}</text>
