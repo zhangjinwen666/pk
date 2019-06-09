@@ -43,7 +43,17 @@
     "page/second/mypublish/pulish",
     "page/second/publish/publish",
     "page/second/user/userInfo",
-    "page/message/auth/index"
+    "page/message/auth/index",
+    "page/creditshops/detail/index",
+    "page/creditshops/comment/index",
+    "page/creditshops/express/index",
+    "page/creditshops/log/index",
+    "page/creditshops/log/detail/index",
+    "page/creditshops/lists/index",
+    "page/creditshops/creditlog/index",
+    "page/creditshops/create/index",
+    "page/creditshops/verify/index",
+    "page/creditshops/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
