@@ -74,8 +74,8 @@
         </block>
     </view>
     <view catchtap="none" class="commentBtm" wx:if="{{data.postlist.length>0&&mine==false}}">
-        <view catchtap="commentClick" class="comment" data-idx="{{index}}" data-postid="{{item.postid}}" data-target="{{item.username}}" data-touserid="{{item.userid}}" wx:for="{{data.postlist}}" wx:key="{{this}}">
-            <text class="userName">{{item.username}}</text>
+        <view catchtap="commentClick" class="comment" data-idx="{{index}}" data-postid="{{item.id}}" data-target="{{item.nickname}}" data-touserid="{{item.mid}}" wx:for="{{data.postlist}}" wx:key="{{this}}">
+            <text class="userName">{{item.nickname}}</text>
             <text class="commentText" wx:if="{{item.touserid>0}}">回复</text>
             <text class="userName" wx:if="{{item.touserid>0}}">{{item.tousername}}</text>
             <text class="commentText">:{{item.message}}</text>

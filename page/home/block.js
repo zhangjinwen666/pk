@@ -48,6 +48,7 @@ module.exports = {
           
         }
     },
+    //打赏条件配置，暂时不想写，后面配置吧
     queryBlockDic: function(i) {
       
         // var c = getApp(), n = "blockDic" + i.key, r = wx.getStorageSync(n), s = c.util.getTimestamp();

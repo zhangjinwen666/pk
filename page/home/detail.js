@@ -17,27 +17,14 @@ function a(t) {
         var o = {};
         o.index = t.index, o.reload = !0, o.data = i;
         var r = {};
+       
         r.detail = o, e.changeData(r);
     }
 }
 
 function e(t) {
-    // r.client.request({
-    //     url: "d=wxapi&c=forum_thread&m=thread_byid",
-    //     data: {
-    //         threadid: t.threadid
-    //     },
-    //     success: function(e) {
-    //         console.log(e);
-    //         var i = e.data;
-    //         i.imagelist = r.client.getFileUrl(i.imagelist), i.time = r.util.formatDateTime(i.dateline), 
-    //         t.setData({
-    //             thread: i
-    //         }), a(t);
-    //     }
-    // });
   core.get('index/getmsg',{id:t.threadid},function(e){
-        //console.log(e);
+      
         var i = e.list;
         t.setData({
           thread: i
@@ -53,24 +40,18 @@ function s(t) {
     console.log("加载评论 - " + t.data.loadstatus), 0 == t.data.loadstatus && (t.page++, 
     t.setData({
         loadstatus: 1
-    }), r.client.request({
-        url: "d=wxapi&c=forum_post&m=post_page",
-        data: {
-            threadid: t.threadid,
-            page: t.page
-        },
-        success: function(e) {
-            var i = e.data;
+      }), core.get('index/getmessage',{threadid:t.threadid,page:t.page},function(e){
+          console.log(e)
+            var i = e;
             t.total = i.total;
-            var s = i.rows, o = t.data.list;
+            var s = i.list, o = t.data.list;
             for (var d in s) {
                 var n = s[d];
-                n.time = r.util.formatDateTime(n.dateline), o.push(n);
+                o.push(n);
             }
             var c = {};
             c.list = o, c.total = t.total, o.length >= t.total ? c.loadstatus = 2 : c.loadstatus = 0, 
-            t.setData(c), a(t);
-        }
+            t.setData(c),a(t);
     }));
 }
 
@@ -82,7 +63,7 @@ Page((o = {
         tipsIndex: 0
     },
     onLoad: function(t) {
-        console.log(t), this.threadid = t.threadid, r.empty(this.threadid) && (this.threadid = decodeURIComponent(t.scene)), 
+        console.log(t),this.index = t.index, this.threadid = t.threadid, r.empty(this.threadid) && (this.threadid = decodeURIComponent(t.scene)), 
         e(this), i(this);
     },
     onPullDownRefresh: function() {},
@@ -92,7 +73,7 @@ Page((o = {
     call: function(t) {
         var a = this;
         wx.makePhoneCall({
-            phoneNumber: a.data.thread.usermobile
+            phoneNumber: a.data.thread.mobile
         });
     },
     showLocation: function(t) {
@@ -114,27 +95,25 @@ Page((o = {
     },
     sendComment: function(t) {
         var e = this.comment;
-        if (r.util.empty(e)) r.showError("请输入评论内容"); else {
+        if (r.empty(e)) r.showError("请输入评论内容"); else {
             var i = {};
             i.threadid = this.threadid, i.message = e, i.touserid = this.touserid, wx.showLoading({
                 title: "正在提交"
             });
+            
             var s = this;
-            r.client.request({
-                url: "d=wxapi&c=forum_my_post&m=post_save",
-                data: i,
-                success: function(t) {
-                    r.showMessage(t.message);
-                    var e = t.data, i = s.data.list;
-                    console.log(e), void 0 === i && (i = []), e.time = r.util.formatDateTime(e.dateline), 
+            core.post('index/sendcomment',{
+              data:i
+            },function(t){
+                    var e = t.list, i = s.data.list;
+                    console.log(e), void 0 === i && (i = []), 
                     i.unshift(e);
                     var o = parseInt(s.data.total) + 1;
                     s.setData({
                         list: i,
                         total: o,
                         showCommentView: !1
-                    }), a(s);
-                }
+              }), a(s),wx.hideLoading();
             });
         }
     },
@@ -143,26 +122,25 @@ Page((o = {
         this.touserid = i, console.error(a);
         var s = this;
         r.getUserInfo(function(t) {
-            r.globalData.userId == i ? wx.showActionSheet({
+            t.id == i ? wx.showActionSheet({
                 itemList: [ "删除" ],
                 itemColor: "#FF0000",
                 success: function(t) {
                     wx.showLoading({
                         title: "正在删除"
-                    }), r.client.request({
-                        url: "d=wxapi&c=forum_my_post&m=post_delete",
-                        data: {
-                            postid: a.postid
-                        },
-                        success: function(t) {
-                            r.showMessage(t.message);
+                    }), core.get('index/deletemessage',{id:a.postid},function(t){
+                            //r.showMessage();
+                            wx.showToast({
+                              title: t.message,
+                            }) 
+                            console.log(t.message);
                             var e = a.idx, i = s.data.thread, o = s.data.list;
                             console.log(o), o.splice(e, 1), i.postcnt = parseInt(i.postcnt) - 1, s.setData({
                                 thread: i,
                                 list: o
-                            });
-                        }
+                            }),wx.hideLoading();
                     });
+                   
                 }
             }) : s.setData({
                 showCommentView: !0,
@@ -175,49 +153,48 @@ Page((o = {
         var a = t.currentTarget.dataset.view, e = {};
         e[a] = !1, this.setData(e);
     },
+    //点赞
     clickupClick: function(t) {
         var e = "", i = {};
-        i.threadid = this.data.thread.threadid;
+        i.threadid = this.data.thread.id;
         var s = 0;
-        this.data.thread.clickupid > 0 ? (e = "d=wxapi&c=forum_my_click&m=click_delete", 
-        s = 0) : (e = "d=wxapi&c=forum_my_click&m=click_save", i.clicktype = 1, s = 1), 
+      this.data.thread.clickupid > 0 ? (e = "index/cancelclickupcnt", 
+        s = 0) : (e = "index/saveclickupcnt", s = 1), 
         wx.showLoading({
             title: "正在提交"
         });
         var o = this;
-        r.client.request({
-            url: e,
-            data: i,
-            success: function(t) {
-                r.showMessage(t.message);
+        core.get(e,i,function(t){
+              wx.showToast({
+                title: t.message,
+              })
                 var e = o.data.thread;
-                s > 0 ? (e.clickupcnt = parseInt(e.clickupcnt) + 1, e.clickupid = t.data.clickid) : (e.clickupcnt = parseInt(e.clickupcnt) - 1, 
+                s > 0 ? (e.clickupcnt = parseInt(e.clickupcnt) + 1, e.clickupid = t.clickid) : (e.clickupcnt = parseInt(e.clickupcnt) - 1, 
                 e.clickupid = 0), o.setData({
                     thread: e
                 }), a(o);
-            }
-        });
+        })
     },
     favoriteClick: function(t) {
         var a = "", e = {}, i = 0;
-        this.data.thread.favoriteid > 0 ? (a = "d=wxapi&c=forum_my_favorite&m=favorite_delete", 
-        e.favoriteid = this.data.thread.favoriteid, i = 0) : (a = "d=wxapi&c=forum_my_favorite&m=favorite_save", 
-        e.threadid = this.data.thread.threadid, i = 1), wx.showLoading({
+        console.log(this.data);
+        this.data.thread.favoriteid > 0 ? (a = "index/cancelfavorite", 
+          e.favoriteid = this.data.thread.favoriteid, e.threadid = this.data.thread.id, i = 0) : (a = "index/savefavorite", 
+        e.threadid = this.data.thread.id, i = 1), wx.showLoading({
             title: "正在提交"
-        });
+        }); 
         var s = this;
-        r.client.request({
-            url: a,
-            data: e,
-            success: function(t) {
-                r.showMessage(t.message);
+        core.get(a,e,function(t){
+                wx.showToast({
+                  title: t.message,
+                })
+                //r.showMessage(t.message);
                 var a = s.data.thread;
-                i > 0 ? (a.favoriteid = t.data.favoriteid, a.favoritecnt = parseInt(a.favoritecnt) + 1) : (a.favoriteid = i, 
+                i > 0 ? (a.favoriteid = t.favoriteid, a.favoritecnt = parseInt(a.favoritecnt) + 1) : (a.favoriteid = i, 
                 a.favoritecnt = parseInt(a.favoritecnt) - 1), s.setData({
                     thread: a
                 });
-            }
-        });
+        }); 
     },
     showTipsView: function(t) {
         var a = this;
@@ -255,28 +232,54 @@ Page((o = {
         tipsIndex: -1
     });
 }), t(o, "tipsSubmit", function(t) {
-    var a = t.detail.value.tips;
-    if (r.util.empty(a)) {
+    var m = t.detail.value.tips;
+    if (r.empty(m)) {
         if (!(this.data.tipsIndex >= 0 && this.data.tipsIndex < this.data.tips.length)) return r.showError("请选择打赏金额");
-        a = this.data.tips[this.data.tipsIndex].configvalue;
+        m = this.data.tips[this.data.tipsIndex].configvalue;
     }
     var e = this;
-    r.client.request({
-        url: "d=wxapi&c=forum_my_pay&m=pay_save",
-        data: {
-            threadid: e.threadid,
-            payaction: "tip",
-            paydata: a
-        },
-        success: function(t) {
-            var a = t.data.payamount, i = t.data.tradeamount, s = t.data.tradedate, o = t.data.tradetitle, r = t.data.tradeid;
-            wx.navigateTo({
-                url: "/page/publish/pay?payamount=" + a + "&tradeamount=" + i + "&tradedate=" + s + "&tradetitle=" + o + "&tradeid=" + r
-            }), e.setData({
-                showTips: !1
-            });
-        }
-    });
+    core.post('index/payCredit1',{
+      threadid:e.threadid,
+      payaction:'tip',
+      paycredit1:m
+    },function(t){
+      console.log(t);
+      wx.showToast({
+        title: t.message,
+      })
+      if (t.error == 1) {
+        return;
+      }
+      var m = e.data.thread;
+      m.tipcnt = parseInt(m.tipcnt) + 1;
+      e.setData({
+        showTips:!1,
+        thread:m,
+      }),a(e);
+      //微信支付、余额支付，不需要了
+            // var a = t.data.payamount, i = t.data.tradeamount, s = t.data.tradedate, o = t.data.tradetitle, r = t.data.tradeid;
+            // wx.navigateTo({
+            //     url: "/page/publish/pay?payamount=" + a + "&tradeamount=" + i + "&tradedate=" + s + "&tradetitle=" + o + "&tradeid=" + r
+            // }), e.setData({
+            //     showTips: !1
+            // });
+    })
+    // r.client.request({
+    //     url: "d=wxapi&c=forum_my_pay&m=pay_save",
+    //     data: {
+    //         threadid: e.threadid,
+    //         payaction: "tip",
+    //         paydata: a
+    //     },
+    //     success: function(t) {
+    //         var a = t.data.payamount, i = t.data.tradeamount, s = t.data.tradedate, o = t.data.tradetitle, r = t.data.tradeid;
+    //         wx.navigateTo({
+    //             url: "/page/publish/pay?payamount=" + a + "&tradeamount=" + i + "&tradedate=" + s + "&tradetitle=" + o + "&tradeid=" + r
+    //         }), e.setData({
+    //             showTips: !1
+    //         });
+    //     }
+    // });
 }), t(o, "payCallBack", function(t) {
     if (t) {
         var e = this.data.thread;

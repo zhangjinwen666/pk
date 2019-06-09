@@ -38,7 +38,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -72,6 +72,20 @@
 					"id": -1,
 					"name": "积分商城",
 					"pathName": "page/creditshops/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布详情",
+					"pathName": "page/home/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "page/home/index",
 					"scene": null
 				}
 			]

@@ -49,7 +49,7 @@
             <text style="margin-left:15rpx;">添加评论</text>
         </view>
     </view>
-    <view bindtap="showCommentView" class="commentCell" data-idx="{{index}}" data-postid="{{item.postid}}" data-touserid="{{item.userid}}" data-tousername="{{item.nickname}}" wx:for="{{list}}" wx:key="{{this}}">
+    <view bindtap="showCommentView" class="commentCell" data-idx="{{index}}" data-postid="{{item.id}}" data-touserid="{{item.mid}}" data-tousername="{{item.nickname}}" wx:for="{{list}}" wx:key="{{this}}">
         <image class="avatar" src="{{item.avatar}}"></image>
         <view class="commentRight">
             <view class="commentNickname nickname">
@@ -60,7 +60,7 @@
                         <text catchtap="showCommentView" class="userName" data-touserid="{{item.touserid}}" data-tousername="{{item.tousername}}">{{item.tousername}}</text>
                     </block>
                 </view>
-                <view>{{item.time}}</view>
+                <view>{{item.createtime}}</view>
             </view>
             <view class="commentContent">{{item.message}}</view>
         </view>
@@ -88,12 +88,12 @@
         <view class="tipsTitle">打赏</view>
         <view class="tipsArrInfo">请选择打赏金额</view>
         <view class="tipsItems">
-            <view catchtap="tipsClick" class="tipsItem {{tipsIndex==index?'selectedTips':'emptyTips'}}" data-index="{{index}}" wx:for="{{tips}}" wx:key="{{this}}">{{item.configkey}}元</view>
+            <view catchtap="tipsClick" class="tipsItem {{tipsIndex==index?'selectedTips':'emptyTips'}}" data-index="{{index}}" wx:for="{{tips}}" wx:key="{{this}}">{{item.configkey}}积分</view>
         </view>
         <view class="tipsArrInfo">土豪请随意</view>
         <form bindsubmit="tipsSubmit">
             <view class="tipsInputBtm">
-                <input bindfocus="startInputTips" name="tips" placeholder="请输入打赏金额，至少1元" style="width:400rpx" type="digit" value="{{tipInput}}"></input>
+                <input bindfocus="startInputTips" name="tips" placeholder="请输入打赏金额，至少1积分" style="width:400rpx" type="digit" value="{{tipInput}}"></input>
                 <view>元</view>
             </view>
             <view class="tipsButtonBottom">

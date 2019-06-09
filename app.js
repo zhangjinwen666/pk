@@ -93,7 +93,8 @@ App({
                 iv: i.iv,
                 sessionKey: a.session_key
               }, function (e) {
-                o.globalData.hasLogin = 1;
+                o.globalData.hasLogin = 1,o.globalData.userId = e.id;
+              
                 i.userInfo.openid = e.openId, i.userInfo.id = e.id, i.userInfo.uniacid = e.uniacid,
                   i.needauth = 0, o.setCache("userinfo", i.userInfo, 7200), o.setCache("userinfo_openid", i.userInfo.openid),
                   o.setCache("userinfo_id", e.id), o.getSet(), t && "function" == typeof t && t(n);

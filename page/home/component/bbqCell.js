@@ -1,4 +1,4 @@
-var t = getApp(), a = require("../block");
+var t = getApp(), a = require("../block"),core = require('../../../utils/core');
 
 Component({
     options: {
@@ -8,7 +8,7 @@ Component({
         data: {
             type: Object,
             observer: function(a, e, i) {
-                a.imageList = t.client.getFileUrl(a.imagelist), a.time = t.util.formatDateTime(a.dateline), 
+              a.imageList = a.imagelist, a.time = a.createtime, 
                 this.setData({
                     data: a
                 });
@@ -32,24 +32,22 @@ Component({
         commentClick: function(a) {
             var e = a.currentTarget.dataset, i = e.target, d = e.touserid, s = this;
             t.getUserInfo(function(a) {
-                t.globalData.userId == d ? wx.showActionSheet({
+               a.id == d ? wx.showActionSheet({
                     itemList: [ "删除" ],
                     itemColor: "#FF0000",
                     success: function(a) {
                         wx.showLoading({
                             title: "正在删除"
-                        }), t.client.request({
-                            url: "d=wxapi&c=forum_my_post&m=post_delete",
-                            data: {
-                                postid: e.postid
-                            },
-                            success: function(a) {
-                                t.showMessage(a.message);
+                        }), 
+                          core.get('index/deletemessage',{id:e.postid},function(a){
+                                //t.showMessage(a.message);
+                                wx.showToast({
+                                  title: a.message,
+                                }) 
                                 var i = e.idx, d = s.data.data, n = d.postlist;
                                 console.log(n), n.splice(i, 1), d.postcnt = parseInt(d.postcnt) - 1, s.setData({
                                     data: d
                                 });
-                            }
                         });
                     }
                 }) : s.setData({
@@ -64,6 +62,7 @@ Component({
         },
         sendComment: function(a) {
             var e = this.comment;
+            
             if (t.util.empty(e)) t.showError("请输入评论内容"); else {
                 var i = {};
                 i.threadid = this.data.data.threadid, i.message = e, i.touserid = this.data.touserid, 
