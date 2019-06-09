@@ -15,8 +15,8 @@
                 <view class="weui-label">店铺分类</view>
             </view>
             <view class="weui-cell__bd">
-                <picker bindchange="onCatType" range="{{catTree}}" rangeKey="catname">
-                    <view class="weui-select weui-select_in-select-after">{{catname}}</view>
+                <picker bindchange="onCatType" range="{{catTree}}" rangeKey="catename">
+                    <view class="weui-select weui-select_in-select-after">{{catename}}</view>
                 </picker>
             </view>
         </view>
@@ -139,6 +139,34 @@
             </view>
         </block>
         <view bindtap="tapAvatarAdd" class="avatar-item" data-key="shopImgList" data-size="9" wx:if="{{shopImgList.length<9}}">
+            <image src="/image/upload.png"></image>
+        </view>
+    </view>
+     <view class="view_title">身份证正面照</view>
+    <view class="zhao">
+        <block wx:if="{{userIDimg.length>0}}">
+            <view bindtap="tapAvatarPreview" class="avatar-item" data-index="{{index}}" data-key="userIDimg" wx:for="{{userIDimg}}" wx:key="{{index}}">
+                <image src="{{item.showurl}}"></image>
+                <view catchtap="tapAvatarRemove" class="remove" data-index="{{index}}" data-key="userIDimg">
+                    <image src="/image/error.png" style="width:100%;height:100%"></image>
+                </view>
+            </view>
+        </block>
+        <view bindtap="tapAvatarAdd" class="avatar-item" data-key="userIDimg" data-size="1" wx:if="{{userIDimg.length<1}}">
+            <image src="/image/upload.png"></image>
+        </view>
+    </view>
+     <view class="view_title">身份证反面照</view>
+    <view class="zhao">
+        <block wx:if="{{userIDimgs.length>0}}">
+            <view bindtap="tapAvatarPreview" class="avatar-item" data-index="{{index}}" data-key="userIDimgs" wx:for="{{userIDimgs}}" wx:key="{{index}}">
+                <image src="{{item.showurl}}"></image>
+                <view catchtap="tapAvatarRemove" class="remove" data-index="{{index}}" data-key="userIDimgs">
+                    <image src="/image/error.png" style="width:100%;height:100%"></image>
+                </view>
+            </view>
+        </block>
+        <view bindtap="tapAvatarAdd" class="avatar-item" data-key="userIDimgs" data-size="1" wx:if="{{userIDimgs.length<1}}">
             <image src="/image/upload.png"></image>
         </view>
     </view>

@@ -61,3 +61,17 @@
     word-break: keep-all;
     white-space: nowrap;
 }
+.avatar-item {
+    float: left;
+    margin-top: 20rpx;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
+    width: 150rpx;
+    height: 150rpx;
+    margin-left:20rpx;
+
+}
+.avatar-item .remove{
+  margin-top:-180rpx;
+
+}

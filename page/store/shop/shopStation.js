@@ -50,6 +50,12 @@ function e(t) {
 function s(t, a) {
     t.shopavatar = m, t.imagelist = v, t.cardlist = g, t.address = d, t.maplat = c, 
     t.maplong = p, t.catid = f, t.shophourstart = a.data.shophourstart, t.shophourend = a.data.shophourend, 
+    t.userIDimg = u, t.userIDimgs = fu;
+    console.log(t);
+  w.post('shopuser/index/register',function(s){
+    console.log(s);
+  });
+    return;
     h.client.request({
         url: "d=wxapi&c=mall_user_shop&m=register",
         data: t,
@@ -80,7 +86,7 @@ function i(t, a) {
 }
 
 function o() {
-    d = "", c = "", p = "", f = "", m = "", g = "", v = "";
+    d = "", c = "", p = "", f = "", m = "", g = "", v = "", u ="", fu ="";
 }
 
 function n(t) {
@@ -148,7 +154,7 @@ function l(t) {
     });
 }
 
-var h = getApp(), d = "", c = "", p = "", f = "", m = "", g = "", v = "", w = h.requirejs("core");
+var h = getApp(), d = "", c = "", p = "", f = "", m = "", g = "", v = "", u = "", fu ="" , w = h.requirejs("core");
 
 Page({
     data: {
@@ -178,11 +184,15 @@ Page({
     },
     insertShop: function(e) {
         var o = e.detail.value;
-        var n = this;
+      var n = this; 
       a(o, n) && t(this.data.imagelist, function(a) {
             m = a, t(n.data.businessList, function(a) {
-                g = a, t(n.data.shopImgList, function(t) {
-                    v = t, null != n.data.shopInfo ? i(o, n) : s(o, n);
+                g = a, t(n.data.shopImgList, function(a) {
+                    v = a, t(n.data.userIDimg,function(a){
+                      u = a, t(n.data.userIDimgs,function(t){
+                        fu = t, null != n.data.shopInfo ? i(o, n) : s(o, n);
+                      }, "身份证反面照");
+                    }, "身份证正面照");
                 }, "店铺照片");
             }, "营业执照");
         }, "门店照片");

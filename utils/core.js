@@ -9,6 +9,12 @@ var t = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? func
 }, n = require("jquery");
 
 module.exports = {
+  empty: function (e) {
+    return void 0 === e || "string" == typeof e && "" == e.trim() || "number" == typeof e && 0 == e || "boolean" == typeof e && 0 == e || null == e;
+  },
+  isMobile: function (e) {
+    return /^0?1[0-9][0-9]\d{8}$/.test(e);
+  },
     toQueryPair: function(t, e) {
         return void 0 === e ? t : t + "=" + encodeURIComponent(null === e ? "" : String(e));
     },
