@@ -1,6 +1,6 @@
 <view class="view_new_car">
     <block wx:for="{{productList}}">
-        <navigator url="/page/store/product/deviceDetail?goodsid={{item.goodsid}}" wx:if="{{item.goodstype=='1'}}">
+        <navigator url="/page/store/product/deviceDetail?goodsid={{item.id}}" wx:if="{{item.goodstype=='1'}}">
             <view class="view_car_item border_bottom">
                 <image class="img_device_heard" mode="aspectFill" src="{{item.goodscover}}"></image>
                 <view class="view_device_item_right">
@@ -12,13 +12,13 @@
                         <text class="text_device_time">{{item.dateline}}</text>
                     </view>
                     <view class="view_bottom_button">
-                        <view catchtap="catchEdit" class="view_button_base view_backg_edit" data-goodsid="{{item.goodsid}}" data-goodstype="{{item.goodstype}}">编辑</view>
-                        <view catchtap="catchDelete" class="view_button_base view_backg_delete" data-goodsid="{{item.goodsid}}" data-goodsname="{{item.goodsname}}" data-index="{{index}}">删除</view>
+                        <view catchtap="catchEdit" class="view_button_base view_backg_edit" data-goodsid="{{item.id}}" data-goodstype="{{item.goodstype}}">编辑</view>
+                        <view catchtap="catchDelete" class="view_button_base view_backg_delete" data-goodsid="{{item.id}}" data-goodsname="{{item.goodsname}}" data-index="{{index}}">删除</view>
                     </view>
                 </view>
             </view>
         </navigator>
-        <navigator url="/page/store/product/commodityDetail?goodsid={{item.goodsid}}" wx:else>
+        <navigator url="/page/store/product/commodityDetail?goodsid={{item.id}}" wx:else>
             <view class="product_view_item product_border_bottom">
                 <image class="product_img_heard" mode="aspectFill" src="{{item.goodscover}}"></image>
                 <view class="product_view_item_right">
@@ -27,13 +27,12 @@
                         <view class="product_item_type">{{item.catname}}</view>
                     </view>
                     <view class="prodcut_row_three">
-                        <text>销量：</text>
-                        <text>20</text>
+                        
                         <text class="product_price">￥{{item.goodspricenum}}</text>
                     </view>
                     <view class="view_bottom_button">
-                        <view catchtap="catchEdit" class="view_button_base view_backg_edit" data-goodsid="{{item.goodsid}}" data-goodstype="{{item.goodstype}}">编辑</view>
-                        <view catchtap="catchDelete" class="view_button_base view_backg_delete" data-goodsid="{{item.goodsid}}" data-goodsname="{{item.goodsname}}" data-index="{{index}}">删除</view>
+                        <view catchtap="catchEdit" class="view_button_base view_backg_edit" data-goodsid="{{item.id}}" data-goodstype="{{item.goodstype}}">编辑</view>
+                        <view catchtap="catchDelete" class="view_button_base view_backg_delete" data-goodsid="{{item.id}}" data-goodsname="{{item.goodsname}}" data-index="{{index}}">删除</view>
                     </view>
                 </view>
             </view>

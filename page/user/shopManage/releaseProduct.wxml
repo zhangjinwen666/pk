@@ -6,8 +6,8 @@
                 <view class="weui-label">商品类型</view>
             </view>
             <view class="weui-cell__bd">
-                <picker bindchange="bindTypeChange" range="{{deviceTypeList}}" rangeKey="catname">
-                    <view class="weui-select weui-select_in-select-after">{{catname}}</view>
+                <picker bindchange="bindTypeChange" range="{{deviceTypeList}}" rangeKey="catename">
+                    <view class="weui-select weui-select_in-select-after">{{catename}}</view>
                 </picker>
             </view>
         </view>

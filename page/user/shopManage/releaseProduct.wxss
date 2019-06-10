@@ -1,1 +1,9 @@
 /* page/user/shopManage/releaseProduct.wxss */
+@import "../../home/component/uploader.wxss";
+.view_title {
+    background: #ccc;
+    font-size: 14px;
+    padding-left: 30rpx;
+    padding-top: 16rpx;
+    padding-bottom: 16rpx;
+}

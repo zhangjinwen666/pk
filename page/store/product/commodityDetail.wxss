@@ -1,1 +1,64 @@
 /* page/store/product/commodityDetail.wxss */
+@import '../index.wxss';
+.swiper_view {
+    width: 100%;
+    height: 340rpx;
+}
+
+.text_price {
+    font-size: 20px;
+    background: white;
+    color: #23c0f4;
+    padding-top: 12rpx;
+    padding-bottom: 12rpx;
+    padding-left: 30rpx;
+}
+
+.text_title {
+    font-size: 12px;
+    padding-left: 26rpx;
+    padding-right: 26rpx;
+    padding-bottom: 8rpx;
+    padding-top: 8rpx;
+    background: #23c0f4;
+    border-radius: 4rpx;
+    color: white;
+}
+
+.text_goods_title {
+    font-size: 16px;
+}
+
+.view_title {
+    background: white;
+    margin-top: 10rpx;
+    padding-top: 14rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    padding-bottom: 14rpx;
+}
+
+.view_item_title {
+    background: white;
+    font-size: 17px;
+    padding-left: 30rpx;
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
+    border-bottom: 1rpx #ebebeb solid;
+    margin-top: 10rpx;
+}
+
+.text_shop_info {
+    background: white;
+    font-size: 13px;
+    color: #999;
+    padding-top: 12rpx;
+    padding-bottom: 30rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    margin-bottom: 60px;
+}
+
+.background_white {
+    background: white;
+}

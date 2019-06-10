@@ -64,7 +64,6 @@
 .avatar-item {
     float: left;
     margin-top: 20rpx;
-    margin-right: 20rpx;
     margin-bottom: 20rpx;
     width: 150rpx;
     height: 150rpx;
