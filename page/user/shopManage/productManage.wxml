@@ -24,7 +24,7 @@
                 <view class="product_view_item_right">
                     <view class="product_text_title">{{item.goodsname}}</view>
                     <view class="product_row_one">
-                        <view class="product_item_type">{{item.catname}}</view>
+                        <view class="product_item_type">{{item.catename}}</view>
                     </view>
                     <view class="prodcut_row_three">
                         

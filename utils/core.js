@@ -177,5 +177,19 @@ module.exports = {
                 o[n[0]] = n[1];
             }
         }), o;
-    }
+    },
+  formatDate: function t(e, t) {
+    var n = null, r = {
+      "M+": (n = e > 0 ? new Date(1e3 * e) : new Date()).getMonth() + 1,
+      "d+": n.getDate(),
+      "h+": n.getHours(),
+      "m+": n.getMinutes(),
+      "s+": n.getSeconds(),
+      "q+": Math.floor((n.getMonth() + 3) / 3),
+      "S+": n.getMilliseconds()
+    };
+    /(y+)/i.test(t) && (t = t.replace(RegExp.$1, (n.getFullYear() + "").substr(4 - RegExp.$1.length)));
+    for (var o in r) new RegExp("(" + o + ")").test(t) && (t = t.replace(RegExp.$1, 1 == RegExp.$1.length ? r[o] : ("00" + r[o]).substr(("" + r[o]).length)));
+    return t;
+  },
 };

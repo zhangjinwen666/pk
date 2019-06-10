@@ -3,17 +3,13 @@ function t() {
 }
 
 function a(t) {
-    r.client.request({
-        url: "d=wxapi&c=mall_user_shop&m=shop_info",
-        data: {},
-        success: function(t) {
-            e(t);
-        }
-    });
+  w.get('shopuser/index/shop_info', '', function (t) {
+    e(t.data);
+  });
 }
 
 function e(t) {
-    null == t.data ? wx.navigateTo({
+    !t ? wx.navigateTo({
         url: "shop/shopStation"
     }) : wx.showModal({
         title: "提示",
@@ -27,82 +23,71 @@ function e(t) {
 }
 
 function o(t) {
-    r.client.request({
-        url: "d=wxapi&c=mall_shop&m=cat_tree",
-        data: {},
-        success: function(a) {
-            for (var e = a.data, o = 0; o < e.length; ++o) e[o].image = r.client.getFileUrl(e[o].image);
-            t.setData({
-                catTree: e
-            });
-        }
+  var n = wx.getStorageSync('shopcate');
+  if ('object' == typeof n && (r.getCurrentTime() - (n.time || 0)) < r.catchtime) {
+    t.setData({ catTree: n.list });
+  } else {
+    w.get('shopuser/index/getcate', '', function (e) {
+      console.log(e);
+      var l = {};
+      l.time = r.getCurrentTime(), l.list = e.data;
+      wx.setStorageSync('shopcate', l),
+        t.setData({ catTree: l.list });
     });
+  }
 }
 
 function n(t) {
     t.setData({
         loadMoreType: !0
-    }), r.client.request({
-        url: "d=wxapi&c=mall_shop&m=shop_page",
-        data: {
-            page: l,
-            rows: u,
-            catpath: p,
-            orderby: "new",
-            search: d
-        },
-        success: function(a) {
-            var e = t.data.shopList;
-            h = parseInt(a.data.total), 1 == l && (e = []);
-            var o = a.data.rows, n = [];
-            if (o.length > 0) {
-                for (var s = 0; s < o.length; ++s) o[s].shopavatar_small = r.client.getAvatarUrl(o[s].shopavatar_small), 
-                s < 3 && n.push(o[s].shopname);
-                e = e.concat(o);
-            }
-            var i = "";
-            r.util.empty(h) ? i = "暂无更多数据" : e.length == h ? i = "暂无更多数据" : e.length < h && (i = "上啦加载更多"), 
-            t.setData({
-                shopList: e,
-                newShopBanner: n,
-                loadMoreType: !1,
-                loadText: i
-            });
-        }
     });
+  w.get('shopuser/index/getshopuser', { page: l, cateid: p, search:d},function(a){
+    var e = t.data.shopList;
+    h = parseInt(a.total);
+    l == 1 && ( e = []);
+    var o = a.shop, n = [];
+    if(o.length > 0){
+      for (var s = 0; s < o.length; ++s){
+        s < 3 && n.push(o[s].shopname);
+      }
+      e = e.concat(o);
+    }
+    w.empty(h) ? i = "暂无更多数据" : e.length == h ? i = "暂无更多数据" : e.length < h && (i = "上啦加载更多"),
+      t.setData({
+          shopList: e,
+          newShopBanner: n,
+          loadMoreType: !1,
+          loadText: i
+      });
+  });
 }
 
 function s(t) {
+  w.get('shopuser/goods/getallgooods',{page:l,goodstype:1},function(a){
+    var e = a.goods;
     t.setData({
-        loadMoreType: !0
-    }), r.client.request({
-        url: "d=wxapi&c=mall_goods&m=goods_page",
-        data: {
-            orderby: "new",
-            goodstype: "1"
-        },
-        success: function(a) {
-            for (var e = a.data.rows, o = 0; o < e.length; ++o) e[o].goodscover = r.client.getFileUrl(e[o].goodscover), 
-            e[o].dateline = r.util.formatDate(e[o].dateline, "yyyy-MM-dd");
-            t.setData({
-                productList: e,
-                loadMoreType: !1,
-                loadText: "没有更多了"
-            });
-        }
+        productList: e,
+        loadMoreType: !1,
+        loadText: "没有更多了"
     });
+  })
 }
 
 function i(t) {
-    r.getAppConfig(function(a) {
-        var e = a.banner;
-        t.setData({
-            banner: e
-        });
+  var n = wx.getStorageSync('shopbanner');
+  if ('object' == typeof n && (r.getCurrentTime() - (n.time || 0)) < r.catchtime){
+      t.setData({banner:n.list});
+  }else{
+    w.get('shopuser/index/getadv','',function(e){
+      var l = {};
+      l.time = r.getCurrentTime(), l.list = e.banner;
+      wx.setStorageSync('shopbanner', l),
+        t.setData({ banner: l.list});
     });
+  }
 }
 
-var r = getApp(), c = 0, l = 1, u = 20, h = 0, p = "", d = "";
+var r = getApp(), c = 0, l = 1, u = 20, h = 0, p = "", d = "", w = r.requirejs('core');
 
 Page({
     data: {

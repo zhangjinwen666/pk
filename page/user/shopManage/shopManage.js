@@ -43,10 +43,6 @@ Page({
       title: "发布设备",
       url: "releaseDevice"
     }, {
-      img: "/image/c-4.png",
-      title: "所有订单",
-      url: "/page/user/order/orderList?navigateType=shop"
-    }, {
       img: "/image/c-5.png",
       title: "新店入驻",
       url: ""

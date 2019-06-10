@@ -1,1 +1,2 @@
 /* page/store/shop/shopList.wxss */
+@import "../index.wxss";

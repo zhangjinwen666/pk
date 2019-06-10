@@ -1,36 +1,19 @@
 function t(t) {
-    o.client.request({
-        url: "d=wxapi&c=mall_shop&m=shop_info",
-        data: {
-            shopid: n
-        },
-        success: function(a) {
-            var e = a.data;
-            console.error(e);
-            for (var i = 0; i < e.imagelist.length; ++i) e.imagelist[i] = o.client.getFileUrl(e.imagelist[i]);
-            for (var n = 0; n < e.cardlist.length; ++n) e.cardlist[n] = o.client.getFileUrl(e.cardlist[n]);
-            e.shopavatar_small = o.client.getAvatarUrl(e.shopavatar_small), t.setData({
-                shopDetail: e
-            });
-        }
+  w.get('shopuser/index/shop_info',{shopid:n},function(a){
+    var e = a.data;
+    t.setData({
+        shopDetail: e
     });
+  });
 }
 
 function a(t) {
-    o.client.request({
-        url: "d=wxapi&c=mall_goods&m=goods_page",
-        data: {
-            rows: 200,
-            shopid: n
-        },
-        success: function(a) {
-            for (var e = a.data.rows, i = 0; i < e.length; ++i) e[i].goodscover = o.client.getFileUrl(e[i].goodscover), 
-            e[i].dateline = o.util.formatDate(e[i].dateline, "yyyy-MM-dd");
-            t.setData({
-                productList: e
-            });
-        }
+  w.get('shopuser/goods/getallgooods', { page: 1, shopid:n }, function (a) {
+    var e = a.goods;
+    t.setData({
+      productList: e
     });
+  })
 }
 
 function e(a) {
@@ -58,7 +41,7 @@ function i(a, e) {
     });
 }
 
-var o = getApp(), n = "";
+var o = getApp(), n = "", w = o.requirejs('core');
 
 Page({
     data: {

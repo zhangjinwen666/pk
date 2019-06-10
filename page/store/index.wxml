@@ -21,14 +21,14 @@
         </view>
         <swiper autoplay="true" circular="true" class="banner" indicatorDots="true">
             <swiper-item wx:for="{{banner}}">
-                <image class="banner" src="{{item}}"></image>
+                <image class="banner" src="{{item.thumb}}"></image>
             </swiper-item>
         </swiper>
         <view class="view_type_module">
-            <navigator url="shop/shopList?catpath={{item.catpath}}" wx:for="{{catTree}}">
+            <navigator url="shop/shopList?catpath={{item.id}}" wx:for="{{catTree}}">
                 <view class="item_module">
-                    <image class="item_module_img" src="{{item.image}}"></image>
-                    <view>{{item.text}}</view>
+                    <image class="item_module_img" src="{{item.thumb}}"></image>
+                    <view>{{item.catename}}</view>
                 </view>
             </navigator>
         </view>
@@ -50,29 +50,28 @@
                 <view class="{{tabSelect==0?'view_tablayout_title':'view_tablayout_title_un'}}">全部</view>
             </view>
             <view bindtap="onTabSelect" class="view_tablayout_item" data-index="1">
-                <view class="{{tabSelect==1?'view_tablayout_title':'view_tablayout_title_un'}}">{{catTree[0].text}}</view>
+                <view class="{{tabSelect==1?'view_tablayout_title':'view_tablayout_title_un'}}">{{catTree[0].catename}}</view>
             </view>
             <view bindtap="onTabSelect" class="view_tablayout_item" data-index="2">
                 <view class="{{tabSelect==2?'view_tablayout_title':'view_tablayout_title_un'}}">最新好车</view>
             </view>
         </view>
         <view wx:if="{{tabSelect<2}}">
-            <navigator url="shop/shopInfo?shopType=device&shopid={{item.shopid}}" wx:for="{{shopList}}">
+            <navigator url="shop/shopInfo?shopType=device&shopid={{item.id}}" wx:for="{{shopList}}">
                 <view class="view_shop_item">
-                    <image class="img_shop_heard" src="{{item.shopavatar_small}}"></image>
+                    <image class="img_shop_heard" src="{{item.shopavatar}}"></image>
                     <view class="view_shop_item_right">
                         <view class="item_row_one">{{item.shopname}}</view>
                         <view class="item_row_two">
                             <image class="img_star" src="/image/shop_star.png"></image>
-                            <text class="text_margin">销量：</text>
-                            <text>{{item.salenum}}</text>
+                            
                         </view>
                         <view catchtap="onPreviewMap" class="row_three" data-maplat="{{item.maplat}}" data-maplong="{{item.maplong}}">
                             <image class="img_address" src="/image/list_address.png"></image>
                             <view class="text_address">{{item.address}}</view>
                         </view>
                         <view class="row_four">
-                            <view class="item_type">{{item.catname}}</view>
+                            <view class="item_type">{{item.catename}}</view>
                         </view>
                         <image catchtap="onCallClick" class="img_call_phone" data-mobie="{{item.shoptel}}" src="/image/b-14.png"></image>
                     </view>
@@ -80,7 +79,7 @@
             </navigator>
         </view>
         <view class="view_new_car" wx:else>
-            <navigator url="product/deviceDetail?goodsid={{item.goodsid}}" wx:for="{{productList}}">
+            <navigator url="product/deviceDetail?goodsid={{item.id}}" wx:for="{{productList}}">
                 <view class="view_car_item border_bottom">
                     <image class="img_device_heard" mode="aspectFill" src="{{item.goodscover}}"></image>
                     <view class="view_device_item_right">

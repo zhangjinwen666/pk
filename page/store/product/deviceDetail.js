@@ -3,6 +3,30 @@ function o() {
 }
 
 function e(o, e) {
+  w.get('shopuser/goods/goods_view', { goodsid: d }, function (i) {
+    if (i.error != 0) {
+      
+      wx.showToast({
+        title: i.message,
+        icon: "none",
+        duration: 2e3
+      });
+      setTimeout(function () {
+        wx.navigateBack({});
+      }, 1500);
+
+      return;
+    }
+    var n = i.data;
+    if (null != n.goodsprop && n.goodsprop.length > 0) for (var l = 0; l < n.goodsprop.length; ++l) "true" == n.goodsprop[l].propvalue ? n.goodsprop[l].propvalue = "是" : "false" == n.goodsprop[l].propvalue && (n.goodsprop[l].propvalue = "否");
+    o.setData(
+      {
+        goodsDetail: n
+      }
+    );
+    e || (t(o, n.shopid));
+  });
+  return;
     r.client.request({
         url: "d=wxapi&c=mall_goods&m=goods_byid",
         data: {
@@ -19,18 +43,14 @@ function e(o, e) {
 }
 
 function t(o, e) {
-    r.client.request({
-        url: "d=wxapi&c=mall_shop&m=shop_info",
-        data: {
-            shopid: e
-        },
-        success: function(e) {
-            var t = e.data;
-            t.shopavatar_small = r.client.getAvatarUrl(t.shopavatar_small), o.setData({
-                shopDetail: t
-            });
-        }
+  w.get('shopuser/index/shop_info', { shopid: e }, function (e) {
+    var t = e.data;
+    t.shopavatar_small = t.shopavatars, o.setData({
+      shopDetail: t,
+      isshow: e.isshow
     });
+  });
+   
 }
 
 function a(o, e) {
@@ -43,7 +63,7 @@ function a(o, e) {
         },
         success: function(e) {
             for (var t = e.data.rows, a = 0; a < t.length; ++a) t[a].goodscover = r.client.getFileUrl(t[a].goodscover), 
-            console.error(t[a].goodscover), t[a].dateline = r.util.formatDate(t[a].dateline, "yyyy-MM-dd"), 
+            console.error(t[a].goodscover), t[a].dateline = w.formatDate(t[a].dateline, "yyyy-MM-dd"), 
             t[a].goodsid == d && (t.splice(a, 1), --a);
             o.setData({
                 productList: t
@@ -98,12 +118,12 @@ function l(o, t) {
     });
 }
 
-var r = getApp(), d = "";
+var r = getApp(), d = "", w = r.requirejs("core");
 
 Page({
     data: {},
     onLoad: function(t) {
-        o(), d = t.goodsid, r.util.empty(d) && (d = decodeURIComponent(t.scene)), e(this, !1);
+        o(), d = t.goodsid, w.empty(d) && (d = decodeURIComponent(t.scene)), e(this, !1);
     },
     callMobie: function(o) {
         var e = this.data.shopDetail.shoptel;
