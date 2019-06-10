@@ -113,9 +113,9 @@ Page((n = {
         });
     },
     iconsClick: function(t) {
-      var a = t.currentTarget.dataset.index, iswxapp = t.currentTarget.dataset.iswxapp;
+      var a = t.currentTarget.dataset.index, isjump = t.currentTarget.dataset.isjump;
 
-      1 == iswxapp ? wx.switchTab({
+      1 == isjump ? wx.switchTab({
             url: a
         }) : wx.navigateTo({
             url: a

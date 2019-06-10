@@ -219,9 +219,9 @@ Component({
         },
         editAction: function(t) {
             var a = this;
-          
+          console.log(a)
             wx.navigateTo({
-                url: "/page/publish/bbq?threadid=" + a.data.data.id + "&index=" + a.data.index + "&blockid=" + a.data.data.navid +"&subnavid="+a.data.data.subnavid + "&blockname=编辑发布信息"
+              url: "/page/publish/bbq?threadid=" + a.data.data.id + "&index=" + a.data.index + "&blockid=" + a.data.data.navid + "&subnavid=" + a.data.data.subnavid + "&blockname=发布板块"
             });
         },
         reloadAction: function(a) {
@@ -230,22 +230,33 @@ Component({
                 title: "提示",
                 content: "是否刷新？",
                 success: function(a) {
+                   var i = {};
                     a.confirm && (wx.showLoading({
                         title: "正在刷新"
-                    }), t.client.request({
-                        url: "d=wxapi&c=forum_my_pay&m=pay_save",
-                        data: {
-                            threadid: e.data.data.threadid,
-                            payaction: "refresh",
-                            paydata: "0"
-                        },
-                        success: function(t) {
-                            t.data.payamount, t.data.tradetitle, t.data.tradeid;
-                            wx.navigateTo({
-                                url: "/page/publish/pay"
-                            });
-                        }
-                    }));
+                    }), i.threadid = e.data.data.id, i.payaction = "refresh",core.post('index/sendmsg', { data:i },function(t){
+                          wx.showToast({
+                            title: t.message,
+                          }),wx.hideLoading();
+                          //不需要支付
+                      // wx.navigateTo({
+                      //           url: "/page/publish/pay"
+                      //       });
+                    })
+                    // t.client.request({
+                    //     url: "index/sendmsg",
+                    //     data: {
+                    //         threadid: e.data.data.threadid,
+                    //         payaction: "refresh",
+                    //         paydata: "0"
+                    //     },
+                    //     success: function(t) {
+                    //         t.data.payamount, t.data.tradetitle, t.data.tradeid;
+                    //         wx.navigateTo({
+                    //             url: "/page/publish/pay"
+                    //         });
+                    //     }
+                    // })
+                    );
                 }
             });
         }

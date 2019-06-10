@@ -48,7 +48,7 @@ Page({
             title: "推荐",
             orderby: "postcnt"
         } ],
-        selectedIndex: 1
+        selectedIndex: 0
     },
     onLoad: function(e) {
         this.blockid = e.blockid, wx.setNavigationBarTitle({

@@ -18,9 +18,9 @@
     <swiper-item wx:for="{{banner}}" wx:key="{{this}}">
         <image class="banner" src="{{item.thumb}}"></image>
     </swiper-item>
-</swiper>
+</swiper> 
 <view class="iconBottom" wx:if="{{icons.length>0}}">
-    <navigator bindtap="iconsClick" class="iconItem" data-iswxapp="{{item.iswxapp}}" data-index="{{item.url}}" wx:for="{{icons}}" wx:key="{{this}}">
+    <navigator bindtap="iconsClick" class="iconItem" data-isjump="{{item.jump}}" data-index="{{item.url}}&blockname={{item.navname}}" wx:for="{{icons}}" wx:key="{{this}}">
         <image class="icon" src="{{item.icon}}"></image>
         <view class="iconTitle">{{item.navname}}</view>
     </navigator>
