@@ -1,1 +1,4 @@
 /* page/home/list.wxss */
+.headerBtm { display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; -webkit-justify-content: space-between; justify-content: space-between; font-size: 15px; color: #808080; height: 35px; background: white; line-height:35px; position: fixed; width:94%; z-index: 10; }
+.common_padding { padding: 0 10px; }
+.header { border-bottom: 2px solid #23c0f4; }

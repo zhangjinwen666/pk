@@ -17,23 +17,18 @@ function a(a, t, i) {
 }
 
 function t(a) {
-    e.client.request({
-        url: "d=wxapi&c=forum_thread&m=thread_byid",
-        data: {
-            threadid: a.threadid
-        },
-        success: function(t) {
-            a.setData({
-                brief: t.data.brief,
-                address: {
-                    latitude: t.data.maplat,
-                    longitude: t.data.maplong,
-                    address: t.data.address
-                },
-                originalData: t.data
-            }), a.selectComponent("#image").setDefaultImage(t.data.imagelist);
-        }
-    });
+  core.get('index/getmsg', {id: a.threadid},function(t){
+    console.log(t)
+       a.setData({
+         brief: t.list.content,
+         address: {
+           latitude: t.list.maplat,
+           longitude: t.list.maplong,
+           address: t.list.address
+         },
+         originalData: t.list
+       }), a.selectComponent("#image").setDefaultImage(t.list.imagelist);
+  });
 }
 
 var e = getApp(), i = require("../home/block.js");
@@ -54,14 +49,17 @@ Page({
     },
     onLoad: function(a) {
         var e = a.blockid;
-        this.blockid = e, this.blockname = a.blockname, wx.setNavigationBarTitle({
+        this.blockid = e, this.subnavid = a.subnavid, this.blockname = a.blockname, wx.setNavigationBarTitle({
             title: a.blockname
         }), a.threadid > 0 && (this.threadid = a.threadid, this.index = a.index, t(this));
         var s = this;
         //分类
         i.querySubBlockList(e, function(a) {
+            var o = {};
+            for (var c in a) a[c]['id'] == s.subnavid && (o=a[c]);
             s.setData({
-                subblocks: a
+                subblocks: a,
+                selectedBlock: o
             });
         });
     },
@@ -134,9 +132,9 @@ Page({
             this.selectComponent("#image").uploadImage(function(t) {        
                 i.imagelist = t, wx.showLoading({
                     title: "正在提交"
-                }), core.post('index/sendmsg',{data:i},function(t){
-                  console.log(t);return;
-                  if (console.log(t), e.showMessage(t.message), !e.empty(d.blockid)) {
+                }), console.log(i),core.post('index/sendmsg',{data:i},function(t){
+                
+                  if (console.log(t), wx.showToast({title: t.message}), !e.empty(d.blockid)) {
                     var s = getCurrentPages(), o = s[s.length - 2];
                     if ("function" == typeof o.changeData) {
                       var l = {};
@@ -148,7 +146,7 @@ Page({
                       c.detail = l, o.changeData(c);
                     }
                   }
-                  d.threadid = t.data.threadid, d.data.isTop ? (a(t.data.threadid, d.data.selectedDay, d),
+                  d.threadid = t.data.id, d.data.isTop ? (a(t.data.threadid, d.data.selectedDay, d),
                     d.startToPay = !0, d.payResult = !1) : setTimeout(function () {
                       wx.redirectTo({
                         url: "/page/home/list?blockid=" + d.blockid + "&blockname=" + d.blockname

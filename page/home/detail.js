@@ -234,8 +234,9 @@ Page((o = {
 }), t(o, "tipsSubmit", function(t) {
     var m = t.detail.value.tips;
     if (r.empty(m)) {
-        if (!(this.data.tipsIndex >= 0 && this.data.tipsIndex < this.data.tips.length)) return r.showError("请选择打赏金额");
-        m = this.data.tips[this.data.tipsIndex].configvalue;
+      return r.showError("请选择打赏积分");
+        //if (!(this.data.tipsIndex >= 0 && this.data.tipsIndex < this.data.tips.length)) return r.showError("请选择打赏金额");
+        //m = this.data.tips[this.data.tipsIndex].configvalue;
     }
     var e = this;
     core.post('index/payCredit1',{

@@ -5,27 +5,19 @@ function t(t) {
 function a(t) {
     0 == t.data.loadstatus && (t.setData({
         loadstatus: 1
-    }), t.page++, s.client.request({
-        url: "d=wxapi&c=forum_my_thread&m=thread_page",
-        data: {
-            page: t.page
-        },
-        success: function(a) {
-            var s = a.data;
-            t.total = s.total;
-            var o = t.data.list;
-            o = o.concat(s.rows);
-            var e = {};
-            e.list = o, o.length >= s.total ? e.loadstatus = 2 : e.loadstatus = 0, console.log(e), 
-            t.setData(e), wx.stopPullDownRefresh();
-        },
-        fail: function(t) {
-            wx.stopPullDownRefresh();
-        }
-    }));
+    }), t.page++, 
+      core.get('index/getmsg',{page:t.page,see:1},function(a){
+          console.log(a);
+          var s = a.list;
+          t.total = a.total;
+          var o = t.data.list;
+          for (var c  in s) o.push(s[c]);
+          var e = {};
+          e.list = o,o.length >= a.total ? e.loadstatus = 2 : e.loadstatus = 0,console.log(e),t.setData(e),wx.stopPullDownRefresh();
+      }));
 }
 
-var s = getApp();
+var s = getApp(),core = require('../../../utils/core');
 
 Page({
     data: {},
@@ -40,7 +32,8 @@ Page({
     },
     changeData: function(t) {
         var a = t.detail, o = a.index;
-        if (s.util.empty(a.data)) (e = this.data.list).splice(o, 1), this.setData({
+        
+        if (s.empty(a.data)) (e = this.data.list).splice(o, 1), this.setData({
             list: e
         }), this.total = parseInt(this.total) - 1; else {
             var e = this.data.list;

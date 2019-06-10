@@ -139,7 +139,7 @@ Component({
                 var s = [];
                 for (var o in e) {
                     var r = e[o], d = {};
-                    d.showurl = t.client.getFileUrl(r), d.imageurl = r, s.push(d);
+                    d.showurl =r, d.imageurl = r, s.push(d);
                 }
                 this.setData({
                     list: s

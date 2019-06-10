@@ -1,4 +1,5 @@
 function t(t) {
+
     var e = t.data.headers;
     for (var o in e) {
         var s = e[o];
@@ -14,21 +15,17 @@ function e(t) {
 
 function a(t) {
     var e = t.data.selectedIndex, a = t.data.headers, o = a[e];
+    console.log(e,a,o);
     if (0 == o.loadstatus) {
         o.page++;
         var l = {};
-        l.blockid = t.blockid, l.page = o.page, l.orderby = o.orderby, console.log(l), s.client.request({
-            url: "d=wxapi&c=forum_thread&m=thread_page",
-            data: l,
-            success: function(s) {
-                var l = s.data;
-                o.total = l.total;
-                var d = l.rows;
-                o.list = o.list.concat(d), o.list.length >= o.total ? o.loadstatus = 2 : o.loadstatus = 0, 
-                a[e] = o, t.setData({
-                    headers: a
-                }), console.log(a);
-            }
+        l.blockid = t.blockid, l.page = o.page, l.orderby = o.orderby, console.log(l),
+        core.get('index/getmsg',{page:o.page,navid:t.blockid,orderby:o.orderby},function(s){
+            var l = s.list;
+            o.total = s.total;
+            o.list = l,o.list.length >= o.total ? o.loadstatus = 2 : o.loadstatus = 0,a[e] = o,t.setData({
+              headers: a
+            }),console.log(a);
         });
     }
 }
@@ -37,7 +34,7 @@ var o = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? func
     return typeof t;
 } : function(t) {
     return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t;
-}, s = getApp();
+}, s = getApp(),core = require('../../utils/core');
 
 Page({
     data: {
@@ -51,7 +48,7 @@ Page({
             title: "推荐",
             orderby: "postcnt"
         } ],
-        selectedIndex: 0
+        selectedIndex: 1
     },
     onLoad: function(e) {
         this.blockid = e.blockid, wx.setNavigationBarTitle({

@@ -11,11 +11,7 @@ function t(t, a, e) {
 function a(t) {
     0 == t.data.loadstatus && (t.setData({
         loadstatus: 1
-    }), t.page++, core.get('',{page:t.page,search:t.search},function(a){
-       //获取发布信息列表
-
-       
-      }), core.get('index/getmsg', {page: t.page,search: t.search},function(a){
+    }), t.page++, core.get('index/getmsg', {page: t.page,search: t.search},function(a){
       
           t.total = a.total;
           var n = {}, i = t.data.list;
@@ -23,25 +19,7 @@ function a(t) {
       n.list = a.list, n.list.length >= t.total ? n.loadstatus = 2 : n.loadstatus = 0, 
           t.setData(n), wx.stopPullDownRefresh();
       
-    })//,core.get({
-    //     url: "d=wxapi&c=forum_thread&m=thread_page",
-    //     data: {
-    //         page: t.page,
-    //         search: t.search
-    //     },
-    //     success: function(a) {
-    //         t.total = a.data.total;
-    //         var e = a.data.rows, n = {}, i = t.data.list;
-    //         n.list = i.concat(e), n.list.length >= t.total ? n.loadstatus = 2 : n.loadstatus = 0, 
-    //         t.setData(n), wx.stopPullDownRefresh();
-    //     },
-    //     fail: function(a) {
-    //         i.showError(a.message), t.setData({
-    //             loadstatus: 0
-    //         }), wx.stopPullDownRefresh();
-    //     }
-    // })
-    );
+    }));
 }
 
 function e(t) {

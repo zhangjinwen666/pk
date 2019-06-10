@@ -93,8 +93,8 @@
         <view class="tipsArrInfo">土豪请随意</view>
         <form bindsubmit="tipsSubmit">
             <view class="tipsInputBtm">
-                <input bindfocus="startInputTips" name="tips" placeholder="请输入打赏金额，至少1积分" style="width:400rpx" type="digit" value="{{tipInput}}"></input>
-                <view>元</view>
+                <input bindfocus="startInputTips" name="tips" placeholder="请输入打赏金额，至少1积分" style="width:380rpx" type="digit" value="{{tipInput}}"></input>
+                <view>积分</view>
             </view>
             <view class="tipsButtonBottom">
                 <button class="tipsButton" formType="submit" size="mini">确认支付</button>

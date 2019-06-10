@@ -63,7 +63,7 @@
                 <image class="statusIcon" src="/image/{{data.clickupid>0?'d-1':'list_click'}}.png"></image>
                 <view class="statusTitle">{{data.clickupcnt}}人点赞</view>
             </view>
-            <view catchtap="commentClick" class="statusBtm" data-target="{{data.username}}" data-touserid="">
+            <view catchtap="commentClick" class="statusBtm" data-target="{{data.nickname}}" data-touserid="">
                 <image class="statusIcon" src="/image/list_comment.png"></image>
                 <view class="statusTitle">{{data.postcnt}}人评论</view>
             </view>

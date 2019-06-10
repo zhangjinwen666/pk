@@ -8,6 +8,7 @@ Component({
         data: {
             type: Object,
             observer: function(a, e, i) {
+              
               a.imageList = a.imagelist, a.time = a.createtime, 
                 this.setData({
                     data: a
@@ -30,80 +31,81 @@ Component({
     },
     methods: {
         commentClick: function(a) {
-            var e = a.currentTarget.dataset, i = e.target, d = e.touserid, s = this;
-            t.getUserInfo(function(a) {
-               a.id == d ? wx.showActionSheet({
-                    itemList: [ "删除" ],
-                    itemColor: "#FF0000",
-                    success: function(a) {
-                        wx.showLoading({
-                            title: "正在删除"
-                        }), 
-                          core.get('index/deletemessage',{id:e.postid},function(a){
-                                //t.showMessage(a.message);
-                                wx.showToast({
-                                  title: a.message,
-                                }) 
-                                var i = e.idx, d = s.data.data, n = d.postlist;
-                                console.log(n), n.splice(i, 1), d.postcnt = parseInt(d.postcnt) - 1, s.setData({
-                                    data: d
-                                });
-                        });
-                    }
-                }) : s.setData({
-                    showCommentView: !0,
-                    commentplaceholder: i,
-                    touserid: d
-                });
-            });
+            // var e = a.currentTarget.dataset, i = e.target, d = e.touserid, s = this;
+            // t.getUserInfo(function(a) {
+            //    a.id == d ? wx.showActionSheet({
+            //         itemList: [ "删除" ],
+            //         itemColor: "#FF0000",
+            //         success: function(a) {
+            //             wx.showLoading({
+            //                 title: "正在删除"
+            //             }), 
+            //               core.get('index/deletemessage',{id:e.postid},function(a){
+            //                     //t.showMessage(a.message);
+            //                     wx.showToast({
+            //                       title: a.message,
+            //                     }) 
+            //                     var i = e.idx, d = s.data.data, n = d.postlist;
+            //                     console.log(n), n.splice(i, 1), d.postcnt = parseInt(d.postcnt) - 1, s.setData({
+            //                         data: d
+            //                     });
+            //             });
+            //         }
+            //     }) : s.setData({
+            //         showCommentView: !0,
+            //         commentplaceholder: i,
+            //         touserid: d
+            //     });
+            // });
         },
         commentInput: function(t) {
             this.comment = t.detail.value;
         },
         sendComment: function(a) {
-            var e = this.comment;
-            
-            if (t.util.empty(e)) t.showError("请输入评论内容"); else {
-                var i = {};
-                i.threadid = this.data.data.threadid, i.message = e, i.touserid = this.data.touserid, 
-                wx.showLoading({
-                    title: "正在提交"
-                });
-                var d = this;
-                t.client.request({
-                    url: "d=wxapi&c=forum_my_post&m=post_save",
-                    data: i,
-                    success: function(a) {
-                        t.showMessage(a.message), console.log("评论成功 返回内容"), console.error(a);
-                        var e = a.data, i = d.data.data.postlist;
-                        void 0 === i && (i = []), i.push(e);
-                        var s = d.data.data;
-                        s.postlist = i, s.postcnt = parseInt(s.postcnt) + 1, d.setData({
-                            data: s,
-                            showCommentView: !1
-                        }), s.index = d.data.index;
-                        var n = {};
-                        n.data = s, n.index = d.data.index, d.triggerEvent("changedata", n);
-                    }
-                });
-            }
+            // var e = this.comment;
+            // return;
+            // if (t.empty(e)) t.showError("请输入评论内容"); else {
+            //     var i = {};
+            //     i.threadid = this.data.data.id, i.message = e, i.touserid = this.data.touserid, 
+            //     wx.showLoading({
+            //         title: "正在提交"
+            //     });
+            //     console.log(i);
+            //     var d = this;
+            //   core.post('index/sendcomment',{data:i},function(a){
+            //         wx.showToast({
+            //           title: a.message,
+            //         }), console.log("评论成功 返回内容"), console.error(a);
+            //     console.log(a, d.data);
+            //         var e = a.list, i = d.data.list || 0;
+            //         void 0 === i && (i = []), i.push(e);
+            //         var s = d.data.list;
+                   
+            //         s.list = i, s.postcnt = parseInt(s.postcnt) + 1, d.setData({
+            //           data: s,
+            //           showCommentView: !1
+            //         }), s.index = d.data.index;
+            //         var n = {};
+            //         n.data = s, n.index = d.data.index, d.triggerEvent("changedata", n);
+            //     });
+            // }
         },
         hideView: function(t) {
             var a = t.currentTarget.dataset.view, e = {};
             e[a] = !1, this.setData(e), this.comment = "";
         },
         showTipsView: function(t) {
-            var e = this;
-            a.queryBlockDic({
-                key: "tip",
-                success: function(t) {
-                    e.setData({
-                        tips: t
-                    });
-                }
-            }), this.setData({
-                showTips: !0
-            });
+            // var e = this;
+            // a.queryBlockDic({
+            //     key: "tip",
+            //     success: function(t) {
+            //         e.setData({
+            //             tips: t
+            //         });
+            //     }
+            // }), this.setData({
+            //     showTips: !0
+            // });
         },
         tipsClick: function(t) {
             var a = t.currentTarget.dataset.index;
@@ -171,61 +173,55 @@ Component({
             });
         },
         likeClick: function(a) {
-            this.data.data.threadid;
-            var e = this, i = e.data.data;
-            i.index = e.data.index, i.clickupid > 0 ? t.client.request({
-                url: "d=wxapi&c=forum_my_click&m=click_delete",
-                data: {
-                    threadid: i.threadid
-                },
-                success: function(t) {
-                    i.clickupcnt = parseInt(i.clickupcnt) - 1, i.clickupid = 0, e.setData({
+           
+          var m = {}, e = this, i = e.data.data; m.threadid = i.id;
+            console.log(m);
+          i.index = e.data.index, i.clickupid > 0 ? core.get('index/cancelclickupcnt',m,function(t){
+            wx.showToast({
+              title: t.message,
+            })
+            i.clickupcnt = parseInt(i.clickupcnt) - 1, i.clickupid = 0, e.setData({
                         data: i
                     });
                     var a = {};
                     a.data = i, a.index = e.data.index, e.triggerEvent("changedata", a);
-                }
-            }) : t.client.request({
-                url: "d=wxapi&c=forum_my_click&m=click_save",
-                data: {
-                    threadid: i.threadid,
-                    clicktype: 1
-                },
-                success: function(t) {
-                    i.clickupcnt = parseInt(i.clickupcnt) + 1, i.clickupid = 1, e.setData({
+          }) : core.get('index/saveclickupcnt',i,function(t){
+              wx.showToast({
+                title: t.message,
+              })
+              i.clickupcnt = parseInt(i.clickupcnt) + 1, i.clickupid = 1, e.setData({
                         data: i
                     });
                     var a = {};
                     a.data = i, a.index = e.data.index, e.triggerEvent("changedata", a);
-                }
-            });
+          })  
         },
         deleteAction: function(a) {
             var e = this;
+           
             wx.showModal({
                 title: "提示",
                 content: "是否确认删除此内容",
                 success: function(a) {
                     a.confirm && (wx.showLoading({
                         title: "正在删除"
-                    }), t.client.request({
-                        url: "d=wxapi&c=forum_my_thread&m=thread_delete",
-                        data: {
-                            threadid: e.data.data.threadid
-                        },
-                        success: function(a) {
-                            t.showMessage(a.message);
-                            var i = {};
-                            i.index = e.data.index, e.triggerEvent("changedata", i);
-                        }
-                    }));
+                    }), core.get('index/deletemsg',{threadid:e.data.data.id},function(a){
+                          wx.showToast({
+                            title: a.message,
+                          });
+                          var i = {};
+                          
+                          i.index = e.data.index,e.triggerEvent("changedata",i);
+                    })
+                    );
                 }
             });
         },
         editAction: function(t) {
             var a = this;
+          
             wx.navigateTo({
-                url: "/page/publish/bbq?threadid=" + a.data.data.threadid + "&index=" + a.data.index + "&blockid=" + a.data.data.blockid
+                url: "/page/publish/bbq?threadid=" + a.data.data.id + "&index=" + a.data.index + "&blockid=" + a.data.data.navid +"&subnavid="+a.data.data.subnavid + "&blockname=编辑发布信息"
             });
         },
         reloadAction: function(a) {
