@@ -31,6 +31,12 @@
                     <view>{{item.catename}}</view>
                 </view>
             </navigator>
+            <navigator url="/page/creditshops/index" wx:if="{{creditshow}}">
+                <view class="item_module">
+                    <image class="item_module_img" src="{{crediticon}}"></image>
+                    <view>积分商城</view>
+                </view>
+            </navigator>
         </view>
         <view class="view_notice">
             <image class="view_notice_img" src="/image/a-5.png"></image>

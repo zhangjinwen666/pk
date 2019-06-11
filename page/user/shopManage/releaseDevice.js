@@ -76,8 +76,8 @@ function n(t) {
 }
 function e(t, e) {
   w.get('shopuser/goods/getprop',{cateid:e},function(e){
-    console.log(e);
-    var a = e.data, i = t.data.goodsDetail.goodsprop;
+    var a = e.data;
+    if (!w.empty(p)) var  i = t.data.goodsDetail.goodsprop;
     for(var o =0; o< a.length; ++o){
       if (!w.empty(p)){
         for (var n = 0; n < i.length; ++n){

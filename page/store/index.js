@@ -25,14 +25,13 @@ function e(t) {
 function o(t) {
   var n = wx.getStorageSync('shopcate');
   if ('object' == typeof n && (r.getCurrentTime() - (n.time || 0)) < r.catchtime) {
-    t.setData({ catTree: n.list });
+    t.setData({ catTree: n.list, creditshow: n.credit.isshow, crediticon: n.credit.icon });
   } else {
     w.get('shopuser/index/getcate', '', function (e) {
-      console.log(e);
       var l = {};
-      l.time = r.getCurrentTime(), l.list = e.data;
+      l.time = r.getCurrentTime(), l.list = e.data, l.credit = e.credit;
       wx.setStorageSync('shopcate', l),
-        t.setData({ catTree: l.list });
+        t.setData({ catTree: l.list, creditshow: l.credit.isshow, crediticon: l.credit.icon});
     });
   }
 }
@@ -98,6 +97,8 @@ Page({
     tabSelect: 0,
     shopList: [],
     isRefresh: !1,
+    creditshow:!1,
+    crediticon:'',
     loadMoreType: !0
   },
   onLoad: function (a) {
