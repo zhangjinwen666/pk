@@ -2,7 +2,7 @@ function t(t) {
   t.setData({
     loadMoreType: !0
   });
-  w.get('shopuser/goods/getallgooods', { page: t.data.page }, function (e) {
+  w.get('shopuser/goods/getallgooods', { page: t.data.page, type:1 }, function (e) {
     console.log(e);
     var d = "", n = Number(e.total);
     var a = {};

@@ -13,9 +13,9 @@
                 </view>
                 <view class="weui-tab__content" hidden="{{activeIndex!=1}}">
                     <view>
-                        <navigator url="/page/store/shop/shopInfo?shopid={{item.shopid}}" wx:for="{{shopList}}">
+                        <navigator url="/page/store/shop/shopInfo?shopid={{item.id}}" wx:for="{{shopList}}">
                             <view class="view_shop_item">
-                                <image class="img_shop_heard" src="{{item.shopavatar_small}}"></image>
+                                <image class="img_shop_heard" src="{{item.shopavatar}}"></image>
                                 <view class="view_shop_item_right">
                                     <view class="item_row_one">{{item.shopname}}</view>
                                     <view class="item_row_two">
@@ -28,7 +28,7 @@
                                         <view class="text_address">{{item.address}}</view>
                                     </view>
                                     <view class="row_four">
-                                        <view class="item_type">{{item.catname}}</view>
+                                        <view class="item_type">{{item.catename}}</view>
                                     </view>
                                     <image class="img_call_phone" data-mobie="{{item.shoptel}}" src="/image/b-14.png"></image>
                                 </view>
@@ -39,7 +39,7 @@
                 <view class="weui-tab__content" hidden="{{activeIndex!=2}}">
                     <view class="product_view_all">
                         <block wx:for="{{productList}}">
-                            <navigator url="/page/store/product/deviceDetail?goodsid={{item.goodsid}}" wx:if="{{item.goodstype=='1'}}">
+                            <navigator url="/page/store/product/deviceDetail?goodsid={{item.id}}" wx:if="{{item.goodstype=='1'}}">
                                 <view class="view_car_item border_bottom">
                                     <image class="img_device_heard" mode="aspectFill" src="{{item.goodscover}}"></image>
                                     <view class="view_device_item_right">

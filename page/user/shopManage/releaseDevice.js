@@ -24,12 +24,18 @@ function n(t) {
       return;
     }
     var i = a.data,o = t.data.imagelist;
+    console.log(i);
     for (var n = 0; n < i.imagelist.length; ++n) {
       o.push({
         showurl: i.imagelists[n],
         imageurl: i.imagelist[n]
       });
     }
+    var s = t.data.videolist;
+    if (null != s && i.videolist.length > 0) for (var d = 0; d < i.videolist.length; ++d) s.push({
+      tempFilePath: i.videolists[d],
+      imageurl: i.videolist[d]
+    });
     l = i.catid;
     t.setData({
       goodsDetail: i,
@@ -70,9 +76,10 @@ function n(t) {
 }
 function e(t, e) {
   w.get('shopuser/goods/getprop',{cateid:e},function(e){
+    console.log(e);
     var a = e.data, i = t.data.goodsDetail.goodsprop;
     for(var o =0; o< a.length; ++o){
-      if (a[o].proptype == 'list' && (a[o].propdata = a[o].propdata.split(",")),!w.empty(p)){
+      if (!w.empty(p)){
         for (var n = 0; n < i.length; ++n){
           a[o].id == i[n].propid && (a[o].thisvalue = i[n].propvalue);
         }
@@ -88,7 +95,9 @@ function i(t, e, a) {
   var o = [], n = "设备照片", s = w.getUrl("util/uploader/upload", {
     file: "file"
   }), d = "image";
-  "vedio" == a && (n = "设备视频", s = "d=wxapi&c=common&m=video_upload", d = "video");
+  "vedio" == a && (n = "设备视频", s = w.getUrl("util/uploader/uploads", {
+    file: "file"
+  }), d = "video");
   for (var l in t) {
     var u = t[l];
     {
@@ -97,26 +106,17 @@ function i(t, e, a) {
         wx.showLoading({
           title: n + c + "/" + t.length
         });
+        var  p = u.showurl;
         return "vedio" == a && (p = u.tempFilePath),wx.uploadFile({
           url: s,
-          filePath: u.showurl,
+          filePath: p,
           name: "file",
           success: function (ss) {
+            console.log(ss);
             var oss = JSON.parse(ss.data);
             u.imageurl = oss.files[0].filename, i(t, e, a);
           }
         });
-        // var p = u.showurl;
-        // return "vedio" == a && (p = u.tempFilePath), void r.client.request({
-        //   url: s,
-        //   method: "FILE",
-        //   name: d,
-        //   hideAlert: !0,
-        //   filePath: p,
-        //   success: function (o) {
-        //     u.imageurl = o[0].data.filepath, i(t, e, a);
-        //   }
-        // });
       }
       o.push(u.imageurl);
     }
@@ -301,8 +301,10 @@ Page({
   },
   onVideoAdd: function (t) {
     var e = this.data.videolist, a = this;
+    console.log(e);
     wx.chooseVideo({
       success: function (t) {
+        console.log(t);
         e.push(t), a.setData({
           videolist: e
         });

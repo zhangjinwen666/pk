@@ -1,5 +1,5 @@
 
-<view class="view_title">基本信息</view>
+<view class="view_title">基本信息<view wx:if="{{shopInfo}}"><view wx:if="{{shopInfo.status == 0}}" style="color:#48af48;">待审核</view><view wx:if="{{shopInfo.status == -1}}" style="color:#eb6060;">已拒绝</view></view></view>
 <form bindsubmit="insertShop">
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">

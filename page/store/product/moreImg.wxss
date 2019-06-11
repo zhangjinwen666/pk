@@ -1,1 +1,38 @@
 /* page/store/product/moreImg.wxss */
+body {
+    background: white;
+}
+
+.view_list {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+.video {
+    width: 246rpx;
+    height: 246rpx;
+}
+
+.view_item {
+    width: 246rpx;
+    height: 246rpx;
+    position: relative;
+    margin-bottom: 6rpx;
+}
+
+.img_item {
+    width: 246rpx;
+    height: 246rpx;
+}
+
+.img_video {
+    width: 60rpx;
+    height: 60rpx;
+    position: absolute;
+    left: 93rpx;
+    top: 93rpx;
+}

@@ -1,27 +1,15 @@
 function t(t) {
-    e.client.request({
-        url: "d=wxapi&c=mall_goods&m=goods_byid",
-        data: {
-            goodsid: n
-        },
-        success: function(n) {
-            var i = n.data.goodsinfo, o = i.videolist;
-            if (null != o) for (var a = 0; a < o.length; a++) o[a] = e.client.getFileUrl(o[a]);
-            var l = o.length, r = i.imagelist;
-            r.length;
-            if (null != r) {
-                for (var s = 0; s < r.length; ++s) r[s] = e.client.getFileUrl(r[s]);
-                r.push("");
-            }
-            t.setData({
-                imagelist: r,
-                videolist: o
-            });
-        }
+  w.get('shopuser/goods/goods_view', { goodsid: n }, function (n) {
+    var i = n.data, o = i.videolists, r = i.imagelists;
+    t.setData({
+      imagelist: r,
+      videolist: o
     });
+  });
+   
 }
 
-var e = getApp(), n = "";
+var e = getApp(), n = "", w = e.requirejs("core");
 
 Page({
     data: {
