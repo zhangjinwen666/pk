@@ -24,22 +24,8 @@ function e(o, e) {
         goodsDetail: n
       }
     );
-    e || (t(o, n.shopid));
+    e || (t(o, n.shopid), a(o, n.catid));
   });
-  return;
-    r.client.request({
-        url: "d=wxapi&c=mall_goods&m=goods_byid",
-        data: {
-            goodsid: d
-        },
-        success: function(i) {
-            for (var n = i.data.goodsinfo, s = 0; s < n.imagelist.length; ++s) n.imagelist[s] = r.client.getFileUrl(n.imagelist[s]);
-            if (null != n.goodsprop && n.goodsprop.length > 0) for (var l = 0; l < n.goodsprop.length; ++l) "true" == n.goodsprop[l].propvalue ? n.goodsprop[l].propvalue = "是" : "false" == n.goodsprop[l].propvalue && (n.goodsprop[l].propvalue = "否");
-            o.setData({
-                goodsDetail: n
-            }), e || (t(o, n.shopid), a(o, n.catpath));
-        }
-    });
 }
 
 function t(o, e) {
@@ -54,22 +40,12 @@ function t(o, e) {
 }
 
 function a(o, e) {
-    r.client.request({
-        url: "d=wxapi&c=mall_goods&m=goods_page",
-        data: {
-            rows: 10,
-            catpath: e,
-            goodstype: "1"
-        },
-        success: function(e) {
-            for (var t = e.data.rows, a = 0; a < t.length; ++a) t[a].goodscover = r.client.getFileUrl(t[a].goodscover), 
-            console.error(t[a].goodscover), t[a].dateline = w.formatDate(t[a].dateline, "yyyy-MM-dd"), 
-            t[a].goodsid == d && (t.splice(a, 1), --a);
-            o.setData({
-                productList: t
-            });
-        }
+  w.get('shopuser/goods/getallgooods',{rows:10,cateid:e,goodstype:1,goodsid:d},function(e){
+    var t = e.goods;
+    o.setData({
+      productList: t
     });
+  });
 }
 
 function i() {
@@ -94,28 +70,16 @@ function n(o) {
 }
 
 function s(o) {
-    r.client.request({
-        url: "d=wxapi&c=mall_user_favorite&m=favorite_save",
-        data: {
-            type: "2",
-            toid: d
-        },
-        success: function(t) {
-            e(o, !0);
-        }
-    });
+  w.post('shopuser/favorite/savefavorite', { type: 2, toid: d }, function (t) {
+    e(o, !0);
+  });
 }
 
 function l(o, t) {
-    r.client.request({
-        url: "d=wxapi&c=mall_user_favorite&m=favorite_delete",
-        data: {
-            favoriteid: t
-        },
-        success: function(t) {
-            e(o, !0);
-        }
-    });
+  w.post('shopuser/favorite/cancelfavorite', { id: t }, function (t) {
+    e(o, !0);
+  });
+    
 }
 
 var r = getApp(), d = "", w = r.requirejs("core");

@@ -49,11 +49,12 @@ Page({
         var o = this;
       
         a.getUserInfo(function(t) {
+          console.log(a.globalData.hasLogin);
             o.setData({
                 userInfo: t,
-                hasLogin: a.globalData.hasLogin,
+              hasLogin: t.isMobile,
                 //退出按钮
-                showOutButton: 1
+                showOutButton: !1
             });
         });
     },

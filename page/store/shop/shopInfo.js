@@ -17,28 +17,16 @@ function a(t) {
 }
 
 function e(a) {
-    o.client.request({
-        url: "d=wxapi&c=mall_user_favorite&m=favorite_save",
-        data: {
-            type: "1",
-            toid: n
-        },
-        success: function(e) {
-            t(a);
-        }
-    });
+  w.post('shopuser/favorite/savefavorite',{type:1,toid:n},function(e){
+    t(a);
+  });
+  
 }
 
 function i(a, e) {
-    o.client.request({
-        url: "d=wxapi&c=mall_user_favorite&m=favorite_delete",
-        data: {
-            favoriteid: e
-        },
-        success: function(e) {
-            t(a);
-        }
-    });
+  w.post('shopuser/favorite/cancelfavorite',{id:e},function(e){
+    t(a);
+  });
 }
 
 var o = getApp(), n = "", w = o.requirejs('core');

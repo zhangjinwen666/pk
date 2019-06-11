@@ -41,9 +41,9 @@
     </view>
 </view>
 <block wx:if="{{productList.length>0}}">
-    <view class="view_item_title">相似车源</view>
+    <view class="view_item_title">相似商品</view>
     <view class="view_new_car view_margin_bottom">
-        <navigator url="deviceDetail?goodsid={{item.goodsid}}" wx:for="{{productList}}">
+        <navigator url="deviceDetail?goodsid={{item.id}}" wx:for="{{productList}}">
             <view class="view_car_item border_bottom">
                 <image class="img_device_heard" mode="aspectFill" src="{{item.goodscover}}"></image>
                 <view class="view_device_item_right">

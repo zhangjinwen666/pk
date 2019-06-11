@@ -53,17 +53,15 @@
                                     </view>
                                 </view>
                             </navigator>
-                            <navigator url="/page/store/product/commodityDetail?goodsid={{item.goodsid}}" wx:else>
+                            <navigator url="/page/store/product/commodityDetail?goodsid={{item.id}}" wx:else>
                                 <view class="product_view_item product_border_bottom">
                                     <image class="product_img_heard" mode="aspectFill" src="{{item.goodscover}}"></image>
                                     <view class="product_view_item_right">
                                         <view class="product_text_title">{{item.goodsname}}</view>
                                         <view class="product_row_one">
-                                            <view class="product_item_type">{{item.catname}}</view>
+                                            <view class="product_item_type">{{item.catename}}</view>
                                         </view>
                                         <view class="prodcut_row_three">
-                                            <text>销量：</text>
-                                            <text>{{item.goodssalenum}}</text>
                                             <text class="product_price">￥{{item.goodspricenum}}</text>
                                         </view>
                                     </view>

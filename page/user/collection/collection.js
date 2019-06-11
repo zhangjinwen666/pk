@@ -1,65 +1,64 @@
 function t(t) {
     t.setData({
         loadMoreType: !0
-    }), o.client.request({
-        url: "d=wxapi&c=mall_user_favorite&m=goods_page",
-        data: {
-            rows: 200
-        },
-        success: function(e) {
-            for (var a = e.data.rows, i = 0; i < a.length; ++i) a[i].goodscover = o.client.getFileUrl(a[i].goodscover), 
-            a[i].dateline = o.util.formatDate(a[i].dateline, "yyyy-MM-dd");
-            t.setData({
-                productList: a,
-                loadMoreType: !1,
-                loadText: "暂无跟多数据"
-            });
-        }
     });
+  w.get('shopuser/favorite/getgoodsfavorite','',function(e){
+    var a = e.data;
+    t.setData({
+        productList: a,
+        loadMoreType: !1,
+        loadText: "暂无跟多数据"
+    });
+  });
 }
 
 function e(t) {
     t.setData({
         loadMoreType: !0
-    }), o.client.request({
-        url: "d=wxapi&c=mall_user_favorite&m=shop_page",
-        data: {
-            rows: 200
-        },
-        success: function(e) {
-            var a = [], i = e.data.rows;
-            if (i.length > 0) {
-                for (var s = 0; s < i.length; ++s) i[s].shopavatar_small = o.client.getAvatarUrl(i[s].shopavatar_small);
-                a = a.concat(i);
-            }
-            t.setData({
-                shopList: a,
-                loadMoreType: !1,
-                loadText: "暂无跟多数据"
-            });
-        }
     });
+  w.get('shopuser/favorite/getshopfavorite','',function(e){
+    var a = e.data;
+    t.setData({
+      shopList: a,
+      loadMoreType: !1,
+      loadText: "暂无跟多数据"
+    });
+  });
+    //  o.client.request({
+    //     url: "d=wxapi&c=mall_user_favorite&m=shop_page",
+    //     data: {
+    //         rows: 200
+    //     },
+    //     success: function(e) {
+    //         var a = [], i = e.data.rows;
+    //         if (i.length > 0) {
+    //             for (var s = 0; s < i.length; ++s) i[s].shopavatar_small = o.client.getAvatarUrl(i[s].shopavatar_small);
+    //             a = a.concat(i);
+    //         }
+    //         t.setData({
+    //             shopList: a,
+    //             loadMoreType: !1,
+    //             loadText: "暂无跟多数据"
+    //         });
+    //     }
+    // });
 }
 
 function a(t) {
     t.setData({
         loadMoreType: !0
-    }), o.client.request({
-        url: "d=wxapi&c=forum_my_favorite&m=favorite_page",
-        data: {
-            rows: 200
-        },
-        success: function(e) {
-            t.setData({
-                favoriteList: e.data.rows,
-                loadMoreType: !1,
-                loadText: "暂无跟多数据"
-            });
-        }
     });
+  w.get('shopuser/favorite/getfavorite','',function(e){
+    console.log(e);
+    t.setData({
+        favoriteList: e.data,
+        loadMoreType: !1,
+        loadText: "暂无跟多数据"
+    });
+  });
 }
 
-var o = getApp();
+var o = getApp(), w = o.requirejs('core');
 
 Page({
     data: {
