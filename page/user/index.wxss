@@ -1,11 +1,24 @@
 /* page/user/index.wxss */
+
 .avatar {
     display: -webkit-flex;
     display: flex;
     -webkit-justify-content: center;
     justify-content: center;
+    position:relative;
 }
+.lottetry{
+  height:max-content;
+  padding:2px 10px;
+  position:absolute;
+  bottom:5px;
+  right:0;
+  margin-right:5px;
+  font-size: 15px;
+  border:1px solid rgb(255, 196, 0);
+  color:rgb(255, 196, 0);
 
+}
 .avatar-main {
     display: -webkit-flex;
     display: flex;

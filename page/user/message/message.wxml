@@ -1,0 +1,14 @@
+<!--page/user/message/message.wxml-->
+<view bindtap="hiddenImg" class="showimg" hidden='{{showTarg}}'><image style="width:12rem;height:12rem;margin:8rem auto;display:block" src="{{dataImg}}"></image></view> 
+<view class="av-list">  
+    <view class="av-li" wx:for="{{list}}" wx:key="this">
+        <view class="av-img" style="background:url({{item.thumb}}) no-repeat;  background-size:100% 100%;">
+            <text class="av-text">面值:{{item.num}}元</text>
+            <view class="av-quan" style="background:url('/image/quan.png')"></view>
+            <view class="av-time">2019-06-14 10:00:00</view>
+          </view>
+        
+        <image bindtap="showImg" data-src="{{item.qrcode}}" class="av-qrcode" src="{{item.qrcode}}"></image>
+    </view>
+</view>
+

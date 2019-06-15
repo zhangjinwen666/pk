@@ -1,0 +1,367 @@
+/* page/lottery/index.wxss */
+.lottery-content{
+  position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+   
+}
+.lottery-title{
+  height:3rem;
+}
+@keyframes around {
+    from {
+      margin-left: 100%;
+    }
+    to {
+      margin-left: var(--marqueeWidth--);
+    }
+  }
+.lottery-text{
+  display: inline-block;
+  white-space: nowrap;
+  animation-name: around;
+  animation-duration: var(--marqueeDuration--);
+  animation-iteration-count: infinite;
+  animation-timing-function:linear;
+  color:#fff;
+}
+.lottety{
+    font-family: '微软雅黑';
+    position: relative;
+    overflow: hidden;
+}
+.wheel{
+  position: relative;
+    padding: 1.2rem;
+    width: 14rem;
+    height: 14rem;
+    background: #fe6869;
+    border-radius: 50%;
+    transition: transform 6s;
+    margin: 0 auto;
+    webkit-box-sizing: initial;
+    -moz-box-sizing: initial;
+    box-sizing: initial;
+    margin-bottom: 3rem;
+}
+.wheel-light{
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+.wheel-light .li{
+    display: list-item;
+    text-align: -webkit-match-parent;
+    position: absolute;
+    z-index: 30;  
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.wheel-light .li:nth-child(2){
+    -moz-transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+    -o-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+    transform: rotate(15deg);
+}
+.wheel-light .li:nth-child(3){
+        -moz-transform: rotate(30deg);
+    -webkit-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+.wheel-light .li:nth-child(4){
+        -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.wheel-light .li:nth-child(5){
+        -moz-transform: rotate(60deg);
+    -webkit-transform: rotate(60deg);
+    -o-transform: rotate(60deg);
+    -ms-transform: rotate(60deg);
+    transform: rotate(60deg);
+}
+.wheel-light .li:nth-child(6){
+    -moz-transform: rotate(75deg);
+    -webkit-transform: rotate(75deg);
+    -o-transform: rotate(75deg);
+    -ms-transform: rotate(75deg);
+    transform: rotate(75deg);
+}
+.wheel-light .li .lli{
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: #fbf087;
+    border-radius: 50%;
+}
+.wheel-light .li:nth-child(2n) .lli{
+   background: #ffffff;
+}
+.wheel-light .li .lli:nth-child(1){
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.wheel-light .li .lli:nth-child(2){
+    top: 0;
+    bottom: 0;
+    right: 10px;
+    margin: auto 0;
+}
+.wheel-light .li .lli:nth-child(3){
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.wheel-light .li .lli:nth-child(4){
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    margin: auto 0;
+}
+.wheel-list{
+    position: relative;
+    z-index: 20;
+    display: block;
+    width: 14rem;
+    height: 14rem;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 6s;
+    transform: rotate(var(--transform--))
+}
+.wheel-list .li{
+  position: absolute;
+    top: 0;
+    left: 0;
+    width: 14rem;
+    height: 7.1rem;
+    -moz-transform-origin: center bottom;
+    -webkit-transform-origin: center bottom;
+    -o-transform-origin: center bottom;
+    -ms-transform-origin: center bottom;
+    transform-origin: center bottom;
+}
+.wheel-list .li .jsi{
+  position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: -50%;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #fe6869;
+    content: '';
+    -moz-transform-origin: right bottom;
+    -webkit-transform-origin: right bottom;
+    -o-transform-origin: right bottom;
+    -ms-transform-origin: right bottom;
+    transform-origin: right bottom;
+}
+.wheel-list .li:nth-child(2n) .jsi{
+        background: #ff8584;
+}
+.wheel-list .prize{
+    position: relative;
+    margin: 0 auto;
+    padding-top: 10px;
+    width: 50%;
+    overflow: hidden;
+    text-align: center;
+    line-height: 25px;
+}
+.wheel-list .prize .h3 {
+    height: 25px;
+    overflow: hidden;
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 600;
+}
+.icon{
+    width: 50%;
+    padding-top: 10px;
+}
+.icon .img{
+  width: 30px;
+  height: 30px;
+  background-size:100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  top: 50%;
+  left: 50%;
+}
+.wheel-pointer{
+  position: absolute;
+    z-index: 30;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 3.5rem;
+    height: 3.5rem;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .1);
+    border-radius: 50%;
+}
+.wheel-pointer:before {
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid #fcef86;
+    background: #fcef86;
+    content: '';
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .5);
+    -moz-transform-origin: left top;
+    -webkit-transform-origin: left top;
+    -o-transform-origin: left top;
+    -ms-transform-origin: left top;
+    transform-origin: left top;
+    -moz-transform: rotate(30deg) skewY(30deg);
+    -webkit-transform: rotate(30deg) skewY(30deg);
+    -o-transform: rotate(30deg) skewY(30deg);
+    -ms-transform: rotate(30deg) skewY(30deg);
+    transform: rotate(30deg) skewY(30deg);
+}
+.wheel-pointer:after {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #fcef86;
+    content: '';
+    border-radius: 50%;
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffcc00', endColorstr='#ffcc00', GradientType=1);
+}
+.wheel-pointer .go{
+    width:50px;
+    height:50px;
+    background:#ffdc44;
+    z-index:100;
+    position:absolute;
+    top:7%;
+    left:6%;
+    border-radius:50%;
+    color:#fe5b5c;
+    text-align:center;
+    font-size:25px;
+    font-style:normal;
+    line-height:50px;
+}
+.lottery_footer{
+  position: absolute;
+    padding-top: 1rem;
+    height: 6rem;
+    top: 22rem;
+    background: #ffffff;
+    width: 80%;
+    left: 10%;
+    border-radius: 10px;
+}
+.lottery_memberhead{
+      width: 3rem;
+    height: 3rem;
+    border-radius: 90px;
+    border: 2px #fff solid;
+    position: absolute;
+    top: -2rem;
+    left: 42%;
+}
+.lottery_row{
+  width: 100%;
+}
+.lottery_col_6{
+  width: 50%;
+    text-align: center;
+    float: left;
+}
+.btn{
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    height: 2rem;
+    line-height: 1.9rem;
+    margin: 0;
+    padding: 0 0.6rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 1px solid #f90;
+    margin: 0.6rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -moz-transition-duration: 300ms;
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+}
+.btn.btn-danger{
+  background: #ff5555;
+    color: #fff;
+    border: 1px solid #ff5555;
+}
+.btn.btn-primary{
+  background-color: #13afbe;
+    border-color: #13afbe;
+    color:#fff;
+}
+.remark{
+  display: block;
+  width:100%;
+  height:100%;
+  position: absolute;
+  left:0;
+  top:0;
+  z-index:99;
+  background: rgba(0, 0, 0, .8)
+}
+.award-title{
+  color:#fff;
+  text-align: center;
+  margin-top: 5rem;
+  z-index:100;
+}
+.award-img{
+  display: block;
+  width:120px;
+  height:120px;
+  margin: 20px auto;
+}
+.award-btn{
+  display: block;
+  color:#fff;
+  width: 50%;
+  height: 40px;
+  margin: 20px auto;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 10px;
+  background: #fe5b5c;
+}

@@ -1,0 +1,55 @@
+/* page/user/message/message.wxss */
+.av-list{
+  padding: 1rem 0.5rem;
+}
+.av-li{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+}
+.av-img{
+  flex:2;
+  height:5rem;
+  position: relative;
+  border-right:1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+}
+.av-qrcode{
+  height:5rem;
+  width:5rem;
+  border:1px solid #ccc;
+
+}
+.av-quan{
+height:100%;
+width:12px;
+background-repeat:repeat-y;
+position: absolute;
+right: -6px;
+top: 3px;
+}
+.av-text{
+  color:#fff;
+  font-size: 12px;
+  padding: 2px 5px;
+  background:rgba(0, 0, 0, 0.1);
+}
+.av-time{
+  position: absolute;
+  bottom: 0;
+  color:#fff;
+  font-size: 10px;
+  right: 8px;
+  background:rgba(0, 0, 0, 0.1);
+}
+.showimg{
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height:100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9
+}

@@ -30,6 +30,7 @@
     "page/user/wallet/withdrawals",
     "page/user/wallet/billList",
     "page/user/order/orderList",
+    "page/user/message/message",
     "page/user/myRelease/myRelease",
     "page/user/shopManage/productManage",
     "page/user/shopManage/shopOrder/shopOrderList",
@@ -53,12 +54,13 @@
     "page/creditshops/creditlog/index",
     "page/creditshops/create/index",
     "page/creditshops/verify/index",
-    "page/creditshops/index"
+    "page/creditshops/index",
+    "page/lottery/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#23c0f4",
-    "navigationBarTitleText": "泵车无忧信息平台",
+    "navigationBarTitleText": "泵车小程序",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#F8F8F8"
   },

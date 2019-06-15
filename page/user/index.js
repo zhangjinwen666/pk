@@ -27,29 +27,53 @@ function t(o) {
     }, 4200);
 }
 
-var a = getApp();
+var a = getApp(),core  = require('../../utils/core');
 
 Page({
     data: {
         hasLogin: !1,
+        isHx:1,
         userInfo: {
             nickname: "--"
         }
     },
     onLoad: function(o) {
         t(this);
+        this.isHxer();
     },
     bindCallCustomer: function(o) {
         wx.makePhoneCall({
             phoneNumber: "13888888888"
         });
     },
+    //核销员
+    isHxer:function(){
+      var t = this;
+      core.get('lottery/ishxer',{},function(r){
+          t.setData({isHx:!r.isHx});
+      })
+    },
+  openQrcode:function(){
+    wx.scanCode({
+      onlyFromCamera:true,
+      scanType:['qrCode'],
+      success:(r)=>{
+        var data = r.result;
+        core.post('lottery/getqrcode',{data:r.result},function(r){
+          console.log(r);
+            wx.showToast({
+              title: r.message,
+            })
+        }); 
+      }
+    });
+  },
     onReady: function() {},
     onShow: function() {
         var o = this;
       
         a.getUserInfo(function(t) {
-          console.log(a.globalData.hasLogin);
+          console.log(t);
             o.setData({
                 userInfo: t,
               hasLogin: t.isMobile,
