@@ -59,7 +59,9 @@
     "page/lottery/index",
     "page/tech/index",
     "page/tech/detail/index",
-    "page/tech/article/index"
+    "page/tech/article/index",
+    "page/vote/index",
+    "page/vote/detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

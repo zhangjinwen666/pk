@@ -1,0 +1,25 @@
+
+<scroll-view bindscroll="onScroll" bindscrolltolower="onLoadMore" class="scroll_view" scrollY="true">
+    <view bindtouchend="onTouchEnd" bindtouchstart="onTouchStart">
+        <view class="view_new_car" >
+            <navigator url="detail/index?articleid={{item.id}}" wx:for="{{articleList}}">
+                <view class="view_car_item border_bottom">
+                    <image class="img_device_heard" mode="aspectFill" src="{{item.thumb}}" wx:if="{{item.thumb}}"></image>
+                    <view class="view_device_item_right ">
+                        <view class="text_device_title">{{item.votename}}</view>
+                    </view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                </view>
+            </navigator>
+        </view>
+        <view class="page__bd">
+            <view class="weui-loadmore" wx:if="{{loadMoreType}}">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+            <view class="weui-loadmore weui-loadmore_line" wx:else>
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{loadText}}</view>
+            </view>
+        </view>
+    </view>
+</scroll-view>

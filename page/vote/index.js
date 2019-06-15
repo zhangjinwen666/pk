@@ -1,36 +1,15 @@
 // page/tech/index.js
-function t(){
+function t() {
   c = 0, l = 1, h = 0, p = "", d = "";
 }
 
-//获取全部产品
-function n(t){
-  w.get('tech/index/getAllGoods',{page:l},function(e){
-    var a = t.data.goodsList;
-    h = e.total;
-    l == 1 && (a = []);
-    var r = e.goods;
-    if(r.length > 0){
-      a = a.concat(r);
-    }
-    var i = "";
-    w.empty(h) ? i = "暂无更多数据" : a.length == h ? i = "暂无更多数据" : a.length < h && (i = "上啦加载更多"),
-      t.setData({
-        goodsList: a,
-        loadMoreType: !1,
-        loadText: i
-      });
-  });
-}
-
-//获取所有的文章
-function s(t){
-  w.get('tech/index/getAllArticle',{page:l},function(e){
-    console.log(e);
+//获取所有的投票内容
+function s(t) {
+  w.get('vote/index/getAllArticle', { page: l }, function (e) {
     var a = t.data.articleList;
     h = e.total;
     l == 1 && (a = []);
-    var r = e.articles;
+    var r = e.data;
     if (r.length > 0) {
       a = a.concat(r);
     }
@@ -44,16 +23,14 @@ function s(t){
   });
 }
 
-var o = getApp(), w = o.requirejs('core'),c = 0, l = 1, h = 0, p = "", d = "";
+var o = getApp(), w = o.requirejs('core'), c = 0, l = 1, h = 0, p = "", d = "";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tabSelect:0,
-    goodsList:[],
-    articleList:[],
+    articleList: [],
     loadMoreType: !0
   },
 
@@ -62,6 +39,8 @@ Page({
    */
   onLoad: function (options) {
     
+    
+   
   },
 
   /**
@@ -71,16 +50,10 @@ Page({
 
   },
 
-  onTabSelect: function (t) {
-    var a = t.currentTarget.dataset.index;
-    0 == a ? (l = 1, n(this)) : 1 == a && s(this), this.setData({
-        tabSelect: a
-      });
-  },
   onTouchStart: function (t) {
   },
   onTouchEnd: function (t) {
-    
+
   },
 
   /**
@@ -94,12 +67,14 @@ Page({
           url: "/page/user/common/login"
         });
         return;
-      } else {
+      }else{
         t(), s(_this);
       }
     });
   },
-
+  onLoadMore: function (t) {
+    this.data.articleList.length < h && (l++ , s(this));
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -120,10 +95,7 @@ Page({
   onPullDownRefresh: function () {
 
   },
-  onLoadMore: function (t) {
-    this.data.tabSelect == 0 && this.data.shopList.length < h && (l++ , n(this));
-    this.data.tabSelect == 1 && this.data.articleList.length < h && (l++ , s(this));
-  },
+
   /**
    * 页面上拉触底事件的处理函数
    */
