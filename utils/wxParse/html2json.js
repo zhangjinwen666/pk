@@ -8,79 +8,74 @@ function t(e) {
 }
 
 function r(e) {
-    return e.replace(/\n+/g, "").replace(/<!--.*?-->/gi, "").replace(/\/\*.*?\*\//gi, "").replace(/[ ]+</gi, "<");
+    return e.replace(/\r?\n+/g, "").replace(/<!--.*?-->/gi, "").replace(/\/\*.*?\*\//gi, "").replace(/[ ]+</gi, "<");
 }
 
 function s(e) {
     var t = [];
-    if (0 == n.length || !i) return (d = {}).node = "text", d.text = e, s = [ d ];
+    if (0 == a.length || !o) return (d = {}).node = "text", d.text = e, s = [ d ];
     e = e.replace(/\[([^\[\]]+)\]/g, ":$1:");
-    for (var r = new RegExp("[:]"), s = e.split(r), a = 0; a < s.length; a++) {
-        var l = s[a], d = {};
-        i[l] ? (d.node = "element", d.tag = "emoji", d.text = i[l], d.baseSrc = o) : (d.node = "text", 
+    for (var r = new RegExp("[:]"), s = e.split(r), i = 0; i < s.length; i++) {
+        var l = s[i], d = {};
+        o[l] ? (d.node = "element", d.tag = "emoji", d.text = o[l], d.baseSrc = n) : (d.node = "text", 
         d.text = l), t.push(d);
     }
     return t;
 }
 
-var a = "https", n = "", o = "", i = {}, l = require("./wxDiscode.js"), d = require("./htmlparser.js"), c = (e("area,base,basefont,br,col,frame,hr,img,input,link,meta,param,embed,command,keygen,source,track,wbr"), 
-e("br,a,code,address,article,applet,aside,audio,blockquote,button,canvas,center,dd,del,dir,div,dl,dt,fieldset,figcaption,figure,footer,form,frameset,h1,h2,h3,h4,h5,h6,header,hgroup,hr,iframe,ins,isindex,li,map,menu,noframes,noscript,object,ol,output,p,pre,section,script,table,tbody,td,tfoot,th,thead,tr,ul,video")), u = e("abbr,acronym,applet,b,basefont,bdo,big,button,cite,del,dfn,em,font,i,iframe,img,input,ins,kbd,label,map,object,q,s,samp,script,select,small,span,strike,strong,sub,sup,textarea,tt,u,var"), p = e("colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr");
+var a = "", n = "", o = {}, i = require("./wxDiscode.js"), l = require("./htmlparser.js"), d = (e("area,base,basefont,br,col,frame,hr,img,input,link,meta,param,embed,command,keygen,source,track,wbr"), 
+e("br,a,code,address,article,applet,aside,audio,blockquote,button,canvas,center,dd,del,dir,div,dl,dt,fieldset,figcaption,figure,footer,form,frameset,h1,h2,h3,h4,h5,h6,header,hgroup,hr,iframe,ins,isindex,li,map,menu,noframes,noscript,object,ol,output,p,pre,section,script,table,tbody,td,tfoot,th,thead,tr,ul,video")), c = e("abbr,acronym,applet,b,basefont,bdo,big,button,cite,del,dfn,em,font,i,iframe,img,input,ins,kbd,label,map,object,q,s,samp,script,select,small,span,strike,strong,sub,sup,textarea,tt,u,var"), u = e("colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr");
 
 e("checked,compact,declare,defer,disabled,ismap,multiple,nohref,noresize,noshade,nowrap,readonly,selected"), 
-e("wxxxcode-style,script,style,view,scroll-view,block");
-
-module.exports = {
-    html2json: function(e, n) {
-        e = r(e = t(e)), e = l.strDiscode(e);
-        var o = [], i = {
-            node: n,
+e("wxxxcode-style,script,style,view,scroll-view,block"), module.exports = {
+    html2json: function(e, a) {
+        e = r(e = t(e)), e = i.strDiscode(e);
+        var n = [], o = {
+            node: a,
             nodes: [],
             images: [],
             imageUrls: []
-        }, m = 0;
-        return d(e, {
+        }, p = 0;
+        return l(e, {
             start: function(e, t, r) {
                 var s = {
                     node: "element",
                     tag: e
                 };
-                if (0 === o.length ? (s.index = m.toString(), m += 1) : (void 0 === (b = o[0]).nodes && (b.nodes = []), 
-                s.index = b.index + "." + b.nodes.length), c[e] ? s.tagType = "block" : u[e] ? s.tagType = "inline" : p[e] && (s.tagType = "closeSelf"), 
+                if (0 === n.length ? (s.index = p.toString(), p += 1) : (void 0 === (v = n[0]).nodes && (v.nodes = []), 
+                s.index = v.index + "." + v.nodes.length), d[e] ? s.tagType = "block" : c[e] ? s.tagType = "inline" : u[e] && (s.tagType = "closeSelf"), 
                 0 !== t.length && (s.attr = t.reduce(function(e, t) {
                     var r = t.name, a = t.value;
-                    return "class" == r && (console.dir(a), s.classStr = a), "style" == r && (console.dir(a), 
-                    s.styleStr = a), a.match(/ /) && (a = a.split(" ")), e[r] ? Array.isArray(e[r]) ? e[r].push(a) : e[r] = [ e[r], a ] : e[r] = a, 
+                    return "class" == r && (s.classStr = a), "style" == r && (s.styleStr = a), a.match(/ /) && (a = a.split(" ")), e[r] ? Array.isArray(e[r]) ? e[r].push(a) : e[r] = [ e[r], a ] : e[r] = a, 
                     e;
                 }, {})), "img" === s.tag) {
-                    s.imgIndex = i.images.length;
-                    var d = s.attr.src;
-                    "" == d[0] && d.splice(0, 1);
-                    var g = "http://www.tgj168.com/";
-                    (d = l.urlToHttpUrl(d, a)).indexOf("tgj168.com/") && (g = ""), s.attr.src = g + d, 
-                    s.from = n, i.images.push(s), i.imageUrls.push(d);
+                    s.imgIndex = o.images.length, s.attr = s.attr || {};
+                    var l = s.attr.src || [];
+                    "" == l[0] && l.splice(0, 1), l = i.urlToHttpUrl(l, "https"), s.attr.src = l, s.from = a, 
+                    o.images.push(s), o.imageUrls.push(l);
                 }
                 if ("font" === s.tag) {
-                    var f = [ "x-small", "small", "medium", "large", "x-large", "xx-large", "-webkit-xxx-large" ], h = {
+                    var g = [ "x-small", "small", "medium", "large", "x-large", "xx-large", "-webkit-xxx-large" ], m = {
                         color: "color",
                         face: "font-family",
                         size: "font-size"
                     };
                     s.attr.style || (s.attr.style = []), s.styleStr || (s.styleStr = "");
-                    for (var v in h) if (s.attr[v]) {
-                        var x = "size" === v ? f[s.attr[v] - 1] : s.attr[v];
-                        s.attr.style.push(h[v]), s.attr.style.push(x), s.styleStr += h[v] + ": " + x + ";";
+                    for (var f in m) if (s.attr[f]) {
+                        var h = "size" === f ? g[s.attr[f] - 1] : s.attr[f];
+                        s.attr.style.push(m[f]), s.attr.style.push(h), s.styleStr += m[f] + ": " + h + ";";
                     }
                 }
-                if ("source" === s.tag && (i.source = s.attr.src), r) {
-                    var b = o[0] || i;
-                    void 0 === b.nodes && (b.nodes = []), b.nodes.push(s);
-                } else o.unshift(s);
+                if ("source" === s.tag && (o.source = s.attr.src), r) {
+                    var v = n[0] || o;
+                    void 0 === v.nodes && (v.nodes = []), v.nodes.push(s);
+                } else n.unshift(s);
             },
             end: function(e) {
-                var t = o.shift();
-                if (t.tag !== e && console.error("invalid state: mismatch end tag"), "video" === t.tag && i.source && (t.attr.src = i.source, 
-                delete result.source), 0 === o.length) i.nodes.push(t); else {
-                    var r = o[0];
+                var t = n.shift();
+                if (t.tag !== e && console.error("invalid state: mismatch end tag"), "video" === t.tag && o.source && (t.attr.src = o.source, 
+                delete o.source), 0 === n.length) o.nodes.push(t); else {
+                    var r = n[0];
                     void 0 === r.nodes && (r.nodes = []), r.nodes.push(t);
                 }
             },
@@ -90,17 +85,17 @@ module.exports = {
                     text: e,
                     textArray: s(e)
                 };
-                if (0 === o.length) i.nodes.push(t); else {
-                    var r = o[0];
+                if (0 === n.length) t.index = p.toString(), p += 1, o.nodes.push(t); else {
+                    var r = n[0];
                     void 0 === r.nodes && (r.nodes = []), t.index = r.index + "." + r.nodes.length, 
                     r.nodes.push(t);
                 }
             },
             comment: function(e) {}
-        }), i;
+        }), o;
     },
     emojisInit: function() {
         var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "", t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "/wxParse/emojis/", r = arguments[2];
-        n = e, o = t, i = r;
+        a = e, n = t, o = r;
     }
 };

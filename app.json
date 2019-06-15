@@ -55,7 +55,10 @@
     "page/creditshops/create/index",
     "page/creditshops/verify/index",
     "page/creditshops/index",
-    "page/lottery/index"
+    "page/lottery/index",
+    "page/tech/index",
+    "page/tech/detail/index",
+    "page/tech/article/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

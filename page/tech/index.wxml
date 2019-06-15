@@ -1,0 +1,55 @@
+
+<scroll-view bindscroll="onScroll" bindscrolltolower="onLoadMore" class="scroll_view" scrollY="true">
+    <view bindtouchend="onTouchEnd" bindtouchstart="onTouchStart">
+       
+        <view class="view_tablayout">
+            <view bindtap="onTabSelect" class="view_tablayout_item" data-index="0">
+                <view class="{{tabSelect==0?'view_tablayout_title':'view_tablayout_title_un'}}">全部产品</view>
+            </view>
+            <view bindtap="onTabSelect" class="view_tablayout_item" data-index="1">
+                <view class="{{tabSelect==1?'view_tablayout_title':'view_tablayout_title_un'}}">资料库</view>
+            </view>
+        </view>
+        <view wx:if="{{tabSelect == 0}}">
+            <navigator url="detail/index?goodsid={{item.id}}" wx:for="{{goodsList}}">
+                <view class="view_shop_item">
+                    <image class="img_shop_heard" src="{{item.thumb}}"></image>
+                    <view class="view_shop_item_right">
+                        <view class="item_row_one">{{item.productname}}</view>
+                        
+                        <view class="row_three">
+                            类型：<view class="text_address">{{item.catename}}</view>
+                        </view>
+                        <view class="row_four" style="font-size:13px;color:#999;">
+                            型号：<view class="item_type">{{item.modelname}}</view>
+                        </view>
+                        <view style="color:red;position:absolute;right:0;top:30rpx;">
+                          ￥{{item.money}}
+                        </view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+        <view class="view_new_car" wx:else>
+            <navigator url="article/index?articleid={{item.id}}" wx:for="{{articleList}}">
+                <view class="view_car_item border_bottom">
+                    <image class="img_device_heard" mode="aspectFill" src="{{item.resp_img}}"></image>
+                    <view class="view_device_item_right">
+                        <view class="text_device_title">{{item.article_title}}</view>
+                        <view class="text_device_perameter" style='margin-top:30rpx;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;max-width:470rpx;'>{{item.resp_desc}}</view>
+                        
+                    </view>
+                </view>
+            </navigator>
+        </view>
+        <view class="page__bd">
+            <view class="weui-loadmore" wx:if="{{loadMoreType}}">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+            <view class="weui-loadmore weui-loadmore_line" wx:else>
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{loadText}}</view>
+            </view>
+        </view>
+    </view>
+</scroll-view>

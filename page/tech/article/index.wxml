@@ -1,0 +1,32 @@
+<loading bindchange="loadingChange" hidden="{{hidden}}">
+    加载中...
+  </loading>
+  <import src="/utils/wxParse/wxParse.wxml"></import>
+<view wx:if="{{isshow}}">
+<view style="margin-left:10rpx;margin-right:10rpx;">
+<view style='text-align:center;font-size:60rpx;'>{{article.article_title}}</view>
+<view style="display:flex;">
+<view style='width:50%;text-align:center;font-size:30rpx;'>作者:  {{article.article_author}}</view>
+<view style='width:50%;text-align:center;font-size:30rpx;'>{{article.article_date_v}}</view>
+</view>
+<view class="text wxParse">
+    <template is='wxParse' data="{{wxParseData:article_content.nodes}}"></template>
+</view>
+<view class="listTop" style="margin-top:12rpx">
+<view class="statusBtm">
+        <image class="statusIcon" src="/image/list_looked.png"></image>
+        <view class="statusTitle">{{article.viewcnt}}人浏览</view>
+    </view>
+    <view catchtap="likeClick" class="statusBtm">
+        <image class="statusIcon" src="/image/{{clickupid>0?'d-1':'list_click'}}.png"></image>
+        <view class="statusTitle">{{article.clickupcnt}}人点赞</view>
+    </view>
+    <view class="statusBtm" data-touserid="">
+        
+    </view>
+    <view class="statusBtm">
+       
+    </view>
+    </view>
+</view>
+</view>

@@ -27,11 +27,11 @@ function i(e) {
 }
 
 function r(e, a, i, r) {
-    var o, d = i.data[r];
-    if (d && 0 != d.images.length) {
-        var s = d.images, l = n(e.detail.width, e.detail.height, i, r), g = s[a].index, h = "" + r, m = !0, u = !1, v = void 0;
+    var d, o = i.data[r];
+    if (o && 0 != o.images.length) {
+        var s = o.images, g = n(e.detail.width, e.detail.height, i, r), l = s[a].index, h = "" + r, m = !0, u = !1, v = void 0;
         try {
-            for (var f, w = g.split(".")[Symbol.iterator](); !(m = (f = w.next()).done); m = !0) h += ".nodes[" + f.value + "]";
+            for (var f, w = l.split(".")[Symbol.iterator](); !(m = (f = w.next()).done); m = !0) h += ".nodes[" + f.value + "]";
         } catch (e) {
             u = !0, v = e;
         } finally {
@@ -42,42 +42,50 @@ function r(e, a, i, r) {
             }
         }
         var c = h + ".width", x = h + ".height";
-        i.setData((o = {}, t(o, c, l.imageWidth), t(o, x, l.imageheight), o));
+        i.setData((d = {}, t(d, c, g.imageWidth), t(d, x, g.imageheight), d));
     }
 }
 
 function n(e, t, a, i) {
-    var r = 0, n = 0, o = 0, d = {}, g = a.data[i].view.imagePadding;
-    return r = s - 2 * g, l, e > r ? (o = (n = r) * t / e, d.imageWidth = n, d.imageheight = o) : (d.imageWidth = e, 
-    d.imageheight = t), d;
+    var r = 0, n = 0, d = 0, o = {}, l = a.data[i].view.imagePadding;
+    return r = s - 2 * l, e > r ? (d = (n = r) * t / e, o.imageWidth = n, o.imageheight = d) : (o.imageWidth = e, 
+    o.imageheight = t), (s <= 0 || g <= 0) && wx.getSystemInfo({
+        success: function(t) {
+            s = t.windowWidth, g = t.windowHeight, o.imageWidth = e > s ? s - 2 * l : e;
+        }
+    }), o;
 }
 
-var o = e(require("./showdown.js")), d = e(require("./html2json.js")), s = 0, l = 0;
+var d = e(require("./showdown.js")), o = e(require("./html2json.js")), s = 0, g = 0;
 
 wx.getSystemInfo({
     success: function(e) {
-        s = e.windowWidth, l = e.windowHeight;
+        s = e.windowWidth, g = e.windowHeight;
     }
 }), module.exports = {
     wxParse: function() {
-        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "wxParseData", t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "html", r = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : '<div class="color:red;">数据不能为空</div>', n = arguments[3], s = arguments[4], l = n, g = {};
-        if ("html" == t) g = d.default.html2json(r, e), console.log(JSON.stringify(g, " ", " ")); else if ("md" == t || "markdown" == t) {
-            var h = new o.default.Converter().makeHtml(r);
-            g = d.default.html2json(h, e), console.log(JSON.stringify(g, " ", " "));
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "wxParseData", t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "html", r = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : '<div class="color:red;">数据不能为空</div>', n = arguments[3], s = arguments[4];
+        if (r && "" != r) {
+            var g = n, l = {};
+          if ("html" == t) l = o.default.html2json(r, e),console.log(JSON.stringify(g, " ", " ")); else if ("md" == t || "markdown" == t) {
+              
+                var h = new d.default.Converter().makeHtml(r);
+                l = o.default.html2json(h, e);
+            }
+            l.view = {}, l.view.imagePadding = 0, void 0 !== s && (l.view.imagePadding = s);
+            var m = {};
+            m[e] = l, g.setData(m), g.wxParseImgLoad = i, g.wxParseImgTap = a;
         }
-        g.view = {}, g.view.imagePadding = 0, void 0 !== s && (g.view.imagePadding = s);
-        var m = {};
-        m[e] = g, l.setData(m), l.wxParseImgLoad = i, l.wxParseImgTap = a;
     },
     wxParseTemArray: function(e, t, a, i) {
-        for (var r = [], n = i.data, o = null, d = 0; d < a; d++) {
-            var s = n[t + d].nodes;
+        for (var r = [], n = i.data, d = null, o = 0; o < a; o++) {
+            var s = n[t + o].nodes;
             r.push(s);
         }
-        e = e || "wxParseTemArray", (o = JSON.parse('{"' + e + '":""}'))[e] = r, i.setData(o);
+        e = e || "wxParseTemArray", (d = JSON.parse('{"' + e + '":""}'))[e] = r, i.setData(d);
     },
     emojisInit: function() {
         var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "", t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "/wxParse/emojis/", a = arguments[2];
-        d.default.emojisInit(e, t, a);
+        o.default.emojisInit(e, t, a);
     }
 };

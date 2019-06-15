@@ -51,6 +51,7 @@ function n(t) {
       }
       e = e.concat(o);
     }
+    
     w.empty(h) ? i = "暂无更多数据" : e.length == h ? i = "暂无更多数据" : e.length < h && (i = "上啦加载更多"),
       t.setData({
         shopList: e,
@@ -62,12 +63,22 @@ function n(t) {
 }
 
 function s(t) {
+  t.setData({
+    loadMoreType: !0
+  });
   w.get('shopuser/goods/getallgooods', { page: l, goodstype: 1 }, function (a) {
-    var e = a.goods;
+    var e = t.data.shopList;
+    h = parseInt(a.total);
+    l == 1 && (e = []);
+    var o = a.goods;
+    if (o.length > 0) {
+      e = e.concat(o);
+    }
+    w.empty(h) ? i = "暂无更多数据" : e.length == h ? i = "暂无更多数据" : e.length < h && (i = "上啦加载更多");
     t.setData({
       productList: e,
       loadMoreType: !1,
-      loadText: "没有更多了"
+      loadText: i
     });
   })
 }
@@ -177,6 +188,7 @@ Page({
   },
   onLoadMore: function (t) {
     this.data.tabSelect < 2 && this.data.shopList.length < h && (l++ , n(this));
+    this.data.tabSelect == 2 && this.data.productList.length < h && (l++ , s(this));
   },
   onReady: function () { },
   onShow: function () { },
