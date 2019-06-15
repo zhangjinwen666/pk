@@ -53,6 +53,12 @@ Page({
           t.setData({isHx:!r.isHx});
       })
     },
+  jumpSign:function(){
+    wx.navigateTo({
+      url: 'sign/sign',
+    });
+  
+  },
   openQrcode:function(){
     wx.scanCode({
       onlyFromCamera:true,

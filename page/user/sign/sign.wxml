@@ -1,0 +1,2 @@
+<!--page/user/sign/sign.wxml-->
+<web-view src="{{url}}"></web-view>

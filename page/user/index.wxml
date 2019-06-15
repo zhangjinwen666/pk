@@ -4,6 +4,8 @@
         <image animation="{{anima}}" class="avatar-image" src="{{userInfo.avatarUrl}}"></image>
         <view class="avatar-title">{{userInfo.nickName}}</view>
     </view>
+ 
+    <view bindtap="jumpSign" class="sign" hoverClass="weui-cell_active">每日签到</view>
     <navigator class="lottetry" hoverClass="weui-cell_active" url="/page/lottery/index">参与抽奖</navigator>
 </view>
 <block wx:if="{{hasLogin}}">

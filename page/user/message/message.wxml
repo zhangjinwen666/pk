@@ -5,9 +5,9 @@
         <view class="av-img" style="background:url({{item.thumb}}) no-repeat;  background-size:100% 100%;">
             <text class="av-text">面值:{{item.num}}元</text>
             <view class="av-quan" style="background:url('/image/quan.png')"></view>
-            <view class="av-time">2019-06-14 10:00:00</view>
+            <text class="av-status">{{item.status_txt}}</text>
+            <view class="av-time">{{item.createtime}}</view>
           </view>
-        
         <image bindtap="showImg" data-src="{{item.qrcode}}" class="av-qrcode" src="{{item.qrcode}}"></image>
     </view>
 </view>
