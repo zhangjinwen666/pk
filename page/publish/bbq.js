@@ -133,7 +133,17 @@ Page({
                 i.imagelist = t, wx.showLoading({
                     title: "正在提交"
                 }), console.log(i),core.post('index/sendmsg',{data:i},function(t){
-                
+                  //发帖积分奖励
+                  if (t.error == 1) {
+                    core.get('index/checkEverDay', { type: 'send_credit' }, function (h) {
+                      if (h.error == 1) {
+                        wx.showToast({
+                          title: h.message,
+                          icon: 'none'
+                        })
+                      }
+                    });
+                  }
                   if (console.log(t), wx.showToast({title: t.message}), !e.empty(d.blockid)) {
                     var s = getCurrentPages(), o = s[s.length - 2];
                     if ("function" == typeof o.changeData) {
@@ -146,6 +156,7 @@ Page({
                       c.detail = l, o.changeData(c);
                     }
                   }
+                  
                   d.threadid = t.data.id, d.data.isTop ? (a(t.data.threadid, d.data.selectedDay, d),
                     d.startToPay = !0, d.payResult = !1) : setTimeout(function () {
                       wx.redirectTo({

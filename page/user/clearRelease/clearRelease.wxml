@@ -1,0 +1,4 @@
+<view class="weui-cells weui-cells_after-title">
+    <bbqCell bindchangedata="changeData" data="{{item}}" index="{{index}}" isDelete="true" showMnue="" mine="true" isupdate="{{isupdate}}" wx:for="{{list}}" wx:key="{{this}}"></bbqCell>
+</view>
+<loadmore loadstatus="{{loadstatus}}"></loadmore>

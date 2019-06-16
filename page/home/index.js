@@ -12,9 +12,10 @@ function a(t) {
     0 == t.data.loadstatus && (t.setData({
         loadstatus: 1
     }), t.page++, core.get('index/getmsg', {page: t.page,search: t.search},function(a){
-      
+          
           t.total = a.total;
           var n = {}, i = t.data.list;
+      n.callcredit = a.callcredit;
       console.log(a)
       n.list = a.list, n.list.length >= t.total ? n.loadstatus = 2 : n.loadstatus = 0, 
           t.setData(n), wx.stopPullDownRefresh();

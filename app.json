@@ -33,6 +33,7 @@
     "page/user/message/message",
     "page/user/sign/sign",
     "page/user/myRelease/myRelease",
+    "page/user/clearRelease/clearRelease",
     "page/user/shopManage/productManage",
     "page/user/shopManage/shopOrder/shopOrderList",
     "page/home/list",

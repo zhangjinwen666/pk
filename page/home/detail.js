@@ -105,6 +105,16 @@ Page((o = {
             core.post('index/sendcomment',{
               data:i
             },function(t){
+                    if (t.error == 1) {
+                      core.get('index/checkEverDay', { type: 'msg_credit' }, function (h) {
+                        if (h.error == 1) {
+                          wx.showToast({
+                            title: h.message,
+                            icon: 'none'
+                          })
+                        }
+                      });
+                    }
                     var e = t.list, i = s.data.list;
                     console.log(e), void 0 === i && (i = []), 
                     i.unshift(e);
@@ -132,8 +142,17 @@ Page((o = {
                             //r.showMessage();
                             wx.showToast({
                               title: t.message,
-                            }) 
-                            console.log(t.message);
+                            });
+                            if (t.error == 1) {
+                              core.get('index/checkEverDay', { type:'msg_delete_credit'},function(h){
+                                  if (h.error == 1) {
+                                    wx.showToast({
+                                      title: h.message,
+                                      icon: 'none'
+                                    })
+                                  }
+                              });
+                            } 
                             var e = a.idx, i = s.data.thread, o = s.data.list;
                             console.log(o), o.splice(e, 1), i.postcnt = parseInt(i.postcnt) - 1, s.setData({
                                 thread: i,

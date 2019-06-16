@@ -8,7 +8,6 @@ Component({
         data: {
             type: Object,
             observer: function(a, e, i) {
-              
               a.imageList = a.imagelist, a.time = a.createtime, 
                 this.setData({
                     data: a
@@ -21,13 +20,29 @@ Component({
         mine: {
             type: Boolean,
             value: !1
+        },
+        showMnue : {
+          type: Boolean,
+          value: 1
+        },
+        isupdate : {
+          type:Boolean,
+          value: !1,
+        },
+        callcredit : {
+          type:Float32Array,
+          value:0.00,
+        },
+        isDelete:{
+          type:Boolean,
+          value:!1
         }
     },
     data: {
         showCommentView: !1,
         showTips: !1,
         tipsIndex: 0,
-        tips: []
+        tips: [],
     },
     methods: {
         commentClick: function(a) {
@@ -152,8 +167,25 @@ Component({
         },
         call: function(t) {
             var a = this.data.data.mobile;
-          
-            wx.makePhoneCall({
+            //查看电话需要积分
+          var credit1 = this.data.callcredit;
+
+          credit1 ? core.confirm('注意:每次查看电话将会消耗' + credit1 + '积分哦',function(){
+            core.get('index/lookmobile',{},(c)=>{
+               console.log(c)
+                if (c.error == -1) {
+                 wx.showToast({
+                   title: c.message,
+                   icon: 'none',
+                 });
+                  return;
+                }   
+                wx.makePhoneCall({
+                  phoneNumber: a
+                }); 
+              });
+
+          }) : wx.makePhoneCall({
                 phoneNumber: a
             });
         },
@@ -196,19 +228,29 @@ Component({
                     a.data = i, a.index = e.data.index, e.triggerEvent("changedata", a);
           })  
         },
-        deleteAction: function(a) {
+      deleteClear: function(a) {
             var e = this;
            
             wx.showModal({
                 title: "提示",
-                content: "是否确认删除此内容",
+                content: "是否确认回收此内容",
                 success: function(a) {
                     a.confirm && (wx.showLoading({
-                        title: "正在删除"
+                        title: "正在回收"
                     }), core.get('index/deletemsg',{threadid:e.data.data.id},function(a){
                           wx.showToast({
                             title: a.message,
                           });
+                          if (a.error == 1) {
+                            core.get('index/checkEverDay', {type:'send_delete_credit'},function(h){
+                                if (h.error == 1) {
+                                  wx.showToast({
+                                    title: h.message,
+                                    icon: 'none'
+                                  });
+                                }
+                            });
+                          }
                           var i = {};
                           
                           i.index = e.data.index,e.triggerEvent("changedata",i);
@@ -217,6 +259,48 @@ Component({
                 }
             });
         },
+        //删除
+      deleteAction: function (a) {
+        var e = this;
+        wx.showModal({
+          title: "提示",
+          content: "是否确认删除此内容",
+          success: function (a) {
+            a.confirm && (wx.showLoading({
+              title: "正在删除"
+            }), core.get('index/deletemsgcok', { threadid: e.data.data.id }, function (a) {
+              wx.showToast({
+                title: a.message,
+              });
+              var i = {};
+              i.index = e.data.index, e.triggerEvent("changedata", i);
+            })
+            );
+          }
+        });
+      },
+      //恢复
+      statusAction: function (a) {
+        var e = this;
+
+        wx.showModal({
+          title: "提示",
+          content: "是否确认恢复此内容",
+          success: function (a) {
+            a.confirm && (wx.showLoading({
+              title: "正在恢复"
+            }), core.get('index/remsg', { threadid: e.data.data.id }, function (a) {
+              wx.showToast({
+                title: a.message,
+                icon:'none'
+              });
+              var i = {};
+              i.index = e.data.index,a.error && e.triggerEvent("changedata", i);
+            })
+            );
+          }
+        });
+      },
         editAction: function(t) {
             var a = this;
           console.log(a)

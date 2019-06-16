@@ -162,6 +162,17 @@
     height: 22rpx;
     color: white;
 }
+.tagg {
+    text-align: center;
+    margin-right: 10rpx;
+    background: rgb(222, 224, 224);
+    border-radius: 3rpx;
+    font-size: 20rpx;
+    padding: 0 0.6rpx;
+    line-height: 22rpx;
+    height: 22rpx;
+    color: white;
+}
 
 .call {
     width: 44rpx;

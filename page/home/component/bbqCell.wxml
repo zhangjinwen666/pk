@@ -4,10 +4,11 @@
             <image class="avatar" src="{{data.avatar}}"></image>
             <view class="listInfoBtm">
                 <view class="listInfoTitle">{{data.nickname}}</view>
+                
                 <view class="listTagBtm">
                     <view class="tag" wx:if="{{data.topflag==1}}">置顶</view>
                     <view class="tag">{{data.navname}}</view>
-
+                    <view class="tagg">{{data.statusname}}</view>
                 </view>
             </view>
         </view>
@@ -31,9 +32,11 @@
     <view class="listTop" style="{{mine==false?'margin-top:-60rpx':''}}">
         <block wx:if="{{mine}}">
             <view class="editBtm">
-                <view catchtap="deleteAction" class="delete customButton">删除</view>
-                <view catchtap="editAction" class="buttonMargin customButton">编辑</view>
-                <view catchtap="reloadAction" class="buttonMargin customButton">刷新</view>
+                <view wx:if="{{isDelete}}" catchtap="deleteAction" class="delete customButton">删除</view>
+                <view wx:if="{{isDelete}}" catchtap="statusAction" class="buttonMargin customButton">恢复</view>
+                <view wx:if="{{showMnue}}" catchtap="deleteClear" class="buttonMargin customButton">回收站</view>
+                <view wx:if="{{isupdate && showMnue}}" catchtap="editAction" class="buttonMargin customButton">编辑</view>
+                <view wx:if="{{showMnue}}" catchtap="reloadAction" class="buttonMargin customButton">刷新</view>
             </view>
             <view class="editBtm">
                 <view class="statusBtm">

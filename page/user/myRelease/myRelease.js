@@ -13,6 +13,7 @@ function a(t) {
           var o = t.data.list;
           for (var c  in s) o.push(s[c]);
           var e = {};
+          e.isupdate = a.isupdate;
           e.list = o,o.length >= a.total ? e.loadstatus = 2 : e.loadstatus = 0,console.log(e),t.setData(e),wx.stopPullDownRefresh();
       }));
 }
@@ -20,7 +21,10 @@ function a(t) {
 var s = getApp(),core = require('../../../utils/core');
 
 Page({
-    data: {},
+    data: {
+      //是够能编辑
+      isupdate:!1
+    },
     onLoad: function(a) {
         t(this);
     },

@@ -36,7 +36,7 @@
 </view>
 <view class="hot">热门推荐</view>
 <view class="weui-cells weui-cells_after-title">
-    <bbqCell bindchangedata="changeData" data="{{item}}" index="{{index}}" wx:for="{{list}}" wx:key="{{this}}"></bbqCell>
+    <bbqCell bindchangedata="changeData" callcredit="{{callcredit}}" data="{{item}}" index="{{index}}" wx:for="{{list}}" wx:key="{{this}}"></bbqCell>
 </view>
 <loadmore loadstatus="{{loadstatus}}"></loadmore>
 <view class="fixBar">
