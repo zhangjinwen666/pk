@@ -22,6 +22,7 @@ App({
       }
     });
   },
+  //时间
   getCurrentTime : function() {
     return Date.parse(new Date()) / 1000;
   },
@@ -96,7 +97,7 @@ App({
                 o.globalData.hasLogin = e.isMobile,o.globalData.userId = e.id,n.hasLogin = 1,n.isMobile = e.isMobile,n.isHx = e.isHx,i.userInfo.openid = e.openId, i.userInfo.id = e.id, i.userInfo.uniacid = e.uniacid,
                   i.needauth = 0, o.setCache("userinfo", i.userInfo, 7200), o.setCache("userinfo_openid", i.userInfo.openid),
                   o.setCache('COOKIE','PHPSESSID='+i.userInfo.openid),o.setCache("userinfo_id", e.id), o.getSet(), t && "function" == typeof t && t(n);
-              }); 
+              });
             },
             fail: function () {
               e.get("wxapp/check", {

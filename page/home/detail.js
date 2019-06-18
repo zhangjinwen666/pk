@@ -196,13 +196,12 @@ Page((o = {
     //点赞
     clickupClick: function(t) {
         var e = "", i = {};
-        i.threadid = this.data.thread.id;
-        var s = 0;
-      this.data.thread.clickupid > 0 ? (e = "index/cancelclickupcnt", 
-        s = 0) : (e = "index/saveclickupcnt", s = 1), 
+        var s = 0; 
+      this.data.thread.clickupid > 0 ? (i.threadid = this.data.thread.id,e = "index/cancelclickupcnt", 
+        s = 0) : (i.id = this.data.thread.id,e = "index/saveclickupcnt", s = 1), 
         wx.showLoading({
             title: "正在提交"
-        });
+        }); 
         var o = this;
         core.get(e,i,function(t){
               wx.showToast({
