@@ -1,5 +1,8 @@
-
+<import src="../../utils/wxParse/wxParse.wxml"/>
 <view class="lottery-content" style="background:url('{{backImg}}') no-repeat; background-size:100% 100%;">
+    <view bindtap='contentHidden' class="remark-content" hidden='{{showContent}}'>
+         <view class="box-content"><template is="wxParse" data="{{wxParseData:mingx.nodes}}" /></view>
+    </view>
     <view class="remark" hidden='{{awardRemark}}'>
         <view class="award-title">{{awardTitle}}</view>
         <image class="award-img" src="{{awardImg}}"></image>
@@ -8,6 +11,7 @@
     <view class="lottery-title">
       <view class="lottery-text" style="color: #ffffff;background: #000000;opacity: 0.7;" style="--marqueeWidth--:{{-marquee.width}}em;--marqueeDuration--:{{marquee.duration}}s">{{marquee.text}}</view>
     </view>
+
     <view class="lottery">
       <view class="wheel" style="overflow: hidden; padding: 0; width: 16.4rem; height: 16.4rem">
           <view class="wheel-light">
@@ -73,10 +77,10 @@
       <view style="text-align: center;font-size:13px">剩余抽奖次数:<text style="color: #ff3f4b">{{go}}</text>次</view>
       <view class="lottery_row">
          <view class="lottery_col_6">
-          <navigator class="btn btn-danger" style="width:80%;margin:10px auto;" src="">奖励说明</navigator>
+          <view bindtap="showContent" class="btn btn-danger" style="width:80%;margin:10px auto;">奖励说明</view>
          </view>
-         <view class="lottery_col_6">
-          <navigator class="btn btn-primary" style="width:80%;margin:10px auto;" src="">我的中奖纪录</navigator>
+         <view class="lottery_col_6"> 
+          <navigator class="btn btn-primary" style="width:80%;margin:10px auto;" url="/page/lottery/log" >我的中奖纪录</navigator>
          </view>
       </view>
     </view>

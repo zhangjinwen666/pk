@@ -38,6 +38,7 @@ module.exports = {
         var n = getApp();
         if (n.empty(i)) "function" == typeof c && c([]); else {
           var s = 'usbnavs' + i, m = wx.getStorageSync(s); (n.getCurrentTime() - (m.time || 0)) < n.catchtime ? typeof c == 'function' && (t("本地缓存获取子分类列表"),c(m.list)) : u.get('index/getsubnav',{id:i},function(a){
+            
               var l = {};
               l.time = n.getCurrentTime();
               l.list = a.subnav;

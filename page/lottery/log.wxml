@@ -1,0 +1,5 @@
+<!--page/lottery/log.wxml-->
+<view class="list" wx:for="{{list}}" wx:key="this">
+  <view class="msg">{{item.message}}</view>
+  <view class="time">{{item.createtime}}</view>
+</view>

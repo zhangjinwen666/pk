@@ -24,10 +24,11 @@ function a(t) {
 
 function e(t) {
   core.get('index/getmsg',{id:t.threadid},function(e){
-      
+     
         var i = e.list;
         t.setData({
-          thread: i
+          thread: i,
+          callcredit: e.callcredit
         }), a(t);
     });
 }
@@ -60,7 +61,8 @@ var o, r = getApp(), d = require("./block"),core = require('../../utils/core');
 Page((o = {
     data: {
         showCommentView: !1,
-        tipsIndex: 0
+        tipsIndex: 0,
+        callcredit: 0
     },
     onLoad: function(t) {
         console.log(t),this.index = t.index, this.threadid = t.threadid, r.empty(this.threadid) && (this.threadid = decodeURIComponent(t.scene)), 
@@ -71,10 +73,29 @@ Page((o = {
         s(this);
     },
     call: function(t) {
-        var a = this;
-        wx.makePhoneCall({
-            phoneNumber: a.data.thread.mobile
+      var a = this.data.thread.mobile;
+      console.log(this)
+      //查看电话需要积分
+      var credit1 = this.data.callcredit;
+
+      credit1 ? core.confirm('注意:每次查看电话将会消耗' + credit1 + '积分哦', function () {
+        core.get('index/lookmobile', {}, (c) => {
+          console.log(c)
+          if (c.error == -1) {
+            wx.showToast({
+              title: c.message,
+              icon: 'none',
+            });
+            return;
+          }
+          wx.makePhoneCall({
+            phoneNumber: a
+          });
         });
+
+      }) : wx.makePhoneCall({
+        phoneNumber: a
+      });
     },
     showLocation: function(t) {
         var a = this.data.thread;

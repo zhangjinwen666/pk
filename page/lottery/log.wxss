@@ -1,0 +1,17 @@
+/* page/lottery/log.wxss */
+.list{
+  display:flex;
+  flex-direction:row;
+  
+  align-items: cneter;
+  padding: .8rem .5rem;
+  font-size: 14px;
+  border-bottom:1px solid #ccc;
+}
+.msg{
+  flex:1
+}
+.time{
+  flex:1;
+  text-align: right;
+}

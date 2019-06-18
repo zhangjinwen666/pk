@@ -58,6 +58,7 @@
     "page/creditshops/verify/index",
     "page/creditshops/index",
     "page/lottery/index",
+    "page/lottery/log",
     "page/tech/index",
     "page/tech/detail/index",
     "page/tech/article/index",
@@ -95,7 +96,7 @@
       },
       {
         "pagePath": "page/bbq/index",
-        "text": "社区",
+        "text": "娱乐", 
         "iconPath": "image/tabBar/t-8.png",
         "selectedIconPath": "image/tabBar/t-7.png"
       },

@@ -1,7 +1,7 @@
 <view class="listBtm">
     <view class="weui-cells weui-cells_after-title">
         <block wx:for="{{header[headerIndex].list}}">
-            <bbqCell data="{{item}}"></bbqCell>
+            <bbqCell data="{{item}}" callcredit="{{callcredit}}"></bbqCell>
             <view class="page__bd">
                 <view class="weui-loadmore" wx:if="{{item.loadstatus==1}}">
                     <view class="weui-loading"></view>
@@ -16,5 +16,5 @@
     <loadmore loadstatus="{{header[headerIndex].loadstatus}}"></loadmore>
 </view>
 <scroll-view class="header" scrollX="true">
-    <view bindtap="headerClick" class="headerItem {{headerIndex==index?'system_color headerSelected':''}}" data-index="{{index}}" wx:for="{{header}}">{{item.blockname}}</view>
+    <view bindtap="headerClick" class="headerItem {{headerIndex==index?'system_color headerSelected':''}}" data-index="{{index}}" wx:for="{{header}}">{{item.navname}}</view>
 </scroll-view>

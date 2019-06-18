@@ -1,6 +1,6 @@
 // page/lottery/index.js
 
-var a = getApp(),core = require('../../utils/core');
+var a = getApp(), core = require('../../utils/core'),WxParse = require('../../utils/wxParse/wxParse');
 Page({
 
   /**
@@ -23,7 +23,8 @@ Page({
       avatar:'',
       go:0,
       checkOut:!1,
-    awardRemark:1
+    awardRemark:1,
+    showContent:1
   },
 
   /**
@@ -78,10 +79,12 @@ Page({
   //摇奖菜单 、抽奖次数
   showShop:(t)=>{
       core.get('lottery/getshop',{},(a)=>{
-        console.log(a)
+        console.log(a);
+        
         wx.setNavigationBarTitle({
           title: a.bannerTitle,
         }),
+       WxParse.wxParse('mingx', 'html', a.content, t,20);
           t.setData({
             list:a.list,
             deg:a.deg,
@@ -133,7 +136,12 @@ Page({
   getDuration:(a)=>{
     return   a > 20 ? (a % 10) * 5 : 5;
   },
-
+  contentHidden:function(){
+    this.setData({ showContent: 1 });
+  },
+  showContent:function(){
+    this.setData({ showContent:!1});
+  },
   /**
    * 生命周期函数--监听页面卸载
    */

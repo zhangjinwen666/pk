@@ -8,6 +8,7 @@
                 <view class="listTagBtm">
                     <view class="tag" wx:if="{{data.topflag==1}}">置顶</view>
                     <view class="tag">{{data.navname}}</view>
+                    <view wx:if="{{data.subname}}" class="tag">{{data.subname}}</view>
                     <view class="tagg">{{data.statusname}}</view>
                 </view>
             </view>
