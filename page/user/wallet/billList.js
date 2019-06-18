@@ -1,29 +1,30 @@
 function n(n) {
-    o.client.request({
-        url: "d=wxapi&c=fee_money&m=money_page",
-        data: {},
-        success: function(t) {
-            var i = t.data.rows;
-            e = Number(t.data.total);
-            var c = n.data.billList;
-            1 == a && (c = []);
-            for (var u = 0; u < i.length; ++u) i[u].dateline = o.util.formatDate(i[u].dateline, "yyyy-MM-dd hh:mm:ss");
-            c = c.concat(i), n.setData({
-                billList: c
-            });
-        }
-    });
+  w.get('member/index/credit',{page:a,type:'credit1'},function(t){
+    console.log(t);
+    var i = t.data;
+    e = Number(t.total);
+    var c = n.data.billList;
+    1 == a && ( c = []);
+    c = c.concat(i);
+    var i = "";
+    w.empty(e) ? i = "暂无更多数据" : c.length == e ? i = "暂无更多数据" : c.length < e && (i = "上啦加载更多"),
+      n.setData({
+        billList: c,
+        loadMoreType: !1,
+        loadText: i});
+  });
 }
 
 function t() {
     a = 1, e = 0;
 }
 
-var o = getApp(), a = 1, e = 0;
+var o = getApp(), a = 1, e = 0, w = o.requirejs("core");
 
 Page({
     data: {
-        billList: []
+        billList: [],
+      loadMoreType:!0
     },
     onLoad: function(o) {
         t(), n(this);
@@ -33,6 +34,9 @@ Page({
     onHide: function() {},
     onUnload: function() {},
     onPullDownRefresh: function() {},
-    onReachBottom: function() {},
+    onReachBottom: function() {
+      console.log(this.data);
+      e > this.data.billList.length && a++,n(this);
+    },
     onShareAppMessage: function() {}
 });

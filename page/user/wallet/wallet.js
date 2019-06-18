@@ -1,16 +1,6 @@
 
 function n(n) {
-    // o.client.request({
-    //     url: "d=wxapi&c=fee_user&m=userinfo",
-    //     data: {},
-    //     success: function(o) {
-    //         n.setData({
-    //             userFee: o.data
-    //         });
-    //     }
-    // });
   t.get("member/index/userinfo", '', function (o) {
-    console.log(o.money);
     0 == o.error && n.setData({ userFee:o});
     console.log(this.data);
   });

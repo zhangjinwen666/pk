@@ -24,7 +24,6 @@ function n(t) {
       return;
     }
     var i = a.data,o = t.data.imagelist;
-    console.log(i);
     for (var n = 0; n < i.imagelist.length; ++n) {
       o.push({
         showurl: i.imagelists[n],
@@ -45,33 +44,6 @@ function n(t) {
       fromcity: i.goodsaddr,
       catename: i.catename
     }), e(t, i.catid);
-  });
-  return;
-
-  r.client.request({
-    url: "d=wxapi&c=mall_shop_goods&m=goods_view",
-    data: {
-      goodsid: p
-    },
-    success: function (a) {
-      for (var i = a.data.goodsinfo, o = t.data.imagelist, n = 0; n < i.imagelist.length; ++n) o.push({
-        showurl: r.client.getFileUrl(i.imagelist[n]),
-        imageurl: i.imagelist[n]
-      });
-      var s = t.data.videolist;
-      if (null != s && i.videolist.length > 0) for (var d = 0; d < i.videolist.length; ++d) s.push({
-        tempFilePath: r.client.getFileUrl(i.videolist[d]),
-        imageurl: i.videolist[d]
-      });
-      l = i.catid, t.setData({
-        goodsDetail: i,
-        imagelist: o,
-        videolist: s,
-        madedate: i.madedate,
-        fromcity: i.goodsaddr,
-        catname: i.catname
-      }), e(t, i.catpath);
-    }
   });
 }
 function e(t, e) {
@@ -180,18 +152,6 @@ function o(t, e) {
       wx.navigateBack({});
     }, 1500);
   })
-  return;
-    r.client.request({
-      url: "d=wxapi&c=mall_shop_goods&m=save",
-      data: t,
-      success: function (t) {
-        wx.hideLoading(), wx.showToast({
-          title: "发布成功"
-        }), setTimeout(function () {
-          wx.navigateBack({});
-        }, 1500);
-      }
-    });
 }
 
 var r = getApp(), d = require("../../../utils/pickerCity"),l = "", u = "", c = "", p = "", w = r.requirejs("core");

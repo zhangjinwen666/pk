@@ -1,1 +1,45 @@
 /* page/user/wallet/billList.wxss */
+.view_item {
+    display: -webkit-flex;
+    display: flex;
+    padding-top: 12rpx;
+    background: white;
+}
+
+.img_pay_type {
+    width: 20px;
+    height: 20px;
+    margin-left: 30rpx;
+    margin-right: 30rpx;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    margin-top: 12rpx;
+}
+
+.view_relative {
+    position: relative;
+    border-bottom: 1rpx #ebebeb solid;
+    padding-bottom: 14rpx;
+    width: 100%;
+}
+
+.text_title {
+    font-size: 17px;
+}
+
+.text_explanation {
+    font-size: 14px;
+}
+
+.text_time {
+    font-size: 12px;
+    color: #999;
+}
+
+.text_money {
+    position: absolute;
+    color: #f76216;
+    font-size: 17px;
+    top: 0;
+    right: 30rpx;
+}

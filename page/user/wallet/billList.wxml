@@ -1,10 +1,17 @@
 <view class="view_item" wx:for="{{billList}}">
-    <image class="img_pay_type" src="/image/bill_{{item.paytype}}.png"></image>
+    <image class="img_pay_type" src="/image/bill_money.png"></image>
     <view class="view_relative">
-        <view class="text_title">{{item.title}}</view>
-        <view class="text_explanation" wx:if="{{item.billtype!='-1'}}">[收入]</view>
-        <view class="text_explanation" wx:else>[{{item.paytype=='weixin'?'微信支付':'余额支付'}}]</view>
-        <view class="text_time">{{item.dateline}}</view>
-        <view class="text_money">{{item.billtype=='-1'?'-':'+'}}{{item.moneynum}}</view>
+        <view class="text_title">{{item.remark}}</view>
+        <view class="text_time">{{item.createtime}}</view>
+        <view class="text_money">{{item.num}}</view>
+    </view>
+</view>
+<view class="page__bd">
+    <view class="weui-loadmore" wx:if="{{loadMoreType}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载...</view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" wx:else>
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{loadText}}</view>
     </view>
 </view>

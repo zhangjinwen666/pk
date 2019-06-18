@@ -23,7 +23,7 @@ function t(o) {
     a.opacity(.8), a.opacity(.9), a.opacity(1), a.rotate(-50).step(), o.setData({
         anima: a.export()
     }), setTimeout(function() {
-        console.error("fffff"), t(o);
+        t(o);
     }, 4200);
 }
 
@@ -66,7 +66,6 @@ Page({
       success:(r)=>{
         var data = r.result;
         core.post('lottery/getqrcode',{data:r.result},function(r){
-          console.log(r);
             wx.showToast({
               title: r.message,
             })
@@ -79,7 +78,6 @@ Page({
         var o = this;
       
         a.getUserInfo(function(t) {
-          console.log(t);
             o.setData({
                 userInfo: t,
               hasLogin: t.isMobile,

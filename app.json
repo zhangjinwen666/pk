@@ -63,7 +63,14 @@
     "page/tech/detail/index",
     "page/tech/article/index",
     "page/vote/index",
-    "page/vote/detail/index"
+    "page/vote/detail/index",
+    "page/user/repair/index",
+    "page/user/repair/publish/index",
+    "page/user/repair/manage/index",
+    "page/user/safe/index",
+    "page/user/safe/publish/index",
+    "page/user/safe/manage/index"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

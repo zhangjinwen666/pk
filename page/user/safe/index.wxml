@@ -1,0 +1,6 @@
+
+<navigator bindtap="onNavigator" class="view_item margin_bottom" data-url="{{item.url}}" wx:for="{{moduleList}}">
+    <image class="img_left" src="{{item.img}}"></image>
+    <view>{{item.title}}</view>
+    <image class="img_right" src="/image/arrow.png"></image>
+</navigator>

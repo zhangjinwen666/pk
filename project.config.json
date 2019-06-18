@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -102,6 +102,20 @@
 					"id": -1,
 					"name": "商城",
 					"pathName": "page/store/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "积分详情",
+					"pathName": "page/user/wallet/billList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "维修管理",
+					"pathName": "page/user/repair/index",
 					"scene": null
 				}
 			]
