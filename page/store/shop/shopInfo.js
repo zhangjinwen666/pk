@@ -1,8 +1,10 @@
 function t(t) {
   w.get('shopuser/index/shop_info',{shopid:n},function(a){
+    console.log(a);
     var e = a.data;
     t.setData({
-        shopDetail: e
+        shopDetail: e,
+        lookMobile:a.lookMobile
     });
   });
 }
@@ -33,7 +35,8 @@ var o = getApp(), n = "", w = o.requirejs('core');
 
 Page({
     data: {
-        showDevice: !1
+        showDevice: !1,
+        lookMobile:0
     },
     onLoad: function(e) {
         n = e.shopid, t(this), a(this);
@@ -51,9 +54,29 @@ Page({
     },
     callMobie: function(t) {
         var a = this.data.shopDetail.shoptel;
-        wx.makePhoneCall({
-            phoneNumber: a
-        });
+      var credit = this.data.lookMobile;
+      credit ? wx.showModal({
+        title: "提示",
+        content: "注意：当前查看需" + credit + "积分。",
+        success: function (ao) {
+          ao.confirm && w.get('shopuser/index/lookmobile', {}, function (e) {
+            console.log(e);
+            if (e.error == 0) {
+              wx.makePhoneCall({
+                phoneNumber: a
+              });
+            } else {
+              wx.showToast({
+                title: e.message,
+                icon: 'none',
+              });
+              return;
+            }
+          });
+        }
+      }) : wx.makePhoneCall({
+        phoneNumber: a
+      });
     },
     viewMap: function(t) {
         var a = parseFloat(this.data.shopDetail.maplat), e = parseFloat(this.data.shopDetail.maplong);

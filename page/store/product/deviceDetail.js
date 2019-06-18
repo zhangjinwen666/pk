@@ -33,7 +33,8 @@ function t(o, e) {
     var t = e.data;
     t.shopavatar_small = t.shopavatars, o.setData({
       shopDetail: t,
-      isshow: e.isshow
+      isshow: e.isshow,
+      lookMobile:e.lookMobile
     });
   });
    
@@ -113,9 +114,29 @@ Page({
     },
     bindCallMobie: function(o) {
         var e = this.data.shopDetail.shoptel;
-        wx.makePhoneCall({
-            phoneNumber: e
-        });
+      var credit = this.data.lookMobile;
+      credit ? wx.showModal({
+        title: "提示",
+        content: "注意：当前查看需" + credit + "积分。",
+        success: function (ao) {
+          ao.confirm && w.get('shopuser/index/lookmobile', {}, function (e) {
+            console.log(e);
+            if (e.error == 0) {
+              wx.makePhoneCall({
+                phoneNumber: a
+              });
+            } else {
+              wx.showToast({
+                title: e.message,
+                icon: 'none',
+              });
+              return;
+            }
+          });
+        }
+      }) : wx.makePhoneCall({
+        phoneNumber: a
+      });
     },
     bindOpenMap: function(o) {
         var e = this.data.shopDetail.maplat, t = this.data.shopDetail.maplong;

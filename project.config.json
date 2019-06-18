@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -116,6 +116,13 @@
 					"id": -1,
 					"name": "维修管理",
 					"pathName": "page/user/repair/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "鹏控",
+					"pathName": "page/tech/index",
 					"scene": null
 				}
 			]

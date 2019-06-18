@@ -23,6 +23,28 @@ function n(t){
   });
 }
 
+//获取是否要扣除积分
+function ck(t,e){
+  w.get('tech/index/getCredit',{id:t},function(a){
+    var i = a.data;
+    if( i > 0){
+      wx.showModal({
+        title: "提示",
+        content: "注意：当前查看需"+i+"积分。",
+        success: function (ao) {
+          ao.confirm && wx.navigateTo({
+            url: "/page/tech/article/index?articleid=" + t
+          });
+        }
+      });
+    }else{
+      wx.navigateTo({
+        url: "/page/tech/article/index?articleid="+t
+      });
+    }
+  });
+}
+
 //获取所有的文章
 function s(t){
   w.get('tech/index/getAllArticle',{page:l},function(e){
@@ -95,9 +117,15 @@ Page({
         });
         return;
       } else {
-        t(), s(_this);
+        t(), n(_this);
       }
     });
+  },
+
+  onArticle:function(t){
+    console.log(t);
+    var e = t.currentTarget.dataset.index;
+    ck(e,this);
   },
 
   /**

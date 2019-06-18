@@ -197,10 +197,10 @@
     height: 22rpx;
     color: white;
 }
-.tagg {
+.tagg { 
     text-align: center;
     margin-right: 10rpx;
-    background: rgb(222, 224, 224);
+    background: #00c1fc;
     border-radius: 3rpx;
     font-size: 20rpx;
     padding: 0 0.6rpx;

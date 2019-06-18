@@ -4,9 +4,9 @@
       <view class="listTop">
         <view class="listTopLeft">
           <view class="listInfoBtm">
-            <view class="listInfoTitle">产品名称：{{item.name}}</view>
-            <view class="listInfoTitle">产品型号：{{item.code}}</view>
+            <view class="listInfoTitle"> {{item.name}}</view> 
             <view class="listTagBtm">
+            <view class="tagg">{{item.code}}</view> 
               <view class="tag">{{item.statusname}}</view>
             </view>
           </view>

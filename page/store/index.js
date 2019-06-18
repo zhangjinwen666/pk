@@ -4,6 +4,7 @@ function t() {
 
 function a(t) {
   w.get('shopuser/index/shop_info', '', function (t) {
+    
     e(t.data);
   });
 }
@@ -41,6 +42,7 @@ function n(t) {
     loadMoreType: !0
   });
   w.get('shopuser/index/getshopuser', { page: l, cateid: p, search: d }, function (a) {
+    console.log(a);
     var e = t.data.shopList;
     h = parseInt(a.total);
     l == 1 && (e = []);
@@ -57,7 +59,8 @@ function n(t) {
         shopList: e,
         newShopBanner: n,
         loadMoreType: !1,
-        loadText: i
+        loadText: i,
+      lookMobile: a.lookMobile
       });
   });
 }
@@ -110,7 +113,8 @@ Page({
     isRefresh: !1,
     creditshow:!1,
     crediticon:'',
-    loadMoreType: !0
+    loadMoreType: !0,
+    lookMobile:0
   },
   onLoad: function (a) {
     t(), i(this), o(this), n(this);
@@ -175,7 +179,27 @@ Page({
   },
   onCallClick: function (t) {
     var a = t.currentTarget.dataset.mobie;
-    wx.makePhoneCall({
+    var credit = this.data.lookMobile;
+    credit ? wx.showModal({
+        title: "提示",
+      content: "注意：当前查看需" + credit+"积分。",
+        success: function (ao) {
+          ao.confirm && w.get('shopuser/index/lookmobile',{},function(e){
+            console.log(e);
+            if (e.error == 0){
+              wx.makePhoneCall({
+                phoneNumber: a
+              });
+            }else{
+              wx.showToast({
+                title: e.message,
+                icon: 'none',
+              });
+              return;
+            }
+          });
+        }
+      }):wx.makePhoneCall({
       phoneNumber: a
     });
   },

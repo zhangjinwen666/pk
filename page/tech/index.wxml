@@ -31,7 +31,7 @@
             </navigator>
         </view>
         <view class="view_new_car" wx:else>
-            <navigator url="article/index?articleid={{item.id}}" wx:for="{{articleList}}">
+            <!-- <navigator url="article/index?articleid={{item.id}}" wx:for="{{articleList}}">
                 <view class="view_car_item border_bottom">
                     <image class="img_device_heard" mode="aspectFill" src="{{item.resp_img}}"></image>
                     <view class="view_device_item_right">
@@ -40,7 +40,17 @@
                         
                     </view>
                 </view>
-            </navigator>
+            </navigator> -->
+            <view bindtap="onArticle" data-index="{{item.id}}" wx:for="{{articleList}}">
+                <view class="view_car_item border_bottom">
+                    <image class="img_device_heard" mode="aspectFill" src="{{item.resp_img}}"></image>
+                    <view class="view_device_item_right">
+                        <view class="text_device_title">{{item.article_title}}</view>
+                        <view class="text_device_perameter" style='margin-top:30rpx;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;max-width:470rpx;'>{{item.resp_desc}}</view>
+                        
+                    </view>
+                </view>
+            </view>
         </view>
         <view class="page__bd">
             <view class="weui-loadmore" wx:if="{{loadMoreType}}">

@@ -3,8 +3,6 @@ function t(t) {
         loadMoreType: !0
     });
   w.get('shopuser/index/getshopuser', { page: e, cateid: l},function(a){
-    console.log(a);
-    console.log(l);
     var n = t.data.shopList;
     s = parseInt(a.total), 1 == e && (n = []);
     var l =  a.shop;
@@ -16,39 +14,9 @@ function t(t) {
     t.setData({
         shopList: n,
         loadMoreType: !1,
-        loadText: r
+        loadText: r,
     });
   });
-    // o.client.request({
-    //     url: "d=wxapi&c=mall_shop&m=shop_page",
-    //     data: {
-    //         page: e,
-    //         rows: n,
-    //         catpath: l
-    //     },
-    //     success: function(a) {
-    //         var n = t.data.shopList;
-    //         s = parseInt(a.data.total), 1 == e && (n = []);
-    //         var l = a.data.rows;
-    //         if (l.length > 0) {
-    //             for (var i = 0; i < l.length; ++i) l[i].shopavatar_small = o.client.getAvatarUrl(l[i].shopavatar_small);
-    //             n = n.concat(l);
-    //         }
-    //         var r = "";
-    //         o.util.empty(s) ? r = "暂无更多数据" : n.length == s ? r = "暂无更多数据" : n.length < s && (r = "上啦加载更多"), 
-    //         t.setData({
-    //             shopList: n,
-    //             loadMoreType: !1,
-    //             loadText: r
-    //         });
-    //     },
-    //     fail: function(a) {
-    //         t.setData({
-    //             loadMoreType: !1,
-    //             loadText: "加载失败"
-    //         });
-    //     }
-    // });
 }
 
 function a() {
@@ -60,7 +28,8 @@ var o = getApp(), e = 1, n = 20, s = 0, l = "", w = o.requirejs('core');
 Page({
     data: {
         shopList: [],
-        loadMoreType: !0
+        loadMoreType: !0,
+        lookMobile:0
     },
     onLoad: function(o) {
       console.log(o);
@@ -68,9 +37,29 @@ Page({
     },
     onCallClick: function(t) {
         var a = t.currentTarget.dataset.mobie;
-        wx.makePhoneCall({
-            phoneNumber: a
-        });
+      var credit = this.data.lookMobile;
+      credit ? wx.showModal({
+        title: "提示",
+        content: "注意：当前查看需" + credit + "积分。",
+        success: function (ao) {
+          ao.confirm && w.get('shopuser/index/lookmobile', {}, function (e) {
+            console.log(e);
+            if (e.error == 0) {
+              wx.makePhoneCall({ 
+                phoneNumber: a
+              });
+            } else {
+              wx.showToast({
+                title: e.message,
+                icon: 'none',
+              });
+              return;
+            }
+          });
+        }
+      }) : wx.makePhoneCall({
+        phoneNumber: a
+      });
     },
     onPreviewMap: function(t) {
         var a = parseFloat(t.currentTarget.dataset.maplat), o = parseFloat(t.currentTarget.dataset.maplong);
