@@ -1,0 +1,36 @@
+<view class="weui-cells weui-cells_after-title">
+  <view wx:for="{{productList}}">
+    <view catchtap="cellClick" data-id="{{item.id}}" class="weui-cell listCell" hoverClass="weui-cell_active">
+      <view class="listTop">
+        <view class="listTopLeft">
+        <image class="avatar" src="{{item.avatar}}"></image>
+          <view class="listInfoBtm">
+            <view class="listInfoTitle">{{item.nickname}}</view> 
+          </view>
+        </view>
+      </view>
+      <view class="listTitle">{{item.name}} | {{item.code}}</view>
+      <view class="listTitle">{{item.rdesc}}</view>
+      <view class="listImageBtm">
+        <image catchtap="imagePreview" class="listImage" wx:for-item="items" data-index="{{item.imagelist}}" data-image="{{items}}" src="{{items}}" wx:for="{{item.imagelist}}" wx:key="{{this}}"></image>
+      </view>
+      <view class="listTop">
+        <view class="listTopLeft">
+          <image class="locationIcon" src="/image/list_address.png"></image>
+          <view class="locationTitle">{{item.goodsaddr}}</view>
+        </view>
+        <view class="submitTime">{{item.dateline}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="page__bd">
+  <view class="weui-loadmore" wx:if="{{loadMoreType}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">
+      <image class="loadGIF" src="/image/loading.gif"></image>正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:else>
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{loadText}}</view>
+  </view>
+</view>

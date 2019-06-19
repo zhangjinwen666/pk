@@ -1,0 +1,237 @@
+/* page/home/detail.wxss */
+@import "../../home/component/bbqCell.wxss";
+.info {
+    background: white;
+}
+
+.infoHeader {
+    border-bottom: 1rpx #B3B3B3 solid;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    padding: 20rpx 30rpx 0 30rpx;
+}
+
+.content {
+    color: #4D4D4D;
+    font-size: 28rpx;
+    padding: 14rpx 30rpx;
+}
+
+.contentImage {
+    width: 690rpx;
+    margin-left: 30rpx;
+}
+
+.statusBtmAdd {
+    padding: 0 20rpx;
+    height: 30rpx;
+    border-radius: 15rpx;
+    border: 1rpx #B5B5B5 solid;
+    font-size: 22rpx;
+    color: #808080;
+    background: rgba(255, 0, 0, 0);
+}
+.wx-button::after {
+    font-size: 22rpx;
+    color: #808080;
+    background: rgba(255, 0, 0, 0);
+    margin: 0;
+}
+
+.commentHeader {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    margin-top: 10rpx;
+    background: white;
+    height: 66rpx;
+    font-size: 28rpx;
+    color: #1A1A1A;
+    padding: 0 30rpx;
+    line-height: 66rpx;
+    border-bottom: 1rpx #B3B3B3 solid;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+.commentCell {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    background: white;
+    border-bottom: 1rpx #B3B3B3 solid;
+    padding: 10rpx 30rpx;
+}
+
+.commentRight {
+    width: 610rpx;
+    margin-left: 20rpx;
+}
+
+.commentNickname {
+    font-size: 22rpx;
+    color: #00C1FC;
+}
+
+.commentContent {
+    font-size: 22rpx;
+    color: #1A1A1A;
+}
+
+.commentSecBtm {
+    background: #E6E6E6;
+    padding: 10rpx 20rpx;
+}
+
+.nickname {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    color: #1E1D1D;
+}
+
+.buttonTextMargin {
+    margin-left: 10rpx;
+}
+
+.infoHeader {
+    border-bottom: none;
+}
+
+.line {
+    margin-left: 30rpx;
+    width: 690rpx;
+    height: 1rpx;
+    background: #eee;
+    margin-top: 20rpx;
+}
+
+.cachet {
+    height: 44rpx;
+    line-height: 44rpx;
+    padding: 0 20rpx;
+    border-radius: 22rpx;
+    margin: 0;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    border: 1rpx solid #e8e8e8;
+    font-size: 24rpx;
+}
+
+.cachetImage {
+    margin: 0 15rpx;
+    width: 30rpx;
+    height: 30rpx;
+}
+.wx-button::after {
+    font-size: 22rpx;
+    color: #808080;
+    background: rgba(255, 0, 0, 0);
+    margin: 0;
+}
+
+.clickup {
+    padding: 0 20rpx;
+    height: 44rpx;
+    line-height: 44rpx;
+    border-radius: 22rpx;
+    border: 1rpx solid #B5B5B5;
+    color: #B5B5B5;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: 26rpx;
+}
+
+.clickupImage {
+    width: 25rpx;
+    height: 25rpx;
+}
+
+.cc {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.addComment {
+    font-size: 25rpx;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    color: #06D3FB;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.view_bottom {
+    position: fixed;
+    height: 90rpx;
+    bottom: 0;
+    width: 750rpx;
+    background: orange;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+}
+
+.bottomRow {
+    width: 50%;
+    height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    color: white;
+    font-size: 30rpx;
+}
+
+.bottomImage {
+    width: 34rpx;
+    height: 34rpx;
+}
+
+.shareBtn {
+    width: 150rpx;
+    height: 44rpx;
+    opacity: 0;
+    margin-left: -150rpx;
+    z-index: 10;
+}
+.loadGIF {
+    width: 26rpx;
+    height: 26rpx;
+}
+.rotate{
+  position:absolute;
+  border:3px solid #3BD9D1;
+  padding:2px 10px;
+  color:#3BD9D1;
+  transform:rotate(45deg);
+  right:35rpx;
+  top:54rpx;
+  font-size: 16px;
+}

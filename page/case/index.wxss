@@ -1,0 +1,426 @@
+/* page/user/shopManage/productManage.wxss */
+@import '../store/index.wxss';
+.view_new_car {
+    background: white;
+}
+
+.view_bottom_button {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    font-size: 12px;
+    color: white;
+}
+
+.view_button_base {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+
+.view_backg_edit {
+    background: #23c0f4;
+}
+
+.view_backg_delete {
+    background: #cc2934;
+}
+.prodcut_row_three{
+  margin-top:50rpx;
+
+}
+
+.weui-cell_active {
+    background-color: #ececec;
+}
+
+.listCell {
+    padding: 20rpx 40rpx;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    border-bottom: 1px #e8e8e8 solid;
+    background: white;
+}
+
+.listTop {
+    height: 70rpx;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+}
+
+.listTopLeft {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.listTitle {
+    width: 100%;
+    font-size: 28rpx;
+    color: #7c7c7c;
+    margin-top: 18rpx;
+}
+
+.avatar {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 30rpx;
+}
+
+.listInfoBtm {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    margin-left: 16rpx;
+}
+
+.listInfoTitle {
+    font-size: 30rpx;
+    color: #4d4d4d;
+}
+
+.listImageBtm {
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-left: -10rpx;
+}
+
+.listImage {
+    width: 210rpx;
+    height: 214rpx;
+    background: rgba(36, 37, 37, 0.075);
+    margin: 6rpx;
+}
+
+.listTagBtm {
+    height: 25rpx;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+}
+
+.locationIcon {
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.locationTitle {
+    font-size: 24rpx;
+    color: #7c7c7c;
+    margin-left: 10rpx;
+}
+
+.submitTime {
+    font-size: 24rpx;
+    color: #808080;
+}
+
+.statusImageBtm {
+    width: 100%;
+    height: 50rpx;
+    background: #fafafa;
+}
+
+.statusBtm {
+    height: 22rpx;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.statusIcon {
+    width: 22rpx;
+    height: 22rpx;
+}
+
+.statusTitle {
+    font-size: 24rpx;
+    margin-left: 10rpx;
+    color: #808080;
+}
+
+.commentBtm {
+    width: 100%;
+    background: #fafafa;
+    padding: 0.8rpx 0.4rpx;
+    margin-top: 10rpx;
+}
+
+.comment {
+    font-size: 24rpx;
+}
+
+.userName {
+    color: #00c1fc;
+}
+
+.commentText {
+    color: #1a1a1a;
+}
+
+.tag {
+    text-align: center;
+    margin-right: 10rpx;
+    background: red;
+    border-radius: 3rpx;
+    font-size: 20rpx;
+    padding: 0 0.6rpx;
+    line-height: 22rpx;
+    height: 22rpx;
+    color: white;
+}
+.tagg {
+    text-align: center;
+    margin-right: 10rpx;
+    background: #00c1fc;
+    border-radius: 3rpx;
+    font-size: 20rpx;
+    padding: 0 0.6rpx;
+    line-height: 22rpx;
+    height: 22rpx;
+    color: white;
+}
+
+.call {
+    width: 44rpx;
+    height: 44rpx;
+}
+
+.callBtm {
+    width: 66rpx;
+    height: 66rpx;
+    border-radius: 33rpx;
+    border: 2rpx solid #e00019;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.commentView {
+    background: white;
+    padding: 20rpx 30rpx;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.commentField {
+    height: 60rpx;
+    width: 600rpx;
+    border-bottom: 1rpx red solid;
+    font-size: 24rpx;
+}
+
+.commentBtn {
+    width: 80rpx;
+    height: 50rpx;
+    color: white;
+    background: red;
+    font-size: 26rpx;
+    text-align: center;
+    line-height: 50rpx;
+}
+
+.tipView {
+    width: 500rpx;
+    color: #1a1a1a;
+    font-size: 30rpx;
+    background: white;
+}
+
+.tipsTitle {
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+    border-bottom: 1rpx solid #808080;
+    font-weight: 700;
+}
+
+.tipsArrInfo {
+    line-height: 80rpx;
+    margin-left:   28rpx;
+}
+
+.tipsItems {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    margin-top:   -10rpx;
+}
+
+.tipsItem {
+    width:   150rpx;
+    height:   50rpx;
+    line-height:   50rpx;
+    text-align: center;
+    border:   1rpx solid #b3b3b3;
+    margin:   10rpx   20rpx;
+}
+
+.emptyTips {
+    color: #1a1a1a;
+    background: white;
+}
+
+.selectedTips {
+    color: white;
+    background: #00c1fc;
+}
+
+.tipsInputBtm {
+    height:   65rpx;
+    width:   444rpx;
+    border-bottom:   1rpx solid #808080;
+    margin-left:   28rpx;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+.tipsButton {
+    margin-top:   25rpx;
+    background: #00c1fc;
+    color: white;
+    font-size:   27rpx;
+}
+
+.tipsButtonBottom {
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding-bottom:   24rpx;
+}
+
+.c_backgroundView {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.c_column_reverse {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+}
+
+.c_column {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.c_all_center {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.c_fix_bottom_button {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background: #00c0fc;
+    color: white;
+    height:   98rpx;
+    line-height:   98rpx;
+    text-align: center;
+}
+
+.editBtm {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.delete {
+    background: #FB1626;
+    color: white;
+}
+
+.buttonMargin {
+    margin-left:   10rpx;
+    background: #F8F8F8;
+    color: #272D34;
+}
+
+.customButton {
+    font-size:   22rpx;
+    padding: 0   15rpx;
+    height:   45rpx;
+    line-height:   45rpx;
+    border:   1rpx #e8e8e8 solid;
+    border-radius:   5rpx;
+}
+
+.numberMargin {
+    margin-left:   20rpx;
+}
+.loadGIF {
+    width: 26rpx;
+    height: 26rpx;
+}
+.rotate{
+  position:absolute;
+  border:3px solid #3BD9D1;
+  padding:2px 10px;
+  color:#3BD9D1;
+  transform:rotate(45deg);
+  right:35rpx;
+  top:70rpx;
+}

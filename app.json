@@ -69,7 +69,11 @@
     "page/user/repair/manage/index",
     "page/user/safe/index",
     "page/user/safe/publish/index",
-    "page/user/safe/manage/index"
+    "page/user/safe/manage/index",
+    "page/repair/index",
+    "page/repair/detail/index",
+    "page/case/index",
+    "page/case/detail/index"
 
   ],
   "window": {

@@ -2,13 +2,14 @@ function t(t) {
   t.setData({
     loadMoreType: !0
   });
-  w.get('repair/index/getUserAll', { page: t.data.page,}, function (e) {
+  w.get('repair/index/getAll', { page: t.data.page, }, function (e) {
     var d = "", n = Number(e.total);
     var a = {};
     e.data || (e.data = []), e.data.length > 0 && (a.page = t.data.page + 1, a.productList = t.data.productList.concat(e.data));
     o.empty(n) ? d = "暂无更多数据" : a.productList.length == n ? d = "暂无更多数据" : a.productList.length < n && (d = "上啦加载更多");
     a.loadMoreType = !1;
     a.loadText = d;
+   
     t.setData(a);
   });
 
@@ -40,44 +41,31 @@ Page({
     productList: []
   },
   onLoad: function (e) {
-    //t(this);
-  },
-  catchEdit: function (t) {
-    var e = t.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: "/page/user/repair/publish/index?repairid=" + e
-    });
-  },
-  catchDelete: function (t) {
-    var o = t.currentTarget.dataset.id, a = t.currentTarget.dataset.index, n = t.currentTarget.dataset.name, s = this;
-    wx.showModal({
-      title: "提示",
-      content: "是否删除“" + n + "”此申请？",
-      success: function (t) {
-        t.confirm && e(o, a, s);
-      }
-    });
+    this.setData({ page: 1, productList: [] });
+    t(this);
   },
   imagePreview: function (t) {
-    var a = t.currentTarget.dataset.image, e = this.data.productList.imagelist;
-   
+    var a = t.currentTarget.dataset.image, e = t.currentTarget.dataset.index;
+    console.log(t);
     wx.previewImage({
       urls: e,
       current: a
     });
   },
+  cellClick:function(t){
+    var e = t.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/page/repair/detail/index?repairid=' + e
+    })
+  },
   onReady: function () { },
   onShow: function () {
-    this.setData({ page: 1, productList: [] });
-    t(this);
+    
   },
   onHide: function () { },
   onUnload: function () { },
   onPullDownRefresh: function () {
-    this.setData({ page: 1, productList: [] });
-    t(this), setTimeout(function () {
-      wx.stopPullDownRefresh();
-    }, 1e3);
+    
   },
   onReachBottom: function () {
     t(this);

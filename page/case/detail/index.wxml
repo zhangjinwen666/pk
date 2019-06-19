@@ -1,0 +1,22 @@
+<view class="info" wx:if="{{thread}}">
+  <view class="infoHeader">
+    <view class="listTop">
+      <view class="listTopLeft">
+        <view class="listInfoBtm">
+          <view class="listInfoTitle">{{thread.name}}</view>
+          <view class="submitTime">{{thread.createtime}}</view>
+        </view>
+      </view>
+<view class="rotate">成功案例</view>
+    </view>
+  </view>
+  <view class="listTitle" style='margin-left:34rpx;'>{{thread.code}}</view>
+  <view class="line"></view>
+  <image bindtap="imagePreview" class="contentImage" data-current="{{item}}" mode="widthFix" src="{{item}}" wx:for="{{thread.imagelists}}" wx:key="{{this}}"></image>
+  <video class="contentImage" objectFit="cover" src="{{item}}" wx:for="{{thread.videolists}}">
+    <view bindtap="watchVideo" class="video" data-url="{{item}}"></view>
+  </video>
+  <view class="listTop" style="margin-left:30rpx;width:690rpx">
+
+  </view>
+</view>

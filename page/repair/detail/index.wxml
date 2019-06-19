@@ -1,0 +1,76 @@
+<view class="info" wx:if="{{thread}}">
+    <view class="infoHeader">
+        <view class="listTop">
+            <view class="listTopLeft">
+                <image class="avatar" src="{{thread.avatar}}"></image>
+                <view class="listInfoBtm">
+                    <view class="listInfoTitle">{{thread.nickname}}</view>
+                    <view class="submitTime">{{thread.createtime}}</view>
+                </view>
+            </view>
+            <view class="cc">
+                <view class="cachet">
+                    <view>分享</view>
+                    <image class="cachetImage" src="/image/wx_frend.png"></image>
+                </view>
+                <button class="shareBtn" openType="share"></button>
+            </view>
+        </view>
+    </view>
+    <view class="listTitle" style='margin-left:34rpx;'>{{thread.name}} | {{thread.code}}</view>
+    <view class="line"></view>
+    <view class="content">{{thread.rdesc}}</view>
+    <image bindtap="imagePreview" class="contentImage" data-current="{{item}}" mode="widthFix" src="{{item}}" wx:for="{{thread.imagelists}}" wx:key="{{this}}"></image>
+    <video class="contentImage" objectFit="cover" src="{{item}}" wx:for="{{thread.videolists}}">
+            <view bindtap="watchVideo" class="video" data-url="{{item}}"></view>
+    </video>
+    <view class="listTop" style="margin-left:30rpx;width:690rpx">
+        
+        <view class="listTopLeft">
+            <image class="locationIcon" src="/image/list_address.png"></image>
+            <view class="locationTitle">{{thread.goodsaddr}}</view>
+        </view>
+    </view>
+</view>
+<view style="padding-bottom:90rpx">
+    <view class="commentHeader">
+        <view>评论({{total}})</view>
+        <view bindtap="showCommentView" class="addComment" data-touserid="0" data-tousername="维修">
+            <image src="/image/comment.png" style="width:30rpx;height:26rpx"></image>
+            <text style="margin-left:15rpx;">添加评论</text>
+        </view>
+    </view>
+    <view bindtap="showCommentView" class="commentCell" data-idx="{{index}}" data-postid="{{item.id}}" data-touserid="{{item.mid}}" data-tousername="{{item.nickname}}" wx:for="{{list}}" wx:key="{{this}}">
+        <image class="avatar" src="{{item.avatar}}"></image>
+        <view class="commentRight">
+            <view class="commentNickname nickname">
+                <view>
+                    <text class="userName">{{item.nickname}}</text>
+                    <block wx:if="{{item.touserid>0}}">
+                        <text class="commentText">回复</text>
+                        <text catchtap="showCommentView" class="userName" data-touserid="{{item.touserid}}" data-tousername="{{item.tousername}}">{{item.tousername}}</text>
+                    </block>
+                </view>
+                <view>{{item.createtime}}</view>
+            </view>
+            <view class="commentContent">{{item.message}}</view>
+        </view>
+    </view>
+    <view catchtap="hideView" class="c_backgroundView c_column_reverse" data-view="showCommentView" wx:if="{{showCommentView}}">
+    <view catchtap="none" class="commentView">
+        <input bindconfirm="sendComment" bindinput="commentInput" class="commentField" confirmType="send" focus="true" placeholder="回复\"{{commentplaceholder}}\"的评论"></input>
+        <view bindtap="sendComment" class="commentBtn">发送</view>
+    </view>
+</view>
+    <view class="page__bd">
+    <view class="weui-loadmore" wx:if="{{loadMoreType}}">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">
+        <image class="loadGIF" src="/image/loading.gif"></image>正在加载</view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" wx:else>
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{loadText}}</view>
+    </view>
+  </view>
+</view>
+
