@@ -70,7 +70,7 @@ function a(e) {
 }
 
 function i(e, t) {
-    var i = t.detail.value.mobile, r = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+    var i = t.detail.value.mobile, r = /^0?1[0-9][0-9]\d{8}$/;
     if (null == i || i.length < 1) return o.showError("请输入手机号码");
     if (!r.test(i)) return o.showError("手机号码格式错误");
     
@@ -86,6 +86,16 @@ function i(e, t) {
         a(e);
         }, 1e3)) : o.showError(s.message);
     });
+}
+
+function g(t){
+  p.get('wxapp/getset','',function(e){
+    console.log(e)
+    t.setData({
+      logoUrl: e.logo,
+      appName: e.name
+    });
+  });
 }
 
 var r = function(e) {
@@ -110,10 +120,8 @@ Page({
         var a = this;
         this.wxValidate = e(this), console.error(o.globalData.appLogo);
         var i = o.globalData.appLogo, r = o.globalData.appName;
-        a.setData({
-            logoUrl: i,
-            appName: r
-        });
+        g(this);
+        
     },
     onShow: function() {
         o.globalData.hasLogin && o.setLogout();
