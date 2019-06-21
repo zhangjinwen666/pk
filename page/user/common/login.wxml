@@ -1,7 +1,7 @@
 
 <view class="page">
     <form bindsubmit="submitForm">
-        <view class="logo" wx:if="{{logoUrl!=null}}">
+        <view class="logo" wx:if="{{logoUrl}}">
             <image src="{{logoUrl}}"></image>
         </view>
         <view class="appname" wx:else>
