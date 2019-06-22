@@ -39,7 +39,7 @@
     <bbqCell bindchangedata="changeData" callcredit="{{callcredit}}" data="{{item}}" index="{{index}}" wx:for="{{list}}" wx:key="{{this}}"></bbqCell>
 </view>
 <loadmore loadstatus="{{loadstatus}}"></loadmore>
-<view class="fixBar">
+<view class="fixBar" wx:if="{{fixBar}}">
     <view catchtap="fixBarStatusChange" class="fixItem">
         <image class="fixBarImage" mode="aspectFill" src="/image/fix_bar_close.png" wx:if="{{fixBar}}"></image>
         <image class="fixBarImage" mode="aspectFill" src="/image/fix_bar_open.png" wx:else></image>

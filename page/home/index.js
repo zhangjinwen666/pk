@@ -55,7 +55,7 @@ Page((n = {
             url: "./tool/introduce?index=2"
         } ],
         list: [],
-        fixBar: !0
+        fixBar:0
     },
     onLoad: function(t) {
         var a = this;
@@ -99,10 +99,10 @@ Page((n = {
         this.search = t.detail.value, e(this);
     },
     fixBarStatusChange: function(t) {
-        var a = !this.data.fixBar;
-        this.setData({
-            fixBar: a
-        });
+        // var a = !this.data.fixBar;
+        // this.setData({
+        //     fixBar: a
+        // });
     },
     none: function(t) {
         console.log("none");
