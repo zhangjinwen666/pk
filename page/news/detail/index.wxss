@@ -1,0 +1,36 @@
+/* page/tech/article/index.wxss */
+page{
+  background: #fff;
+}
+.listTop {
+    height: 70rpx;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+}
+.statusBtm {
+    height: 22rpx;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.statusIcon {
+    width: 22rpx;
+    height: 22rpx;
+}
+
+.statusTitle {
+    font-size: 24rpx;
+    margin-left: 10rpx;
+    color: #808080;
+}

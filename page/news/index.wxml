@@ -1,0 +1,31 @@
+<view class="listBtm">
+    <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{header[headerIndex].list}}">
+            <view catchtap="cellClick" data-id="{{item.id}}" class="weui-cell listCell" hoverClass="weui-cell_active">
+                  
+                  <view class="listTitle">{{item.article_title}}</view>
+                  <view class="listImageBtm" wx:if="{{item.resp_img.length > 0}}">
+                    <image class="listImage" wx:for-item="items" data-index="{{item.resp_img}}" data-image="{{items}}" src="{{items}}" wx:for="{{item.resp_img}}" wx:key="{{this}}" ></image>
+                  </view>
+                  <view class="listTop">
+                    <view class="submitTime">{{item.article_date}}</view>
+                  </view>
+                </view>
+            
+        </block>
+        
+    </view>
+    <loadmore loadstatus="{{header[headerIndex].loadstatus}}"></loadmore>
+    <view class="page__bd">
+                <view class="weui-loadmore" wx:if="{{header[headerIndex].loadstatus==1}}">
+                    <view class="weui-loading"></view>
+                    <view class="weui-loadmore__tips">正在加载</view>
+                </view>
+                <view class="weui-loadmore weui-loadmore_line" wx:if="{{header[headerIndex].loadstatus==2}}">
+                    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多数据</view>
+                </view>
+            </view>
+</view>
+<scroll-view class="header" scrollX="true">
+    <view bindtap="headerClick" class="headerItem {{headerIndex==index?'system_color headerSelected':''}}" data-index="{{index}}" wx:for="{{header}}">{{item.category_name}}</view>
+</scroll-view>
