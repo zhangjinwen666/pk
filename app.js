@@ -188,7 +188,7 @@ App({
       e.alert(m);
   },
   //缓存时间单位：秒
-  catchtime: 30,
+  catchtime: 0,
   globalData: {
     appid: "wx908f939f7ce0e79e",
     api: "http://pkkj.mijunyun.com/app/ewei_shopv2_api.php?i=1",

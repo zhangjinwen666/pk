@@ -42,17 +42,17 @@ Page((n = {
             subtitle: "二手车源首发",
             url: "/page/second/index"
         }, {
-            title: "二手评估",
+            title: "成功案例",
             subtitle: "专业泵车估价",
-            url: "./tool/introduce?index=0"
+            url: "/page/case/index"
         }, {
-            title: "过户年审",
+            title: "鹏控技术",
             subtitle: "全国过户年审",
-            url: "./tool/introduce?index=1"
+            url: "/page/tech/index"
         }, {
-            title: "保险服务",
-            subtitle: "保险服务",
-            url: "./tool/introduce?index=2"
+            title: "投票",
+            subtitle: "投票服务",
+            url: "/page/vote/index"
         } ],
         list: [],
         fixBar:0

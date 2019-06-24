@@ -28,5 +28,9 @@
 }
 
 .listBtm {
-    padding-top: 82rpx;
+    
 }
+.iconBottom { margin-top: 0rpx; display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; -webkit-flex-wrap: wrap; flex-wrap: wrap; background: white; width: 100%; padding: 10rpx 0; }
+.iconItem { width: 187rpx; height: 154rpx; display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; }
+.icon { width: 80rpx; height: 80rpx; border-radius: 40rpx; }
+.iconTitle { margin-top: 8rpx; font-size: 20rpx; color: #333; }

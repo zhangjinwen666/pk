@@ -1,3 +1,9 @@
+<view class="iconBottom" wx:if="{{header.length>0}}">
+    <view bindtap="headerClick" class="iconItem {{headerIndex==index?'system_color headerSelected':''}}" data-isjump="{{item.jump}}" data-index="{{index}}" wx:for="{{header}}" wx:key="{{this}}">
+        <image class="icon" src="{{item.icon}}"></image>
+        <view class="iconTitle">{{item.navname}}</view>
+    </view>
+</view>
 <view class="listBtm">
     <view class="weui-cells weui-cells_after-title">
         <block wx:for="{{header[headerIndex].list}}">
@@ -15,6 +21,4 @@
     </view>
     <loadmore loadstatus="{{header[headerIndex].loadstatus}}"></loadmore>
 </view>
-<scroll-view class="header" scrollX="true">
-    <view bindtap="headerClick" class="headerItem {{headerIndex==index?'system_color headerSelected':''}}" data-index="{{index}}" wx:for="{{header}}">{{item.navname}}</view>
-</scroll-view>
+
