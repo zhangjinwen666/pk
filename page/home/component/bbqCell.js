@@ -303,9 +303,8 @@ Component({
       },
         editAction: function(t) {
             var a = this;
-          console.log(a)
             wx.navigateTo({
-              url: "/page/publish/bbq?threadid=" + a.data.data.id + "&index=" + a.data.index + "&blockid=" + a.data.data.navid + "&subnavid=" + a.data.data.subnavid + "&blockname=发布板块"
+              url: "/page/publish/bbq?threadid=" + a.data.data.id + "&index=" + a.data.index + "&blockid=" + a.data.data.navid + "&subnavid=" + a.data.data.subnavid + "&industryid=" + a.data.data.industryid + "&jobid=" + a.data.data.jobid + "&workid=" + a.data.data.workid+"&blockname=发布板块"
             });
         },
         reloadAction: function(a) {

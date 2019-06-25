@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 13,
 			"list": [
 				{
 					"id": -1,
@@ -123,6 +123,20 @@
 					"id": -1,
 					"name": "鹏控",
 					"pathName": "page/tech/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布",
+					"pathName": "page/publish/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "aaa",
+					"pathName": "page/home/list",
 					"scene": null
 				}
 			]

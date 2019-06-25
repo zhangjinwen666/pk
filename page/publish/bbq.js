@@ -37,7 +37,14 @@ Page({
     data: {
         textcount: 0,
         topDays: [ 1, 5, 10, 30, 100 ],
+        //子分类
         subblocks: [],
+        //行业分类
+        industry:[],
+        //岗位分类
+        job:[],
+        //工年分类
+        work:[],
         selectedDay: 1,
         brief: "",
         originalData: {}
@@ -49,7 +56,7 @@ Page({
     },
     onLoad: function(a) {
         var e = a.blockid;
-        this.blockid = e, this.subnavid = a.subnavid, this.blockname = a.blockname, wx.setNavigationBarTitle({
+        this.blockid = e, this.subnavid = a.subnavid,this.industryid=a.industryid,this.jobid=a.jobid,this.workid=a.workid, this.blockname = a.blockname, wx.setNavigationBarTitle({
             title: a.blockname
         }), a.threadid > 0 && (this.threadid = a.threadid, this.index = a.index, t(this));
         var s = this;
@@ -60,6 +67,23 @@ Page({
             s.setData({
                 subblocks: a,
                 selectedBlock: o
+            });
+        });
+        //行业分类
+        //岗位分类
+        //工年分类
+      i.queryIndustryJobWork(e,function(a){
+            var g_i = [],g_j = [],g_w=[];
+            for (var c in a.industry) a.industry[c]['id'] == s.industryid && (g_i = a.industry[c]);
+        for (var c in a.job) a.job[c]['id'] == s.jobid && (g_j = a.job[c]);
+            for (var c in a.work) a.work[c]['id'] == s.workid && (g_w = a.work[c]);
+            s.setData({
+              industry:a.industry,
+              job:a.job,
+              work:a.work,
+              industryBlock: g_i,
+              jobBlock: g_j,
+              workBlock: g_w,
             });
         });
     },
@@ -73,6 +97,24 @@ Page({
         this.setData({
             selectedBlock: e
         });
+    },
+    industryChanged: function (a) {
+      var t = a.detail.value, e = this.data.industry[t];
+      this.setData({
+        industryBlock: e
+      });
+    },
+    jobChanged: function (a) {
+      var t = a.detail.value, e = this.data.job[t];
+      this.setData({
+        jobBlock: e
+      });
+    },
+    workChanged: function (a) {
+      var t = a.detail.value, e = this.data.work[t];
+      this.setData({
+        workBlock: e
+      });
     },
     pickerChanged: function(a) {
         var t = a.currentTarget.dataset.range, e = a.currentTarget.dataset.value, i = this.data[t][a.detail.value], s = {};
@@ -127,8 +169,25 @@ Page({
 
                 i.subnavid = this.data.selectedBlock.id;
           } 
+          if (!e.empty(this.data.industry) && this.data.industry.length > 0) {
+            if (e.empty(this.data.industryBlock)) return void e.showError("请选择行业");
+
+            i.industryid = this.data.industryBlock.id;
+          }
+          if (!e.empty(this.data.job) && this.data.job.length > 0) {
+            if (e.empty(this.data.jobBlock)) return void e.showError("请选择岗位");
+
+            i.jobid = this.data.jobBlock.id;
+          }
+          if (!e.empty(this.data.work) && this.data.work.length > 0) {
+            if (e.empty(this.data.workBlock)) return void e.showError("请选择工年");
+
+            i.workid = this.data.workBlock.id;
+          }
+
             this.data.isTop && (i.topday = this.data.selectedDay);
             var d = this;
+           
             this.selectComponent("#image").uploadImage(function(t) {        
                 i.imagelist = t, wx.showLoading({
                     title: "正在提交"

@@ -17,6 +17,10 @@
             </view>
         </view>
     </view>
+     <text wx:if="{{thread.navname}}" class="tag" style="width:max-content;margin-left:20rpx">{{thread.navname}}</text>
+     <text wx:if="{{thread.industryname}}" class="tag" style="width:max-content;margin-left:10rpx">{{thread.industryname}}</text>
+     <text wx:if="{{thread.jobname}}" class="tag" style="width:max-content;margin-left:10rpx">{{thread.jobname}}</text>
+     <text wx:if="{{thread.workname}}" class="tag" style="width:max-content;margin-left:10rpx">{{thread.workname}}</text>
     <view class="line"></view>
     <view class="content">{{thread.content}}</view>
     <image bindtap="imagePreview" class="contentImage" data-current="{{item}}" mode="widthFix" src="{{item}}" wx:for="{{thread.imagelist}}" wx:key="{{this}}"></image>

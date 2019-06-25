@@ -49,6 +49,25 @@ module.exports = {
           
         }
     },
+  queryIndustryJobWork:function(i,c){
+    var i = parseInt(i);
+    if (i<16 || i> 17){
+      return;
+    }
+    var n = getApp();
+    if (n.empty(i)) "function" == typeof c && c([]); else {
+      var s = 'industry', m = wx.getStorageSync(s); (n.getCurrentTime() - (m.time || 0)) < n.catchtime ? typeof c == 'function' && (t("本地缓存获取行业岗位工年列表"), c(m.list)) : u.get('index/getindustry', {}, function (a) {
+   console.log(a);
+        var l = {};
+        l.time = n.getCurrentTime();
+        l.list = a.list;
+        wx.setStorageSync(s, l);
+        typeof c == 'function' && (t("服务器获取行业岗位工年列表"), c(l.list));
+
+      })
+
+    }
+  },
     //打赏条件配置，暂时不想写，后面配置吧
     queryBlockDic: function(i) {
       

@@ -1,4 +1,5 @@
 {
+  "enablePullDownRefresh": true,
     "usingComponents": {
         "bbqCell": "/page/home/component/bbqCell",
         "loadmore": "/page/home/component/loadMore"

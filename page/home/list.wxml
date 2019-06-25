@@ -1,9 +1,51 @@
-<view class="headerBtm common_padding">
+<view wx:if="{{!iswork}}" class="headerBtm common_padding">
     <view bindtap="headerClick" class="common_padding {{selectedIndex==index?'header system_color':''}}" data-index="{{index}}" wx:for="{{headers}}" wx:key="{{this}}">{{item.title}}</view>
 </view>
+
+<view wx:if="{{iswork}}" bindtouchend="onTochend" bindtouchmove="onMove" bindtouchstart="onMoveStart">
+        <view class="view_all">
+            <view class="{{showTop?'title2':'title'}}">
+              
+                <view class="view_type">
+                    <block wx:for="{{searchTypeList}}">
+                        <picker bindchange="changeRegion" bindcolumnchange="changeRegionColumn" data-name="fromcity" mode="multiSelector" range="{{regionlist}}" rangeKey="text" value="{{regionvalue}}" wx:if="{{index==0}}">
+                            <navigator bindtap="hiddenPop" class="view_itme" data-index="{{index}}">
+                                <view>{{fromcity}}</view>
+                                <image class="img" mode="aspectFit" src="/image/a-2.png"></image>
+                            </navigator>
+                        </picker>
+                        <navigator bindtap="showTypeSelect" class="view_itme" data-index="{{index}}" wx:else>
+                            <view>{{item.text}}</view>
+                            <image class="img" mode="aspectFit" src="/image/a-2.png"></image>
+                        </navigator>
+                    </block>
+                </view>
+                <view class="view_select_type" wx:if="{{filterSelectList.length>0}}">
+                    <view class="left system_color">筛选</view>
+                    <view class="center">
+                        <view bindtap="deleteFilter" class="item_type system_background" data-index="{{index}}" data-parent="{{item.pid}}" wx:for="{{filterSelectList}}">
+                            <view>{{item.navname}}</view>
+                            <image class="img_delete" src="/image/a-22.png"></image>
+                        </view>
+                    </view>
+                    <view bindtap="resetType" class="right system_background">重置</view>
+                </view>
+                <view class="{{filterSelectList.length>0?'renative':'renative2'}}">
+                    <view class="renative_type" wx:if="{{showTypeSelectView}}">
+                        <scroll-view bindtap="maskClick" class="scroll_view_type" scrollY="true">
+                            <view class="item_white">
+                                <view catchtap="selectType" class="view_type_text" data-id="{{item.id}}" data-parent="{{filterTypeList.pid}}" data-text="{{item.navname}}" wx:for="{{filterTypeList.row}}">{{item.navname}}</view>
+                            </view>
+                        </scroll-view>
+                    </view>
+                </view>
+            </view>
+        </view>
+</view>
+
 <view style="padding-top:102rpx">
     <view class="weui-cells weui-cells_after-title">
-        <bbqCell bindchangedata="changeData" data="{{item}}" index="{{index}}" wx:for="{{headers[selectedIndex].list}}" wx:key="{{this}}"></bbqCell>
+        <bbqCell bindchangedata="changeData" callcredit="{{callcredit}}" data="{{item}}" index="{{index}}" wx:for="{{headers[selectedIndex].list}}" wx:key="{{this}}"></bbqCell>
     </view>
     <loadmore loadstatus="{{headers[selectedIndex].loadstatus}}"></loadmore>
 </view>

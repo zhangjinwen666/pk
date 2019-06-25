@@ -16,8 +16,10 @@ function a(t) {
           t.total = a.total;
           var n = {}, i = t.data.list;
       n.callcredit = a.callcredit;
-      console.log(a)
-      n.list = a.list, n.list.length >= t.total ? n.loadstatus = 2 : n.loadstatus = 0, 
+      for (var c in a.list) {
+        i.push(a.list[c]);
+      }
+      n.list = i, n.list.length >= t.total ? n.loadstatus = 2 : n.loadstatus = 0, 
           t.setData(n), wx.stopPullDownRefresh();
       
     }));
@@ -71,6 +73,7 @@ Page((n = {
         }), e(this);
     },
     onPullDownRefresh: function() {
+     
         var t = this;
         i.getAppConfig(function(a) {
             var e = a.banner;
@@ -127,6 +130,7 @@ Page((n = {
     }
 },
 t(n, "onPullDownRefresh", function() {
+  
     e(this);
 }), 
 t(n, "changeData", function(t) {
