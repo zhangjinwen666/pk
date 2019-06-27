@@ -75,8 +75,7 @@ Page({
   },
     onReady: function() {},
     onShow: function() {
-        var o = this;
-      
+        var o = this;  
         a.getUserInfo(function(t) {
             o.setData({
                 userInfo: t,

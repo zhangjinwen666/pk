@@ -16,7 +16,7 @@ Page({
     var c = this;
     a.getUserInfo(function(t){
       c.setData({
-        url:"http://pkkj.mijunyun.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=sign&openid=sns_wa_"+t.openid
+        url:"https://pkkj.gdtygsc.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=sign&openid=sns_wa_"+t.openid
       });
       
     });

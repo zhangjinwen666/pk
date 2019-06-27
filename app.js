@@ -101,33 +101,39 @@ App({
   },
   getUserInfo: function (t, i) {
     var o = this, n = {};
-    (n = o.getCache("userinfo")) && n.needauth ? t && "function" == typeof t && t(n) : wx.login({
+    
+    (n = o.getCache("userinfo"), console.log('vvvv',n)) && n.needauth ? t && "function" == typeof t && t(n) : wx.login({
       success: function (a) {
         a.code ? e.post("wxapp/login", {
           code: a.code
         }, function (a) {
+         
+          o.setCache("userinfo_openid", a.openid);
           o.globalData.sessionKey = a.session_key;
           wx.getSetting({
             success: function (rs) {
               var a = rs.authSetting["scope.userInfo"];
               if (!a) {
-                return i(o.closetext, !0);
+                return typeof i == 'function' && i(o.closetext, !0);
               }
             }
           });
           a.error ? e.alert("获取用户登录态失败:" + a.message) : a.isclose && i && "function" == typeof i ? i(a.closetext, !0) : wx.getUserInfo({
             success: function (i) {
+             
               n = i.userInfo, e.get("wxapp/auth", {
                 data: i.encryptedData,
                 iv: i.iv, 
                 sessionKey: a.session_key
               }, function (e) {
+               
                 o.globalData.hasLogin = e.isMobile,o.globalData.userId = e.id,n.hasLogin = 1,n.isMobile = e.isMobile,n.isHx = e.isHx,i.userInfo.openid = e.openId, i.userInfo.id = e.id, i.userInfo.uniacid = e.uniacid,
                   i.needauth = 0, o.setCache("userinfo", i.userInfo, 7200), o.setCache("userinfo_openid", i.userInfo.openid),
                   o.setCache('COOKIE','PHPSESSID='+i.userInfo.openid),o.setCache("userinfo_id", e.id), o.getSet(), t && "function" == typeof t && t(n);
               });
             },
             fail: function () {
+             
               e.get("wxapp/check", {
                 openid: a.openid
               }, function (e) {
@@ -181,6 +187,12 @@ App({
       }
     });
   },
+  showMessage:(m)=>{
+    wx.showToast({
+      title: m,
+      icon:'none'
+    })
+  },
   empty:function(v){
     return !v || v == 'undefined' || v == '';
   },
@@ -190,9 +202,9 @@ App({
   //缓存时间单位：秒
   catchtime: 0,
   globalData: {
-    appid: "wx908f939f7ce0e79e",
-    api: "http://pkkj.mijunyun.com/app/ewei_shopv2_api.php?i=1",
-    approot: "http://pkkj.mijunyun.com/addons/ewei_shopv2/",
+    appid: "wx4f6313242198e512",
+    api: "https://pkkj.gdtygsc.com/app/ewei_shopv2_api.php?i=1",
+    approot: "https://pkkj.gdtygsc.com/addons/ewei_shopv2/",
     userInfo: "",
     hasLogin:!1,
     sessionKey: ""
