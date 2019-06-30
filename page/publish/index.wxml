@@ -6,7 +6,7 @@
             <view class="joinSubtitle">商品出售，简单有效，方便快捷</view>
         </view>
     </view>
-    <image class="arrow" src="{{imageHeader}}arrow_gray_right.png"></image>
+    <!-- <image class="arrow" src="{{imageHeader}}arrow_gray_right.png"></image> -->
 </navigator>
 <view class="iconBottom">
     <navigator class="iconItem" wx:for="{{icons}}" wx:key="{{this}}" url="{{item.mdurl}}&blockname={{item.navname}}">

@@ -1,12 +1,3 @@
-function o(o) {
-    t.client.request({
-        url: "d=wxapi&c=mall_user_shop&m=shop_info",
-        data: {},
-        success: function(o) {
-            n(o);
-        }
-    });
-}
 
 function n(o) {
     null == o.data ? wx.navigateTo({
@@ -26,7 +17,7 @@ var t = getApp(), e = require("../home/block.js");
 
 Page({
     data: {
-        imageHeader: t.globalData.imageHeader
+        imageHeader: ''//t.globalData.imageHeader
     },
     onLoad: function(o) {
         var n = this;
@@ -37,7 +28,14 @@ Page({
         });
     },
     onStation: function(n) {
-        o();
+      t.getUserInfo(function(r){
+        var u = '/page/user/index';
+        r.isMobile && (u = '/page/user/shopManage/shopManage'); 
+          wx.navigateTo({
+            url: u,
+          }); 
+      });
+       
     },
     onReady: function() {},
     onShow: function() {},

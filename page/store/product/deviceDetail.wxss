@@ -130,7 +130,7 @@
 }
 
 .view_margin_bottom {
-    margin-bottom: 100px;
+    height:50px;
 }
 
 .view_share_all {

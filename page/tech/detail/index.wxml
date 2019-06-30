@@ -24,8 +24,9 @@
             <view class="view_share_button">
                 <image class="view_share_img" src="/image/wx_frend.png"></image>
                 <view>分享微信</view>
+               
             </view>
-            
+             <button class="shareBtn" openType="share"></button>
         </view>
     </view>
 </view>

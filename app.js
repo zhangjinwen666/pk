@@ -21,7 +21,6 @@ function updateCopy(){
   updateManager.onUpdateFailed(function () {
     // 新版本下载失败
   })
-  Tips
 }
 
 
@@ -102,12 +101,11 @@ App({
   getUserInfo: function (t, i) {
     var o = this, n = {};
     
-    (n = o.getCache("userinfo"), console.log('vvvv',n)) && n.needauth ? t && "function" == typeof t && t(n) : wx.login({
+    (n = o.getCache("userinfo")) && n.needauth ? t && "function" == typeof t && t(n) : wx.login({
       success: function (a) {
         a.code ? e.post("wxapp/login", {
           code: a.code
         }, function (a) {
-         
           o.setCache("userinfo_openid", a.openid);
           o.globalData.sessionKey = a.session_key;
           wx.getSetting({
@@ -118,27 +116,22 @@ App({
               }
             }
           });
-          a.error ? e.alert("获取用户登录态失败:" + a.message) : a.isclose && i && "function" == typeof i ? i(a.closetext, !0) : wx.getUserInfo({
+          a.error ? e.alert("获取用户登录态失败:" + a.message) : a.isclose && i && "function" == typeof i ? i(a.closetext, !0): wx.getUserInfo({
             success: function (i) {
-             
               n = i.userInfo, e.get("wxapp/auth", {
                 data: i.encryptedData,
                 iv: i.iv, 
                 sessionKey: a.session_key
               }, function (e) {
-               
-                o.globalData.hasLogin = e.isMobile,o.globalData.userId = e.id,n.hasLogin = 1,n.isMobile = e.isMobile,n.isHx = e.isHx,i.userInfo.openid = e.openId, i.userInfo.id = e.id, i.userInfo.uniacid = e.uniacid,
-                  i.needauth = 0, o.setCache("userinfo", i.userInfo, 7200), o.setCache("userinfo_openid", i.userInfo.openid),
+                o.globalData.hasLogin = e.isMobile, o.globalData.userId = e.id, n.hasLogin = 1, n.isMobile = e.isMobile, n.isHx = e.isHx, i.userInfo.openid = e.openId, i.userInfo.id = e.id, i.userInfo.uniacid = e.uniacid, i.userInfo.isMobile = e.isMobile, i.userInfo.nickName = e.nickName,i.userInfo.avatarUrl = e.avatarUrl,i.needauth = 0, o.setCache("userinfo", i.userInfo, 7200), o.setCache("userinfo_openid", i.userInfo.openid),
                   o.setCache('COOKIE','PHPSESSID='+i.userInfo.openid),o.setCache("userinfo_id", e.id), o.getSet(), t && "function" == typeof t && t(n);
               });
             },
             fail: function () {
-             
               e.get("wxapp/check", {
                 openid: a.openid
-              }, function (e) {
-                
-                e.needauth = 1, o.setCache("userinfo", e, 7200), o.setCache("userinfo_openid", a.openid),
+              }, function (e) { 
+                 o.setCache("userinfo", e, 7200), o.setCache("userinfo_openid", a.openid),
                   o.setCache("userinfo_id", a.id), o.getSet(), t && "function" == typeof t && t(n);
               });
             }

@@ -29,6 +29,7 @@ function e(o, e) {
 }
 
 function t(o, e) {
+  console.log(e);
   w.get('shopuser/index/shop_info', { shopid: e }, function (e) {
     var t = e.data;
     t.shopavatar_small = t.shopavatars, o.setData({

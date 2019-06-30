@@ -45,7 +45,7 @@
     top: 0rpx;
 }
 
-.avatar-item wx-image {
+.avatar-item .tag-image {
     width: 150rpx;
     height: 150rpx;
 }

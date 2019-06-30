@@ -182,13 +182,13 @@ function u(e) {
     });
 }
 
-var f = getApp(), p = require("../../../utils/pointData.js"), h = "";
+var f = getApp(), p = null, h = "";
 
 Page({
     data: {
         deviceInfo: {},
         deviceList: [],
-        pointList: p.pointList
+        //pointList: p.pointList
     },
     onLoad: function(t) {
         h = t.sellid, f.util.empty(h) && (h = decodeURIComponent(t.scene)), e(this);

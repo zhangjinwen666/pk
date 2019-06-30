@@ -45,7 +45,7 @@
     "page/second/mypublish/edit",
     "page/second/mypublish/pulish",
     "page/second/publish/publish",
-    "page/second/user/userInfo",
+    "page/second/user/userInfo",  
     "page/message/auth/index",
     "page/creditshops/detail/index",
     "page/creditshops/comment/index",
@@ -76,13 +76,16 @@
     "page/case/detail/index",
     "page/news/index",
     "page/news/detail/index"
-
-
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#23c0f4",
-    "navigationBarTitleText": "泵车小程序",
+    "navigationBarTitleText": "旋挖起重机泵车砼行之家",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#F8F8F8"
   },

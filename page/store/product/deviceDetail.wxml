@@ -32,11 +32,7 @@
                 <view>分享微信</view>
             </view>
             <button catchtap="none" class="button_share" openType="share"></button>
-            <view class="view_space"></view>
-            <view bindtap="generateCode" class="view_share_button">
-                <image class="view_share_img" src="/image/wx_circle.png"></image>
-                <view>分享二维码</view>
-            </view>
+           
         </view>
     </view>
 </view>

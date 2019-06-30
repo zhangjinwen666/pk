@@ -5,10 +5,7 @@ function n(t) {
   });
 }
 
-var e = getApp(),
-  i = !1,
-  w = e.requirejs("core");
-
+var e = getApp(),i = !1,w = e.requirejs("core");
 Page({
   data: {
     moduleList: [{

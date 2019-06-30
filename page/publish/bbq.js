@@ -150,13 +150,13 @@ Page({
         });
     },
     chooseLocation: function(a) {
-        var t = this;
+        var t = this;  
         wx.chooseLocation({
             success: function(a) {
                 t.setData({
                     address: a
                 });
-            }
+            }  
         });
     },
     formSubmit: function(t) {

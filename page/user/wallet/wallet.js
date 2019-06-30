@@ -1,8 +1,9 @@
 
 function n(n) {
   t.get("member/index/userinfo", '', function (o) {
+    console.log(o);
     0 == o.error && n.setData({ userFee:o});
-    console.log(this.data);
+   
   });
 }
 

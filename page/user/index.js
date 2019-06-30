@@ -38,16 +38,16 @@ Page({
         }
     },
     onLoad: function(o) {
-        t(this);
-        this.isHxer();
+        t(this);  
     },
     bindCallCustomer: function(o) {
         wx.makePhoneCall({
-            phoneNumber: "13888888888"
+            phoneNumber: "--"
         });
     },
     //核销员
     isHxer:function(){
+      
       var t = this;
       core.get('lottery/ishxer',{},function(r){
           t.setData({isHx:!r.isHx});
@@ -77,12 +77,12 @@ Page({
     onShow: function() {
         var o = this;  
         a.getUserInfo(function(t) {
-            o.setData({
-                userInfo: t,
+            o.setData({ 
+              userInfo: t,
               hasLogin: t.isMobile,
                 //退出按钮
                 showOutButton: !1
-            });
+            }), o.isHxer();
         });
     },
     onTapLogout: function(t) {
