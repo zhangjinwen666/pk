@@ -31,6 +31,7 @@ var a = getApp(),core  = require('../../utils/core');
 
 Page({
     data: {
+        tel: '--',
         hasLogin: !1,
         isHx:1,
         userInfo: {
@@ -41,8 +42,9 @@ Page({
         t(this);  
     },
     bindCallCustomer: function(o) {
+      var t = this;
         wx.makePhoneCall({
-            phoneNumber: "--"
+            phoneNumber: t.data.tel
         });
     },
     //核销员
@@ -50,6 +52,7 @@ Page({
       
       var t = this;
       core.get('lottery/ishxer',{},function(r){
+          t.data.tel = r.sysset.tel;
           t.setData({isHx:!r.isHx});
       })
     },
