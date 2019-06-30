@@ -160,6 +160,18 @@ Page({
         });
     },
     formSubmit: function(t) {
+      if (!e.globalData.hasLogin) {
+            wx.showModal({
+              title: '绑定手机',
+              content: '为了方便其他用户与您沟通，请先绑定手机号哦',
+              success:function(r){
+                  r.confirm && wx.navigateTo({
+                    url: '/page/user/common/login',
+                  })
+              }
+            });
+            return;
+         }
         var i = t.detail.value;
         if (i.navid = this.blockid, e.empty(this.threadid) || (i.threadid = this.threadid), 
         e.empty(this.data.address)) e.showError("请选择位置"); else {

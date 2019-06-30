@@ -14,7 +14,7 @@
     </view>
     <view bindtap="hideInput" class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}">搜索</view>
 </view>
-<swiper class="banner" wx:if="{{banner.length>0}}">
+<swiper autoplay="true" circular="true" indicatorDots="true" class="banner" wx:if="{{banner.length>0}}">
     <swiper-item wx:for="{{banner}}" wx:key="{{this}}">
         <image class="banner" src="{{item.thumb}}"></image>
     </swiper-item>
@@ -27,7 +27,7 @@
 </view>
 <view class="iconBottom" style="justify-content: space-around;">
     <navigator class="toolItem" style="background: linear-gradient(to bottom right, {{item.colorF}} , {{item.colorT}});" url="{{item.url}}" wx:for="{{tools}}" wx:key="{{this}}">
-        <image class="toolRight" src="/image/home_item_{{index}}.png"></image>
+        <image class="toolRight" src="/image/home_items_{{index}}.png"></image>
         <view class="toolLeft">
             <view class="toolTitle">{{item.title}}</view>
             <view class="toolSubtitle">{{item.subtitle}}</view>

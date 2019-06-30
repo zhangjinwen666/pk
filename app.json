@@ -84,14 +84,14 @@
   },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#23c0f4",
+    "navigationBarBackgroundColor": "#13d0e8",
     "navigationBarTitleText": "旋挖起重机泵车砼行之家",
     "navigationBarTextStyle": "white",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#13d0e8 "
   },
   "tabBar": {
     "color": "#2c2c2c",
-    "selectedColor": "#23c0f4",
+    "selectedColor": "#13d0e8",
     "list": [
       {
         "pagePath": "page/home/index",

@@ -1215,11 +1215,11 @@ body {
 }
 
 .system_background {
-    background: #23c0f4;
+    background: #13d0e8;
 }
 
 .system_color {
-    color: #23c0f4;
+    color: #13d0e8;
 }
 
 .background {
@@ -1228,7 +1228,7 @@ body {
 
 .button_common {
     color: #fff;
-    background-color: #23c0f4;
+    background-color: #13d0e8;
     position: fixed;
     z-index: 10;
     height: 98rpx;
@@ -1239,7 +1239,7 @@ body {
 .button_common_primary {
     margin-top: 30rpx;
     color: #fff;
-    background-color: #23c0f4;
+    background-color: #13d0e8;
     width: 690rpx;
 }
 

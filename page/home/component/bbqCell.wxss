@@ -183,7 +183,7 @@
     width: 66rpx;
     height: 66rpx;
     border-radius: 33rpx;
-    border: 2rpx solid #e00019;
+    
     display: -webkit-flex;
     display: flex;
     -webkit-align-items: center;

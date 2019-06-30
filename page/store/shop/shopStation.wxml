@@ -104,70 +104,70 @@
     <view class="zhao">
         <block wx:if="{{imagelist.length>0}}">
             <view bindtap="tapAvatarPreview" class="avatar-item" data-index="{{index}}" data-key="imagelist" wx:for="{{imagelist}}" wx:key="{{index}}">
-                <image src="{{item.showurl}}"></image>
+                <image class="tag-image" src="{{item.showurl}}"></image>
                 <view catchtap="tapAvatarRemove" class="remove" data-index="{{index}}" data-key="imagelist">
-                    <image src="/image/error.png" style="width:100%;height:100%"></image>
+                    <image class="tag-image" src="/image/error.png" style="width:100%;height:100%"></image>
                 </view>
             </view>
         </block>
         <view bindtap="tapAvatarAdd" class="avatar-item" data-key="imagelist" data-size="1" wx:if="{{imagelist.length<1}}">
-            <image src="/image/upload.png"></image>
+            <image class="tag-image" src="/image/upload.png"></image>
         </view>
     </view>
     <view class="view_title">工商营业执照</view>
     <view class="zhao">
         <block wx:if="{{businessList.length>0}}">
             <view bindtap="tapAvatarPreview" class="avatar-item" data-index="{{index}}" data-key="businessList" wx:for="{{businessList}}" wx:key="{{index}}">
-                <image src="{{item.showurl}}"></image>
+                <image class="tag-image" src="{{item.showurl}}"></image>
                 <view catchtap="tapAvatarRemove" class="remove" data-index="{{index}}" data-key="businessList">
-                    <image src="/image/error.png" style="width:100%;height:100%"></image>
+                    <image class="tag-image" src="/image/error.png" style="width:100%;height:100%"></image>
                 </view>
             </view>
         </block>
         <view bindtap="tapAvatarAdd" class="avatar-item" data-key="businessList" data-size="1" wx:if="{{businessList.length<1}}">
-            <image src="/image/upload.png"></image>
+            <image class="tag-image" src="/image/upload.png"></image>
         </view>
     </view>
     <view class="view_title">店铺照片</view>
     <view class="zhao">
         <block wx:if="{{shopImgList.length>0}}">
             <view bindtap="tapAvatarPreview" class="avatar-item" data-index="{{index}}" data-key="shopImgList" wx:for="{{shopImgList}}" wx:key="{{index}}">
-                <image src="{{item.showurl}}"></image>
+                <image class="tag-image" src="{{item.showurl}}"></image>
                 <view catchtap="tapAvatarRemove" class="remove" data-index="{{index}}" data-key="shopImgList">
-                    <image src="/image/error.png" style="width:100%;height:100%"></image>
+                    <image class="tag-image" src="/image/error.png" style="width:100%;height:100%"></image>
                 </view>
             </view>
         </block>
         <view bindtap="tapAvatarAdd" class="avatar-item" data-key="shopImgList" data-size="9" wx:if="{{shopImgList.length<9}}">
-            <image src="/image/upload.png"></image>
+            <image class="tag-image" src="/image/upload.png"></image>
         </view>
     </view>
      <view class="view_title">身份证正面照</view>
     <view class="zhao">
         <block wx:if="{{userIDimg.length>0}}">
             <view bindtap="tapAvatarPreview" class="avatar-item" data-index="{{index}}" data-key="userIDimg" wx:for="{{userIDimg}}" wx:key="{{index}}">
-                <image src="{{item.showurl}}"></image>
+                <image class="tag-image" src="{{item.showurl}}"></image>
                 <view catchtap="tapAvatarRemove" class="remove" data-index="{{index}}" data-key="userIDimg">
-                    <image src="/image/error.png" style="width:100%;height:100%"></image>
+                    <image class="tag-image" src="/image/error.png" style="width:100%;height:100%"></image>
                 </view>
             </view>
         </block>
         <view bindtap="tapAvatarAdd" class="avatar-item" data-key="userIDimg" data-size="1" wx:if="{{userIDimg.length<1}}">
-            <image src="/image/upload.png"></image>
+            <image class="tag-image" src="/image/upload.png"></image>
         </view>
     </view>
      <view class="view_title">身份证反面照</view>
     <view class="zhao">
         <block wx:if="{{userIDimgs.length>0}}">
             <view bindtap="tapAvatarPreview" class="avatar-item" data-index="{{index}}" data-key="userIDimgs" wx:for="{{userIDimgs}}" wx:key="{{index}}">
-                <image src="{{item.showurl}}"></image>
+                <image class="tag-image" src="{{item.showurl}}"></image>
                 <view catchtap="tapAvatarRemove" class="remove" data-index="{{index}}" data-key="userIDimgs">
-                    <image src="/image/error.png" style="width:100%;height:100%"></image>
+                    <image class="tag-image" src="/image/error.png" style="width:100%;height:100%"></image>
                 </view>
             </view>
         </block>
         <view bindtap="tapAvatarAdd" class="avatar-item" data-key="userIDimgs" data-size="1" wx:if="{{userIDimgs.length<1}}">
-            <image src="/image/upload.png"></image>
+            <image class="tag-image" src="/image/upload.png"></image>
         </view>
     </view>
     <button class="button_page_bottom" formType="submit" hoverClass="button_page_bottom_un"> {{buttonText}}</button>

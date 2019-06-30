@@ -1,6 +1,6 @@
 <!--page/user/message/message.wxml-->
 <view bindtap="hiddenImg" class="showimg" hidden='{{showTarg}}'><image style="width:12rem;height:12rem;margin:8rem auto;display:block" src="{{dataImg}}"></image></view> 
-<view class="av-list">  
+<view class="av-list" wx:if="{{list.length > 0}}">  
     <view class="av-li" wx:for="{{list}}" wx:key="this">
         <view class="av-img" style="background:url({{item.thumb}}) no-repeat;  background-size:100% 100%;">
             <text class="av-text">面值:{{item.num}}元</text>
@@ -11,4 +11,4 @@
         <image bindtap="showImg" data-src="{{item.qrcode}}" class="av-qrcode" src="{{item.qrcode}}"></image>
     </view>
 </view>
-
+ <view style="font-size:15px;padding:0.5rem;text-align:center;color:#ccc;" wx:else>----- 没有更多数据 -----</view>
