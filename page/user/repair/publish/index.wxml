@@ -3,7 +3,7 @@
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
-                <view class="weui-label">产品名称</view>
+                <view class="weui-label">故障说明</view>
             </view>
             <view class="weui-cell__bd">
                 <input class="weui-input" name="name" placeholder="请输入" value="{{goodsDetail.name}}"></input>
@@ -12,7 +12,7 @@
        
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
-                <view class="weui-label">产品型号</view>
+                <view class="weui-label">机械类型</view>
             </view>
             <view class="weui-cell__bd">
                 <input class="weui-input" name="code" placeholder="请输入" value="{{goodsDetail.code}}"></input>

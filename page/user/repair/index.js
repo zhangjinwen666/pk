@@ -9,12 +9,12 @@ var e = getApp(),i = !1,w = e.requirejs("core");
 Page({
   data: {
     moduleList: [{
-      img: "/image/c-4.png",
-      title: "维修管理",
+      img: "/image/weixiuguanli.png",
+      title: "我要维修",
       url: "manage/index"
     }, {
-      img: "/image/c-3.png",
-      title: "申请维修",
+        img: "/image/fabujianli.png",
+        title: "维修申请",
       url: "publish/index"
     }]
   },
