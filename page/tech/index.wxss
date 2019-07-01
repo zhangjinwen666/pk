@@ -136,7 +136,6 @@ body {
 }
 
 .view_tablayout_title {
-    color: #23c0f4;
     border-bottom: #23c0f4 2px solid;
     padding-bottom: 20rpx;
 }
@@ -411,4 +410,32 @@ body {
     width: 20px;
     height: 20px;
     margin-right: 20rpx;
+}
+.img{
+  width: 14px;
+  height: 14px;
+  margin-left: 4px;
+}
+.renative {
+    background: white;
+}
+.renative_type {
+    top: 0;
+    z-index: 999;
+    width: 100%;
+}
+
+.scroll_view_type .item_white {
+    background: white;
+}
+.view_type_text_two {
+    width: 375rpx;
+}
+.view_type_text {
+    font-size: 16px;
+    background: white;
+    border-bottom: #ebebeb 1px solid;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
 }

@@ -4,12 +4,23 @@
        
         <view class="view_tablayout">
             <view bindtap="onTabSelect" class="view_tablayout_item" data-index="0">
-                <view class="{{tabSelect==0?'view_tablayout_title':'view_tablayout_title_un'}}">全部产品</view>
+                <view class="{{tabSelect==0?'view_tablayout_title':'view_tablayout_title_un'}}">{{name}}<image class="img" mode="aspectFit" src="/image/a-2.png"></image></view>
+                
             </view>
             <view bindtap="onTabSelect" class="view_tablayout_item" data-index="1">
                 <view class="{{tabSelect==1?'view_tablayout_title':'view_tablayout_title_un'}}">资料库</view>
             </view>
         </view>
+        <view class="renative" >
+                    <view class="renative_type" style='text-align:center;' wx:if="{{showTypeSelectView}}">
+                        <scroll-view bindtap="maskClick" class="scroll_view_type" scrollY="true">
+                            <view class="item_white">
+                            <view catchtap="selectType" class="view_type_text" data-id="" data-text="全部产品">全部产品</view>
+                                <view catchtap="selectType" class="view_type_text" data-id="{{item.id}}" data-text="{{item.catename}}" wx:for="{{cateList}}">{{item.catename}}</view>
+                            </view>
+                        </scroll-view>
+                    </view>
+                </view>
         <view wx:if="{{tabSelect == 0}}">
             <navigator url="detail/index?goodsid={{item.id}}" wx:for="{{goodsList}}">
                 <view class="view_shop_item">

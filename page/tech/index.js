@@ -1,11 +1,21 @@
 // page/tech/index.js
 function t(){
-  c = 0, l = 1, h = 0, p = "", d = "";
+  c = 0, l = 1, h = 0, p = "", d = "", catid = '',al = 1;
+}
+
+//获取产品分类
+function cate(t){
+  w.get('tech/index/getAllCate','',function(e){
+    var a = e.data;
+    if(a.length > 0){
+      t.setData({ isSelect:!0,cateList:a});
+    }
+  });
 }
 
 //获取全部产品
 function n(t){
-  w.get('tech/index/getAllGoods',{page:l},function(e){
+  w.get('tech/index/getAllGood', { page: l, catid: catid},function(e){
     var a = t.data.goodsList;
     h = e.total;
     l == 1 && (a = []);
@@ -47,11 +57,10 @@ function ck(t,e){
 
 //获取所有的文章
 function s(t){
-  w.get('tech/index/getAllArticle',{page:l},function(e){
-    console.log(e);
+  w.get('tech/index/getAllArticle',{page:al},function(e){
     var a = t.data.articleList;
     h = e.total;
-    l == 1 && (a = []);
+    al == 1 && (a = []);
     var r = e.articles;
     if (r.length > 0) {
       a = a.concat(r);
@@ -66,7 +75,7 @@ function s(t){
   });
 }
 
-var o = getApp(), w = o.requirejs('core'),c = 0, l = 1, h = 0, p = "", d = "";
+var o = getApp(), w = o.requirejs('core'),c = 0, l = 1,al=1, h = 0, p = "", d = "",catid='';
 Page({
 
   /**
@@ -76,14 +85,28 @@ Page({
     tabSelect:0,
     goodsList:[],
     articleList:[],
-    loadMoreType: !0
+    loadMoreType: !0,
+    showTypeSelectView:!1,
+    isSelect:!1,
+    cateList:[],
+    name:'全部产品'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var _this = this;
+    o.getUserInfo(function (e) {
+      if (!e.isMobile) {
+        wx.redirectTo({
+          url: "/page/user/common/login"
+        });
+        return;
+      } else {
+        t(), cate(_this), n(_this);
+      }
+    });
   },
 
   /**
@@ -95,9 +118,31 @@ Page({
 
   onTabSelect: function (t) {
     var a = t.currentTarget.dataset.index;
-    0 == a ? (l = 1, n(this)) : 1 == a && s(this), this.setData({
-        tabSelect: a
+    var tabSelect = this.data.tabSelect;
+    if (a == tabSelect && a == 0){
+      var showTypeSelectView = this.data.showTypeSelectView;
+      if (showTypeSelectView){
+        this.setData({ showTypeSelectView: !1 });
+      }else{
+        this.setData({ showTypeSelectView: !0 });
+      }
+    }else{
+      0 == a ? (l = 1, n(this)) : 1 == a && (al = 1, s(this)), this.setData({
+        tabSelect: a,
+        showTypeSelectView: !1
       });
+    }
+    
+  },
+
+  selectType: function (t) {
+    console.log(t);
+    var catid = t.currentTarget.dataset.id, name = t.currentTarget.dataset.text;
+    l = 1,n(this);
+    this.setData({
+      showTypeSelectView: !1,
+      name:name
+    });
   },
   onTouchStart: function (t) {
   },
@@ -109,21 +154,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var _this = this;
-    o.getUserInfo(function (e) {
-      if (!e.isMobile) {
-        wx.redirectTo({
-          url: "/page/user/common/login"
-        });
-        return;
-      } else {
-        t(), n(_this);
-      }
-    });
+    
   },
 
   onArticle:function(t){
-    console.log(t);
     var e = t.currentTarget.dataset.index;
     ck(e,this);
   },
@@ -150,7 +184,7 @@ Page({
   },
   onLoadMore: function (t) {
     this.data.tabSelect == 0 && this.data.shopList.length < h && (l++ , n(this));
-    this.data.tabSelect == 1 && this.data.articleList.length < h && (l++ , s(this));
+    this.data.tabSelect == 1 && this.data.articleList.length < h && (al++ , s(this));
   },
   /**
    * 页面上拉触底事件的处理函数
