@@ -93,3 +93,44 @@ page{
 .share { width: 72rpx; height: 72rpx; background: rgba(0, 0, 0, 0); position: absolute; bottom: 90rpx; }
 .hot { font-size: 32rpx; color: #4d4d4d; height: 80rpx; line-height: 80rpx; text-align: center; background: white; margin-top: 25rpx; }
 .wx-button::after { border: none; }
+.comp-box{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:flex;
+display: -webkit-flex;
+align-items:center;
+flex-direction:column;
+z-index:999;
+}
+.comp-title{
+margin-top:2rem;
+color:#fff;
+font-size:15px;
+
+}
+.comp-img{
+width:500rpx;
+height:500rpx;
+margin:20rpx;
+
+}
+.comp-call{
+display:flex;
+display:-webkit-flex;
+align-items:center;
+color:red;
+margin:150rpx;
+background:#fff;
+padding:10rpx 40rpx;
+border-radius:10rpx;
+
+}
+.comp-call .call-img{
+  width:35px;
+  height:35px;
+  margin-left:20rpx; 
+}

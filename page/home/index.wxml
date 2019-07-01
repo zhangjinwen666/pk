@@ -40,14 +40,21 @@
 </view>
 <loadmore loadstatus="{{loadstatus}}"></loadmore>
 <view class="fixBar" wx:if="{{fixBar}}">
-    <view catchtap="fixBarStatusChange" class="fixItem">
+    <!-- <view catchtap="fixBarStatusChange" class="fixItem">
         <image class="fixBarImage" mode="aspectFill" src="/image/fix_bar_close.png" wx:if="{{fixBar}}"></image>
         <image class="fixBarImage" mode="aspectFill" src="/image/fix_bar_open.png" wx:else></image>
-    </view>
+    </view> -->
     <block wx:if="{{fixBar}}">
-        <view class="fixItem fixMargin" data-tabbar="/page/store/index">分享</view>
+        <!-- <view class="fixItem fixMargin" data-tabbar="/page/store/index">分享</view>
         <view catchtap="gotoTabbar" class="fixItem fixMargin" data-tabbar="/page/store/index">商城</view>
-        <view catchtap="gotoTabbar" class="fixItem fixMargin" data-tabbar="/page/publish/index">发布</view>
-        <button class="share" openType="share"></button>
+        <view catchtap="gotoTabbar" class="fixItem fixMargin" data-tabbar="/page/publish/index">发布</view> -->
+        <view catchtap="jumpComp" class="fixItem fixMargin">客服</view>
+        <!-- <button class="share" openType="share"></button> -->
     </block>
+</view>
+<view bindtap='closeCall' class="comp-box" wx:if="{{isKf}}">
+    <text class="comp-title">客服微信二维码</text>
+    <image catchtap="compQrcode" class="comp-img" src="{{kfqrcode}}" data-src="{{kfqrcode}}"></image>
+    <text style="color:red;font-size:14px;">点击客服二维码添加微信好友哦</text>
+    <view catchtap='compCall' class="comp-call" data-tel="{{tel}}">拨打电话<image class="call-img" src="/image/b-14.png"></image></view>
 </view>

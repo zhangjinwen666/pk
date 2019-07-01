@@ -12,7 +12,7 @@ function a(t) {
     0 == t.data.loadstatus && (t.setData({
         loadstatus: 1
     }), t.page++, core.get('index/getmsg', {page: t.page,search: t.search},function(a){
-          
+          t.setData({tel:a.sysset.tel,kfqrcode:a.sysset.kfqrcode});
           t.total = a.total;
           var n = {}, i = t.data.list;
       n.callcredit = a.callcredit;
@@ -57,16 +57,21 @@ Page((n = {
             url: "/page/vote/index"
         } ],
         list: [],
-        fixBar:0
+        fixBar:1,
+        isKf:!1,
+        tel:"--",
+        kfqrcode:""
     },
     onLoad: function(t) {
         var a = this;
       //获取轮播图  获取导航按钮 获取发布信息列表
       this.search = "", this.searchInput = "", s.queryBanner(function (d) {
+        
         a.setData({
           banner: d
         });
       }),s.queryBlockList(function(t) {
+        
             a.setData({
                 icons: t
             });
@@ -102,11 +107,53 @@ Page((n = {
         this.search = t.detail.value, e(this);
     },
     fixBarStatusChange: function(t) {
-        // var a = !this.data.fixBar;
-        // this.setData({
-        //     fixBar: a
-        // });
+        var a = !this.data.fixBar;
+        this.setData({
+            fixBar: a
+        });
     },
+  jumpComp:function(){
+    this.setData({isKf:1});
+  },
+  
+  closeCall:function(){
+    this.setData({ isKf: !1 });
+  },
+  compCall:function(e){
+    var tel = e.currentTarget.dataset.tel;
+    wx.makePhoneCall({
+      phoneNumber: tel,
+    })
+  },
+  compQrcode:function(e){
+    var img = e.currentTarget.dataset.src;
+    wx.showModal({
+      title: '添加客服',
+      content: '将客服二维码保存到手机本地，然后在使用微信扫一扫识别本地二维码加好友哦',
+      success:function(r){
+        if (r.confirm) {
+          wx.downloadFile({
+            url: img,
+            success: function (r) {
+              wx.saveImageToPhotosAlbum({
+                filePath: r.tempFilePath,
+                success: function (data) {
+                  wx.showToast({
+                    title: '保存成功',
+                    icon: 'success',
+                    duration: 2000
+                  })
+                }
+              });
+            }
+
+          });
+        }
+      }
+    })
+     
+       
+  },
     none: function(t) {
         console.log("none");
     },
