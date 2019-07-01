@@ -311,7 +311,7 @@ Component({
             var e = this;
             wx.showModal({
                 title: "提示",
-                content: "是否刷新？",
+                content: "是否置顶？",
                 success: function(a) {
                    var i = {};
                     a.confirm && (wx.showLoading({
