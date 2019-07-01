@@ -40,20 +40,20 @@ Page((n = {
         inputShowed: !1,
         inputVal: "",
         tools: [ {
-            title: "优质二手机",
-            subtitle: "二手车源首发",
-            url: "/page/second/index"
+          title: "抽奖",
+          subtitle: "有机会免费获得模型",
+          url: "/page/lottery/index"
         }, {
             title: "成功案例",
-            subtitle: "专业泵车估价",
+            subtitle: "专业维修技术展示",
             url: "/page/case/index"
         }, {
             title: "鹏控技术",
-            subtitle: "全国过户年审",
+            subtitle: "视频、文章免费阅读",
             url: "/page/tech/index"
         }, {
             title: "投票",
-            subtitle: "投票服务",
+            subtitle: "奖励模型、产品配件",
             url: "/page/vote/index"
         } ],
         list: [],
@@ -174,6 +174,9 @@ Page((n = {
     },
     onReachBottom: function() {
         a(this);
+    },
+  onHide:function(){
+      this.setData({ isKf: !1 });
     }
 },
 t(n, "onPullDownRefresh", function() {

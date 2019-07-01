@@ -254,31 +254,7 @@
             </view>
         </view>
     </view>
-    <view class="fui-footer">
-        <navigator class="btn btn-default btn-default-o pull-left" hoverClass="none" openType="navigate" url="/page/creditshops/index">
-      返回首页
-    </navigator>
-        <view bindtap="paydispatch" class="btn btn-warning btn-default-o order-finish pull-right" data-paytype="{{goods.dispatch>0?'dispatch':'nodispatch'}}" wx:if="{{goods.isverify==0&&goods.goodstype==0&&log.addressid==0}}">
-            <block wx:if="{{goods.dispatch>0}}">支付运费</block>
-            <block wx:else>确认兑换</block>
-        </view>
-        <block wx:if="{{replyset.isreply==1&&log.time_finish>0}}">
-            <block wx:if="{{goods.goodstype==0||goods.goodstype==1}}">
-                <navigator bindtap="replytap" class="btn btn-warning btn-default-o order-finish pull-right" hoverClass="none" openType="navigate" url="/page/creditshops/comment/index?logid={{log.id}}&goodsid={{goods.id}}" wx:if="{{log.status==3&&log.iscomment==1}}">追加评价</navigator>
-                <navigator bindtap="replytap" class="btn btn-warning btn-default-o order-finish pull-right" hoverClass="none" openType="navigate" url="/page/creditshops/comment/index?logid={{log.id}}&goodsid={{goods.id}}" wx:if="{{log.status==3&&log.iscomment==0}}">评价</navigator>
-            </block>
-            <block wx:if="{{goods.goodstype==2||goods.goodstype==3}}">
-                <navigator bindtap="replytap" class="btn btn-warning btn-default-o order-finish pull-right" hoverClass="none" openType="navigate" url="/page/creditshops/comment/index?logid={{log.id}}&goodsid={{goods.id}}" wx:if="{{log.status==3&&log.iscomment==1}}">追加评价</navigator>
-                <navigator bindtap="replytap" class="btn btn-warning btn-default-o order-finish pull-right" hoverClass="none" openType="navigate" url="/page/creditshops/comment/index?logid={{log.id}}&goodsid={{goods.id}}" wx:if="{{log.status==3&&log.iscomment==0}}">评价</navigator>
-            </block>
-        </block>
-        <navigator class="btn btn-default btn-default-o pull-right" hoverClass="none" openType="navigate" url="/page/creditshops/verify/index?id={{log.id}}" wx:if="{{goods.goodstype==0&&goods.isverify>0&&(log.status==2||log.status==3&&verifynum>0)}}">
-      兑换二维码
-    </navigator>
-        <view bindtap="finish" class="btn btn-default btn-default-o order-finish pull-right" wx:if="{{goods.goodstype==0&&log.status==3&&log.time_send>0&&log.time_finish==0}}">
-      确认收货  
-    </view>
-    </view>
+    
     <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">
         <view class="text">{{FoxUIToast.text}}</view>
     </view>
