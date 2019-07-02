@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 17,
+			"current": 18,
 			"list": [
 				{
 					"id": -1,
@@ -165,6 +165,13 @@
 					"id": -1,
 					"name": "11",
 					"pathName": "page/user/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "111",
+					"pathName": "page/lottery/index",
 					"scene": null
 				}
 			]

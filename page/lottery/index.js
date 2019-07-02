@@ -97,9 +97,24 @@ Page({
    var t = this;
     t.data.checkOut ? {} : (t.setData({checkOut:1}),core.get('lottery/check',{id:t.id||0},function(a){
      if (a.error == 1) {
-       wx.showToast({
-         title: a.message,
-       });
+       wx.showModal({
+         title: '积分兑换',
+         content: '您当前的抽奖次数为0次，是否使用积分兑换抽奖次数， 1次机会兑换 '+a.lottery_credit+'积分',
+         success:function(r){
+            if (r.confirm) {
+                core.get('lottery/evals',{},function(r){
+                    wx.showToast({
+                      title: r.message,
+                      icon:'none'
+                    });
+                    t.setData({
+                      checkOut:!1,
+                      go:r.num
+                    })
+                })
+            }
+         }
+       }) 
        return;
      }
      t.id = a.id;
