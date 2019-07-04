@@ -49,6 +49,9 @@ Page({
         }
     },
     onLoad: function(o) {
+      this.setData({
+        hasLogin: a.globalData.hasLogin
+      });
       t(this); g(this); 
     },
   closeCall: function () {
@@ -124,6 +127,7 @@ Page({
     onReady: function() {},
     onShow: function() {
         var o = this;  
+        
         a.getUserInfo(function(t) {
             o.setData({ 
               userInfo: t,

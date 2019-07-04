@@ -46,11 +46,10 @@ function t(e, t) {
     // });
 
   p.post("member/bind/submit", a, function (s) {
-    console.log(s);
     if(s.error != 0){
       o.showError(s.message)
     }else{
-      o.showMessage("登录成功");
+      o.showMessage("绑定成功");
       o.globalData.hasLogin = true;
       wx.navigateBack();
     }

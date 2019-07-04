@@ -59,6 +59,7 @@ function i(t, e, a) {
           filePath: p,
           name: "file",
           success: function (ss) {
+            console.log(ss);
             var oss = JSON.parse(ss.data);
             u.imageurl = oss.files[0].filename, i(t, e, a);
           }
@@ -210,10 +211,19 @@ Page({
   },
   onVideoAdd: function (t) {
     var e = this.data.videolist, a = this;
-    console.log(e);
     wx.chooseVideo({
+      compressed:'ture',
+      maxDuration:'300',
       success: function (t) {
-        console.log(t);
+        if(t.duration < 10 || t.duration > 300){
+          r.showError('视频时长10秒—5分钟！');
+          return;
+        }
+        if (t.size > 26214400){
+          r.showError('视频大小不能超过25M！');
+          return;
+        }
+        
         e.push(t), a.setData({
           videolist: e
         });

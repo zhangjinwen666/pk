@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 18,
+			"current": 13,
 			"list": [
 				{
 					"id": -1,
@@ -135,43 +135,9 @@
 				},
 				{
 					"id": -1,
-					"name": "aaa",
-					"pathName": "page/home/list",
+					"name": "绑定手机号",
+					"pathName": "page/user/common/login",
 					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "aaa",
-					"pathName": "page/user/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "111",
-					"pathName": "page/user/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "111",
-					"pathName": "page/publish/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "11",
-					"pathName": "page/user/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "111",
-					"pathName": "page/lottery/index",
 					"scene": null
 				}
 			]

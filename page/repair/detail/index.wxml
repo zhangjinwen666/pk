@@ -21,9 +21,11 @@
     <view class="line"></view>
     <view class="content">{{thread.rdesc}}</view>
     <image bindtap="imagePreview" class="contentImage" data-current="{{item}}" mode="widthFix" src="{{item}}" wx:for="{{thread.imagelists}}" wx:key="{{this}}"></image>
-    <video class="contentImage" objectFit="cover" src="{{item}}" wx:for="{{thread.videolists}}">
+    <video class="contentImage" objectFit="cover" vslide-gesture="{{true}}"  autoplay='{{true}}' controls src="{{item}}" show-mute-btn="{{true}}" muted="{{true}}" wx:for="{{thread.videolists}}">
             <view bindtap="watchVideo" class="video" data-url="{{item}}"></view>
     </video>
+
+    
     <view class="listTop" style="margin-left:30rpx;width:690rpx">
         
         <view class="listTopLeft">

@@ -28,13 +28,16 @@ Page({
         });
     },
     onStation: function(n) {
-      t.getUserInfo(function(r){
-        var u = '/page/user/index';
-        r.isMobile && (u = '/page/user/shopManage/shopManage'); 
-          wx.navigateTo({
-            url: u,
-          }); 
-      });
+      var isMobile = t.globalData.hasLogin;
+      if(isMobile){
+        wx.navigateTo({
+          url: '/page/user/shopManage/shopManage',
+        });
+      }else{
+        wx.switchTab({
+          url: '/page/user/index',
+        });
+      }
        
     },
     onReady: function() {},

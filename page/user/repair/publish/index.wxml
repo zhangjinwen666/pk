@@ -78,7 +78,7 @@
                 </cover-view>
             </view>
         </block>
-        <view bindtap="onVideoAdd" class="avatar-item" data-key="videolist" wx:if="{{videolist.length<5}}">
+        <view bindtap="onVideoAdd" class="avatar-item" data-key="videolist" wx:if="{{videolist.length<1}}">
             <image class="tag-image" src="/image/upload.png"></image>
         </view>
     </view>

@@ -14,6 +14,11 @@
       <view class="listImageBtm">
         <image catchtap="imagePreview" class="listImage" wx:for-item="items" data-index="{{item.imagelist}}" data-image="{{items}}" src="{{items}}" wx:for="{{item.imagelist}}" wx:key="{{this}}"></image>
       </view>
+      <view class="listImageBtm">
+        <video class="listImage" objectFit="cover" controls="{{false}}" wx:for-item="items" data-index="{{item.videolist}}" data-image="{{items}}" src="{{items}}" wx:for="{{item.videolist}}" wx:key="{{this}}">
+        <cover-view catchtap="startPlay" data-index="{{items}}" style="width:100%;height:100%"></cover-view>
+        </video>
+      </view>
       <view class="listTop">
         <view class="listTopLeft">
           <image class="locationIcon" src="/image/list_address.png"></image>

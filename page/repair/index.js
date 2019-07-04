@@ -3,6 +3,7 @@ function t(t) {
     loadMoreType: !0
   });
   w.get('repair/index/getAll', { page: t.data.page, }, function (e) {
+    console.log(e);
     var d = "", n = Number(e.total);
     var a = {};
     e.data || (e.data = []), e.data.length > 0 && (a.page = t.data.page + 1, a.productList = t.data.productList.concat(e.data));
@@ -57,6 +58,13 @@ Page({
     wx.navigateTo({
       url: '/page/repair/detail/index?repairid=' + e
     })
+  },
+  startPlay:function(t){
+    var a = t.currentTarget.dataset.index;
+    console.log(t);
+    wx.navigateTo({
+      url: "/page/user/video/videoPlay?url=" + a
+    });
   },
   onReady: function () { },
   onShow: function () {

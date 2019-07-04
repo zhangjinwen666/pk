@@ -1,1 +1,1 @@
-<video class="video" src="{{url}}"></video>
+<video class="video" id="myVideo" src="{{url}}"  autoplay='{{true}}' controls></video>
