@@ -6,7 +6,7 @@
                 <view class="listInfoTitle">{{data.nickname}}</view>
                 
                 <view class="listTagBtm">
-                    <view class="tag" wx:if="{{data.topflag==1}}">置顶</view>
+                   
                     <view class="tag">{{data.navname}}</view>
                     <view wx:if="{{data.subname}}" class="tag">{{data.subname}}</view>
                     <view wx:if="{{data.industryname}}" class="tag">{{data.industryname}}</view>
@@ -14,8 +14,9 @@
                     <view wx:if="{{data.workname}}" class="tag">{{data.workname}}</view>
                     <view class="tagg">{{data.statusname}}</view>
                 </view>
-            </view>
+            </view>     
         </view>
+         <view class="tag" wx:if="{{data.topflag==1}}" style="font-size:30rpx;height:40rpx;line-height:40rpx;">置顶</view>
         <view catchtap="call" class="callBtm">
             <image class="call" src="/image/list_call.png"></image>
         </view>

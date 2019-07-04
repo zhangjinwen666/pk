@@ -310,12 +310,12 @@ Component({
         reloadAction: function(a) {
             var e = this;
             wx.showModal({
-                title: "提示",
-                content: "是否置顶？",
+                title: "置顶申请",
+                content: "提交置顶申请之后，请联系客服人员在后台帮您处理置顶哦！",
                 success: function(a) {
                    var i = {};
                     a.confirm && (wx.showLoading({
-                        title: "正在刷新"
+                        title: "正在提交中..."
                     }), i.threadid = e.data.data.id, i.payaction = "refresh",core.post('index/sendmsg', { data:i },function(t){
                           wx.showToast({
                             title: t.message,
@@ -325,20 +325,6 @@ Component({
                       //           url: "/page/publish/pay"
                       //       });
                     })
-                    // t.client.request({
-                    //     url: "index/sendmsg",
-                    //     data: {
-                    //         threadid: e.data.data.threadid,
-                    //         payaction: "refresh",
-                    //         paydata: "0"
-                    //     },
-                    //     success: function(t) {
-                    //         t.data.payamount, t.data.tradetitle, t.data.tradeid;
-                    //         wx.navigateTo({
-                    //             url: "/page/publish/pay"
-                    //         });
-                    //     }
-                    // })
                     );
                 }
             });

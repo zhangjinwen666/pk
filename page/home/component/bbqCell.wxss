@@ -59,8 +59,13 @@
 }
 
 .listInfoTitle {
-    font-size: 30rpx;
-    color: #4d4d4d;
+    font-size:30rpx;
+    color:#4d4d4d;
+    width:300rpx;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+
 }
 
 .listImageBtm {
