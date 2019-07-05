@@ -9,7 +9,46 @@
             </view>
             <view class="weui-tab__panel">
                 <view class="weui-tab__content" hidden="{{activeIndex!=0}}">
-                    <bbqCell bindchangedata="changeData" data="{{item}}" index="{{index}}" wx:for="{{favoriteList}}" wx:key="{{this}}"></bbqCell>
+                <view wx:for="{{favoriteList}}">
+                <view catchtap="cellClick" class="weui-cell listCell" hoverClass="weui-cell_active" data-id="{{item.id}}" data-index="{{index}}">
+                  <view class="listTop">
+                      <view class="listTopLeft">
+                          <image class="avatar" src="{{item.avatar}}"></image>
+                          <view class="listInfoBtm">
+                              <view class="listInfoTitle">{{item.nickname}}</view>
+                              
+                              <view class="listTagBtm">
+                                  <view class="tag">{{item.navname}}</view>
+                                  <view wx:if="{{item.subname}}" class="tag">{{item.subname}}</view>
+                                  <view wx:if="{{item.industryname}}" class="tag">{{item.industryname}}</view>
+                                  <view wx:if="{{item.jobname}}" class="tag">{{item.jobname}}</view>
+                                  <view wx:if="{{item.workname}}" class="tag">{{item.workname}}</view>
+                                 
+                              </view>
+                          </view>     
+                      </view>
+                      <view data-id="{{item.favoriteid}}" data-index="{{index}}"  catchtap="favorite" style="font-size:15px;height:20px;line-height:20px;position:absolute;right:50px;background:red;padding:0 6px;color:#fff;">取消收藏</view>
+                      <view catchtap="call">
+                          <image class="call" src="/image/list_call.png"></image>
+                      </view>
+                  </view>
+
+                  <view class="listTitle">{{item.content}}</view>
+                  <view class="listImageBtm">
+                      <image  class="listImage" data-image="{{item}}" src="{{item}}" wx:for="{{item.imagelist}}" wx:key="{{this}}"></image>
+                  </view>
+                  <view class="listTop">
+                      <view catchtap="addressClick" class="listTopLeft">
+                          <image class="locationIcon" src="/image/list_address.png"></image>
+                          <view class="locationTitle">{{item.address}}</view>
+                      </view>
+                      <view class="submitTime">{{item.createtime}}</view>
+                  </view>
+                  
+              </view>
+              </view>
+
+                    <!-- <bbqCell bindchangedata="changeData" callcredit="{{callcredit}}" favorite="{{true}}" data="{{item}}" index="{{index}}" wx:for="{{favoriteList}}" wx:key="{{this}}"></bbqCell> -->
                 </view>
                 <view class="weui-tab__content" hidden="{{activeIndex!=1}}">
                     <view>
@@ -20,16 +59,16 @@
                                     <view class="item_row_one">{{item.shopname}}</view>
                                     <view class="item_row_two">
                                         <image class="img_star" src="/image/shop_star.png"></image>
-                                        <text class="text_margin">销量：</text>
-                                        <text>{{item.salenum}}</text>
+                                        
                                     </view>
-                                    <view catchtap="onPreviewMap" class="row_three" data-maplat="{{item.maplat}}" data-maplong="{{item.maplong}}">
+                                    <view class="row_three" data-maplat="{{item.maplat}}" data-maplong="{{item.maplong}}">
                                         <image class="img_address" src="/image/list_address.png"></image>
                                         <view class="text_address">{{item.address}}</view>
                                     </view>
                                     <view class="row_four">
                                         <view class="item_type">{{item.catename}}</view>
                                     </view>
+                                    <view data-id="{{item.favoriteid}}" data-index="{{index}}"  catchtap="favorite" style="font-size:15px;height:20px;line-height:20px;position:absolute;right:50px;background:red;padding:0 6px;color:#fff;">取消收藏</view>
                                     <image class="img_call_phone" data-mobie="{{item.shoptel}}" src="/image/b-14.png"></image>
                                 </view>
                             </view>
@@ -50,6 +89,7 @@
                                             <text class="text_device_price">{{item.goodspricenum}}万</text>
                                             <text class="text_device_time">{{item.dateline}}</text>
                                         </view>
+                                        <view data-id="{{item.favoriteid}}" data-index="{{index}}"  catchtap="favorite" style="font-size:15px;height:20px;line-height:20px;position:absolute;right:50px;background:red;padding:0 6px;color:#fff;">取消收藏</view>
                                     </view>
                                 </view>
                             </navigator>
@@ -64,6 +104,7 @@
                                         <view class="prodcut_row_three">
                                             <text class="product_price">￥{{item.goodspricenum}}</text>
                                         </view>
+                                        <view data-id="{{item.favoriteid}}" data-index="{{index}}"  catchtap="favorite" style="font-size:15px;height:20px;line-height:20px;position:absolute;right:50px;background:red;padding:0 6px;color:#fff;">取消收藏</view>
                                     </view>
                                 </view>
                             </navigator>

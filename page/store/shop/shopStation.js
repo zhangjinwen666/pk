@@ -28,12 +28,46 @@ function t(a, e, s) {
 }
 
 function a(t, a) {
-  return w.empty(t.shopname) ? (h.showError("请输入店铺名称"), !1) : w.empty(f) ? (h.showError("请选择店铺分类"),
-    !1) : w.empty(t.linkman) ? (h.showError("请输入联系人"), !1) : w.isMobile(t.shoptel) ? w.empty(d) ? (h.showError("请选择详细地址"),
-      !1) : "开始时间" == a.data.shophourstart ? (h.showError("请选择营业时间"), !1) : "结束时间" == a.data.shophourend ? (h.showError("请选择营业时间"),
-        !1) : 0 == a.data.imagelist.length ? (h.showError("请添加门头照片"), !1) : 0 == a.data.businessList.length ? (h.showError("请添加营业执照"),
-          !1) : 0 != a.data.shopImgList.length || (h.showError("请选添加店铺照片"), !1) : 0 == a.data.userIDimg.length ? (h.showError("请添加身份证正面照"), !1) : 0 == a.data.userIDimg.length ? (h.showError("请添加身份证反面照"), !1) : (h.showError("电话格式错误"),
-            !1);
+  if (w.empty(t.shopname)){
+    return h.showError("请输入店铺名称");
+  }
+  if (w.empty(f)) {
+    return h.showError("请选择店铺分类");
+  }
+  if (w.empty(t.linkman)) {
+    return h.showError("请输入联系人");
+  }
+  if (w.empty(t.shoptel)) {
+    return h.showError("请输入联系电话");
+  }else{
+    if (!w.isMobile(t.shoptel)){
+      return h.showError("电话格式错误");
+    }
+  }
+  if (w.empty(d)) {
+    return h.showError("请选择详细地址");
+  }
+  if ("开始时间" == a.data.shophourstart) {
+    return h.showError("请选择营业开始时间");
+  }
+  if ("结束时间" == a.data.shophourend) {
+    return h.showError("请选择营业结束时间");
+  }
+  if (0 == a.data.imagelist.length) {
+    return h.showError("请添加门店/门头照片");
+  }
+  if (0 == a.data.businessList.length) {
+    return h.showError("请添加营业执照");
+  }
+  if (0 == a.data.shopImgList.length) {
+    return h.showError("请选添加店铺照片");
+  }
+  if (0 == a.data.userIDimg.length) {
+    return h.showError("请添加身份证正面照");
+  }
+  if (0 == a.data.userIDimgs.length) {
+    return h.showError("请添加身份证反面照");
+  }
 }
 
 function e(t) {
@@ -65,7 +99,6 @@ function i(t, a) {
   t.shopavatar = m, t.imagelist = v, t.cardlist = g,
     t.address = d, t.maplat = c, t.maplong = p, t.catid = f, t.shophourstart = a.data.shophourstart,
     t.shophourend = a.data.shophourend, t.userIDimg = u, t.userIDimgs = fu;
-  console.log(t);
   w.post('shopuser/index/save', t, function (t) {
     wx.showToast({
       title: "信息修改成功"
@@ -73,19 +106,6 @@ function i(t, a) {
       wx.navigateBack({});
     }, 1500);
   })
-  return;
-
-  h.client.request({
-    url: "d=wxapi&c=mall_user_shop&m=save",
-    data: t,
-    success: function (t) {
-      wx.showToast({
-        title: "信息修改成功"
-      }), null != a.data.feeConfig ? u(a, t.data.shopid) : setTimeout(function () {
-        wx.navigateBack({});
-      }, 1500);
-    }
-  });
 }
 
 function o() {
@@ -94,10 +114,8 @@ function o() {
 
 function n(t) {
   w.get('shopuser/index/shop_info', '', function (a) {
-    console.log(a.data);
     if (a.data) {
       var e = a.data;
-      console.log(e);
       f = e.catid, d = e.address, c = e.maplat, p = e.maplong;
       for (var s = t.data.imagelist, i = t.data.businessList, o = t.data.shopImgList, n = 0; n < e.imagelist.length; ++n) o.push({
         showurl: e.imagelists[n],
@@ -185,7 +203,6 @@ Page({
     feeConfigList: []
   },
   onLoad: function (t) {
-    console.log(h.empty(t.query));
     o(), e(this), h.empty(t.query) || (this.setData({
       buttonText: "确定修改"
     }), wx.setNavigationBarTitle({

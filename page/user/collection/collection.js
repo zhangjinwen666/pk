@@ -24,24 +24,6 @@ function e(t) {
       loadText: "暂无跟多数据"
     });
   });
-    //  o.client.request({
-    //     url: "d=wxapi&c=mall_user_favorite&m=shop_page",
-    //     data: {
-    //         rows: 200
-    //     },
-    //     success: function(e) {
-    //         var a = [], i = e.data.rows;
-    //         if (i.length > 0) {
-    //             for (var s = 0; s < i.length; ++s) i[s].shopavatar_small = o.client.getAvatarUrl(i[s].shopavatar_small);
-    //             a = a.concat(i);
-    //         }
-    //         t.setData({
-    //             shopList: a,
-    //             loadMoreType: !1,
-    //             loadText: "暂无跟多数据"
-    //         });
-    //     }
-    // });
 }
 
 function a(t) {
@@ -49,13 +31,36 @@ function a(t) {
         loadMoreType: !0
     });
   w.get('shopuser/favorite/getfavorite','',function(e){
-    console.log(e);
     t.setData({
         favoriteList: e.data,
         loadMoreType: !1,
-        loadText: "暂无跟多数据"
+        loadText: "暂无跟多数据",
+      callcredit: e.callcredit
     });
   });
+}
+
+function f(o,a,i,s){
+  w.get('shopuser/favorite/delfavorite',{id:o,index:i},function(e){
+    if(i == 0){
+      var favoriteList = s.data.favoriteList;
+      favoriteList.splice(a, 1), s.setData({
+        favoriteList: favoriteList
+      });
+    }
+    if(i == 1){
+      var shopList = s.data.shopList;
+      shopList.splice(a, 1), s.setData({
+        shopList: shopList
+      });
+    }
+    if(i == 2){
+      var productList = s.data.productList;
+      productList.splice(a, 1), s.setData({
+        productList: productList
+      });
+    }
+  })
 }
 
 var o = getApp(), w = o.requirejs('core');
@@ -94,6 +99,23 @@ Page({
             wx.stopPullDownRefresh();
         }, 1e3);
     },
+  favorite:function(t){
+    var activeIndex = this.data.activeIndex;
+    var o = t.currentTarget.dataset.id, a = t.currentTarget.dataset.index, s = this;
+    wx.showModal({
+      title: "提示",
+      content: "是否取消该收藏？",
+      success: function (t) {
+        t.confirm && f(o, a, activeIndex, s);
+      }
+    });
+  },
+  cellClick: function (t) {
+    var a = t.currentTarget.dataset.id, e = t.currentTarget.dataset.index;
+    wx.navigateTo({
+      url: "/page/home/detail?threadid=" + a + "&index=" + e
+    });
+  },
     changeData: function(t) {
         var e = t.detail.data, a = t.detail.index, o = this.data.favoriteList;
         o.splice(a, 1, e), t.detail.reload && this.setData({

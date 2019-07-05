@@ -8,7 +8,7 @@ Component({
         data: {
             type: Object,
             observer: function(a, e, i) {
-              a.imageList = a.imagelist, a.time = a.createtime, 
+              a.imageList = a.imagelist, a.time = a.createtime
                 this.setData({
                     data: a
                 });
@@ -36,7 +36,11 @@ Component({
         isDelete:{
           type:Boolean,
           value:!1
-        }
+        },
+      favorite:{
+        type: Boolean,
+        value: !1
+      }
     },
     data: {
         showCommentView: !1,

@@ -2,7 +2,7 @@
     <block wx:if="{{list.length>0}}">
         <view bindtap="tapAvatarPreview" class="avatar-item" data-index="{{index}}" wx:for="{{list}}" wx:key="{{index}}">
             <image class="tag-image" src="{{item.showurl}}"></image>
-            <view catchtap="tapAvatarRemove" class="remove" data-index="{{index}}" style="top:-150rpx">
+            <view catchtap="tapAvatarRemove" class="remove" data-index="{{index}}" >
                 <image class="tag-image" src="{{imageHeader}}error.png" style="width:100%;height:100%"></image>
             </view>
         </view>
