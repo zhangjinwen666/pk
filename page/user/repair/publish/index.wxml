@@ -1,5 +1,5 @@
 <view class="view_title">基本信息（必填）<view wx:if="{{goodsDetail}}"><view wx:if="{{goodsDetail.status == 0}}" style="color:#48af48;">待审核</view><view wx:if="{{goodsDetail.status == -1}}" style="color:#eb6060;">已拒绝  <view>拒绝原因：{{goodsDetail.remark}}</view></view></view></view>
-<form bindsubmit="onSubmitClick">
+<form bindsubmit="onSubmitClick" report-submit="true">
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
