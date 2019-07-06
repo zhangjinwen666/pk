@@ -10,7 +10,9 @@ Component({
             observer: function(a, e, i) {
               a.imageList = a.imagelist, a.time = a.createtime
                 this.setData({
-                    data: a
+                    data: a,
+                    jbid:'',
+                    showjb:true
                 });
             }
         },
@@ -126,6 +128,30 @@ Component({
             //     showTips: !0
             // });
         },
+      showJb:function(e){
+        this.data.jbid = e.currentTarget.dataset.id;
+        var sta = !this.data.showjb; 
+        this.setData({ showjb: sta});
+      },
+      jumpJb:function(e){
+        var _this = this;
+        var text = e.currentTarget.dataset.text;
+        wx.showModal({
+          title: '我要举报',
+          content: '如果发现 "'+text+'" 行为属实,将根据国家法律法规依法处理！感谢您的参与。',
+          success:function(r){
+              if (r.confirm) {
+                _this.setData({ showjb:true});
+                core.get('index/jb',{id:_this.data.jbid,text:text},function(r){
+                            wx.showToast({
+                              title: r.message,
+                              icon:'none'
+                            });
+                });
+              }
+          }
+        })
+      },
         tipsClick: function(t) {
             var a = t.currentTarget.dataset.index;
             this.setData({

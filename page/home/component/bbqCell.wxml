@@ -41,7 +41,7 @@
                 <view wx:if="{{isDelete}}" catchtap="statusAction" class="buttonMargin customButton">恢复</view>
                 <view wx:if="{{showMnue}}" catchtap="deleteClear" class="buttonMargin customButton">回收站</view>
                 <view wx:if="{{isupdate && showMnue}}" catchtap="editAction" class="buttonMargin customButton">编辑</view>
-                <view wx:if="{{showMnue}}" catchtap="reloadAction" class="buttonMargin customButton">置顶</view>
+                <!-- <view wx:if="{{showMnue}}" catchtap="reloadAction" class="buttonMargin customButton">置顶</view> -->
             </view>
             <view class="editBtm">
                 <view class="statusBtm">
@@ -78,6 +78,15 @@
             <view catchtap="showTipsView" class="statusBtm">
                 <image class="statusIcon" src="/image/list_tips.png"></image>
                 <view class="statusTitle">{{data.tipcnt}}人打赏</view>
+            </view>
+             <view catchtap="showJb" data-id="{{data.id}}" class="statusBtm" style="position:relative"> 
+                <view class="statusTitle" style="color:red">我要举报</view>
+                <view class="showjb" hidden='{{showjb}}'>
+                 <view class="showlog"></view>
+                 <view catchtap="jumpJb" data-text="造谣、诽谤、泄露个人隐私" class="list">造谣、诽谤、泄露个人隐私</view>
+                 <view catchtap="jumpJb" data-text="广告、色情、政治违规" class="list">广告、色情、政治违规</view>
+                 <view catchtap="jumpJb" data-text="消费、商业、版权、法律" class="list">消费、商业、版权、法律</view>
+                </view>
             </view>
         </block>
     </view>
