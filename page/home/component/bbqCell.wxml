@@ -83,9 +83,14 @@
                 <view class="statusTitle" style="color:red">我要举报</view>
                 <view class="showjb" hidden='{{showjb}}'>
                  <view class="showlog"></view>
-                 <view catchtap="jumpJb" data-text="造谣、诽谤、泄露个人隐私" class="list">造谣、诽谤、泄露个人隐私</view>
-                 <view catchtap="jumpJb" data-text="广告、色情、政治违规" class="list">广告、色情、政治违规</view>
-                 <view catchtap="jumpJb" data-text="消费、商业、版权、法律" class="list">消费、商业、版权、法律</view>
+                 
+                 <view catchtap="jumpJb" data-text="标题与内容不符" class="list">标题与内容不符</view>
+                  <view catchtap="jumpJb" data-text="恶意攻击" class="list">恶意攻击</view>
+                  <view catchtap="jumpJb" data-text="色情" class="list">色情</view>
+                  <view catchtap="jumpJb" data-text="赌博" class="list">赌博</view>
+                  <view catchtap="jumpJb" data-text="谣言" class="list">谣言</view>
+                  
+                  <view catchtap="jumpJb" data-text="发布虚假信息" class="list">发布虚假信息</view>
                 </view>
             </view>
         </block>
