@@ -110,6 +110,30 @@ Page({
       }
     });
   },
+  call: function (t) {
+    var a = t.currentTarget.dataset.call;
+    //查看电话需要积分
+    var credit1 = this.data.callcredit;
+
+    credit1 ? w.confirm('注意:每次查看电话将会消耗' + credit1 + '积分哦', function () {
+      w.get('index/lookmobile', {}, (c) => {
+        console.log(c)
+        if (c.error == -1) {
+          wx.showToast({
+            title: c.message,
+            icon: 'none',
+          });
+          return;
+        }
+        wx.makePhoneCall({
+          phoneNumber: a
+        });
+      });
+
+    }) : wx.makePhoneCall({
+      phoneNumber: a
+    });
+  },
   cellClick: function (t) {
     var a = t.currentTarget.dataset.id, e = t.currentTarget.dataset.index;
     wx.navigateTo({

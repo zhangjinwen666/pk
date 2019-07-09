@@ -28,7 +28,7 @@
                           </view>     
                       </view>
                       <view data-id="{{item.favoriteid}}" data-index="{{index}}"  catchtap="favorite" style="font-size:15px;height:20px;line-height:20px;position:absolute;right:50px;background:red;padding:0 6px;color:#fff;">取消收藏</view>
-                      <view catchtap="call">
+                      <view catchtap="call" data-call="{{item.mobile}}">
                           <image class="call" src="/image/list_call.png"></image>
                       </view>
                   </view>
