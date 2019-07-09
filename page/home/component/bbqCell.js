@@ -223,7 +223,6 @@ Component({
 
           credit1 ? core.confirm('注意:每次查看电话将会消耗' + credit1 + '积分哦',function(){
             core.get('index/lookmobile',{},(c)=>{
-               console.log(c)
                 if (c.error == -1) {
                  wx.showToast({
                    title: c.message,
