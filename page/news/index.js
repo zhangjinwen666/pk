@@ -69,7 +69,12 @@ Page({
     s(this);
   },
   cellClick: function (t) {
-    console.log(t);
+    if (!d.globalData.hasLogin) {
+      wx.switchTab({
+        url: '/page/user/index'
+      });
+      return;
+    }
     var a = t.currentTarget.dataset.id;
     
     console.log(a)

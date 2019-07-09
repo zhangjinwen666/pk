@@ -37,8 +37,21 @@ Page({
         wx.switchTab({
           url: '/page/user/index',
         });
+        
       }
        
+    },
+    jupClick:function(a){
+      if (!t.globalData.hasLogin) {
+        wx.switchTab({
+          url: '/page/user/index'
+        });
+        return;
+      }
+      var isjump = a.currentTarget.dataset.isjump;
+      wx.navigateTo({
+        url: isjump
+      });
     },
     onReady: function() {},
     onShow: function() {},

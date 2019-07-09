@@ -25,13 +25,13 @@
             </swiper-item>
         </swiper>
         <view class="view_type_module">
-            <navigator url="shop/shopList?catpath={{item.id}}" wx:for="{{catTree}}">
+            <navigator bindtap="jupClick" data-isjump="shop/shopList?catpath={{item.id}}" wx:for="{{catTree}}">
                 <view class="item_module">
                     <image class="item_module_img" src="{{item.thumb}}"></image>
                     <view>{{item.catename}}</view>
                 </view>
             </navigator>
-            <navigator url="/page/creditshops/index" wx:if="{{creditshow}}">
+            <navigator bindtap="jupClick" data-isjump="/page/creditshops/index" wx:if="{{creditshow}}">
                 <view class="item_module">
                     <image class="item_module_img" src="{{crediticon}}"></image>
                     <view>积分商城</view>
@@ -63,7 +63,7 @@
             </view>
         </view>
         <view wx:if="{{tabSelect<2}}">
-            <navigator url="shop/shopInfo?shopType=device&shopid={{item.id}}" wx:for="{{shopList}}">
+            <navigator bindtap="jupClick" data-isjump="shop/shopInfo?shopType=device&shopid={{item.id}}" wx:for="{{shopList}}">
                 <view class="view_shop_item">
                     <image class="img_shop_heard" src="{{item.shopavatar}}"></image>
                     <view class="view_shop_item_right">
@@ -85,7 +85,7 @@
             </navigator>
         </view>
         <view class="view_new_car" wx:else>
-            <navigator url="product/deviceDetail?goodsid={{item.id}}" wx:for="{{productList}}">
+            <navigator bindtap="jupClick" data-isjump="product/deviceDetail?goodsid={{item.id}}" wx:for="{{productList}}">
                 <view class="view_car_item border_bottom">
                     <image class="img_device_heard" mode="aspectFill" src="{{item.goodscover}}"></image>
                     <view class="view_device_item_right">

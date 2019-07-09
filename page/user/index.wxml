@@ -4,8 +4,8 @@
     <view class="avatar-title">{{userInfo.nickName}}</view>
   </view>
 
-  <view bindtap="jumpSign" class="sign" hoverClass="weui-cell_active">每日签到</view>
-  <navigator class="lottetry" hoverClass="weui-cell_active" url="/page/lottery/index">参与抽奖</navigator>
+  <view bindtap="jumpSign" class="sign" wx:if="{{hasLogin}}" hoverClass="weui-cell_active">每日签到</view>
+  <navigator class="lottetry" wx:if="{{hasLogin}}" hoverClass="weui-cell_active" url="/page/lottery/index">参与抽奖</navigator>
 </view>
 <block wx:if="{{hasLogin}}">
   <view class="view_tabrow">

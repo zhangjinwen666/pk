@@ -116,19 +116,25 @@ Component({
             e[a] = !1, this.setData(e), this.comment = "";
         },
         showTipsView: function(t) {
-            // var e = this;
-            // a.queryBlockDic({
-            //     key: "tip",
-            //     success: function(t) {
-            //         e.setData({
-            //             tips: t
-            //         });
-            //     }
-            // }), this.setData({
-            //     showTips: !0
-            // });
+            var e = this;
+            a.queryBlockDic({
+                key: "tip",
+                success: function(t) {
+                    e.setData({
+                        tips: t
+                    });
+                }
+            }), this.setData({
+                showTips: !0
+            });
         },
       showJb:function(e){
+        if (!t.globalData.hasLogin) {
+          wx.switchTab({
+            url: '/page/user/index'
+          });
+          return;
+        }
         this.data.jbid = e.currentTarget.dataset.id;
         var sta = !this.data.showjb; 
         this.setData({ showjb: sta});
@@ -152,8 +158,14 @@ Component({
           }
         })
       },
-        tipsClick: function(t) {
-            var a = t.currentTarget.dataset.index;
+        tipsClick: function(tt) {
+          if (!t.globalData.hasLogin) {
+            wx.switchTab({
+              url: '/page/user/index'
+            });
+            return;
+          }
+            var a = tt.currentTarget.dataset.index;
             this.setData({
                 tipsIndex: a,
                 tipInput: ""
@@ -165,28 +177,31 @@ Component({
             });
         },
         tipsSubmit: function(a) {
-            var e = a.detail.value.tips;
-            if (t.util.empty(e)) {
-                if (!(this.data.tipsIndex >= 0 && this.data.tipsIndex < this.data.tips.length)) return t.showError("请选择打赏金额");
-                e = this.data.tips[this.data.tipsIndex].configvalue;
+
+          var m = a.detail.value.tips;
+          if (t.empty(m)) {
+            return t.showError("请输入打赏积分");
+          }
+          var e = this;
+          core.post('index/payCredit1', {
+            threadid: e.data.data.id,
+            payaction: 'tip',
+            paycredit1: m
+          }, function (t) {
+            console.log(t);
+            wx.showToast({
+              title: t.message,
+            })
+            if (t.error == 1) {
+              return;
             }
-            var i = this;
-            t.client.request({
-                url: "d=wxapi&c=forum_my_pay&m=pay_save",
-                data: {
-                    threadid: i.data.data.threadid,
-                    payaction: "tip",
-                    paydata: e
-                },
-                success: function(t) {
-                    var a = t.data.payamount, e = t.data.tradeamount, d = t.data.tradedate, s = t.data.tradetitle, n = t.data.tradeid;
-                    wx.navigateTo({
-                        url: "/page/publish/pay?payamount=" + a + "&tradeamount=" + e + "&tradedate=" + d + "&tradetitle=" + s + "&tradeid=" + n
-                    }), i.setData({
-                        showTips: !1
-                    });
-                }
+            var m = e.data.data;
+            m.tipcnt = parseInt(m.tipcnt) + 1;
+            e.setData({
+              showTips: !1,
+              data:m
             });
+          });
         },
         addressClick: function(t) {
             var a = this.data.data;
@@ -195,7 +210,13 @@ Component({
                 longitude: parseFloat(a.maplong)
             });
         },
-        call: function(t) {
+        call: function(tt) {
+          if (!t.globalData.hasLogin) {
+            wx.switchTab({
+              url: '/page/user/index'
+            });
+            return;
+          }
             var a = this.data.data.mobile;
             //查看电话需要积分
           var credit1 = this.data.callcredit;
@@ -220,8 +241,13 @@ Component({
             });
         },
         none: function(t) {},
-        cellClick: function(t) {
-
+        cellClick: function(ee) {
+          if (!t.globalData.hasLogin) {
+            wx.switchTab({
+              url: '/page/user/index'
+            });
+            return;
+          }
             var a = this.data.data.id, e = this.data.index;
             wx.navigateTo({
                 url: "/page/home/detail?threadid=" + a + "&index=" + e
@@ -235,7 +261,12 @@ Component({
             });
         },
         likeClick: function(a) {
-           
+          if (!t.globalData.hasLogin) {
+            wx.switchTab({
+              url: '/page/user/index'
+            });
+            return;
+          }
           var m = {}, e = this, i = e.data.data; m.threadid = i.id;
             console.log(m);
           i.index = e.data.index, i.clickupid > 0 ? core.get('index/cancelclickupcnt',m,function(t){

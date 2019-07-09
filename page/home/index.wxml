@@ -26,7 +26,7 @@
     </navigator>
 </view>
 <view class="iconBottom" style="justify-content: space-around;">
-    <navigator class="toolItem" style="background: linear-gradient(to bottom right, {{item.colorF}} , {{item.colorT}});" url="{{item.url}}" wx:for="{{tools}}" wx:key="{{this}}">
+    <navigator class="toolItem" bindtap='jupClidk' data-isjump="{{item.url}}" style="background: linear-gradient(to bottom right, {{item.colorF}} , {{item.colorT}});" wx:for="{{tools}}" wx:key="{{this}}">
         <image class="toolRight" src="/image/home_items_{{index}}.png"></image>
         <view class="toolLeft">
             <view class="toolTitle">{{item.title}}</view>

@@ -165,13 +165,31 @@ Page((n = {
     },
     iconsClick: function(t) {
       var a = t.currentTarget.dataset.index, isjump = t.currentTarget.dataset.isjump;
-
+      if (!i.globalData.hasLogin){
+        wx.switchTab({
+          url: '/page/user/index'
+        });
+        return;
+      }
       1 == isjump ? wx.switchTab({
             url: a
         }) : wx.navigateTo({
             url: a
         });
     },
+  jupClidk:function(t){
+    var isjump = t.currentTarget.dataset.isjump;
+    if (!i.globalData.hasLogin) {
+      wx.switchTab({
+        url: '/page/user/index'
+      });
+      return;
+    }
+    wx.navigateTo({
+      url: isjump
+    });
+
+  },
     onReachBottom: function() {
         a(this);
     },

@@ -146,6 +146,18 @@ Page({
       }
     }));
   },
+  jupClick: function (a) {
+    if (!r.globalData.hasLogin) {
+      wx.switchTab({
+        url: '/page/user/index'
+      });
+      return;
+    }
+    var isjump = a.currentTarget.dataset.isjump;
+    wx.navigateTo({
+      url: isjump
+    });
+  },
   showInput: function () {
     this.setData({
       inputShowed: !0
@@ -175,9 +187,21 @@ Page({
       });
   },
   onStation: function (t) {
+    if (!r.globalData.hasLogin) {
+      wx.switchTab({
+        url: '/page/user/index'
+      });
+      return;
+    }
     a();
   },
   onCallClick: function (t) {
+    if (!r.globalData.hasLogin) {
+      wx.switchTab({
+        url: '/page/user/index'
+      });
+      return;
+    }
     var a = t.currentTarget.dataset.mobie;
     var credit = this.data.lookMobile;
     credit ? wx.showModal({

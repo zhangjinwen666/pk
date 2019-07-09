@@ -11,8 +11,7 @@
             </view>
           </view>
           <view class="editBtm" style='position:absolute;right:30rpx;'>
-            <view catchtap="catchEdit" data-id="{{item.id}}" class="buttonMargin customButton">编辑</view>
-            <view catchtap="catchDelete" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}" class="delete customButton">删除</view>
+            <view catchtap="catchDelete" wx:if="{{item.isdeletes}}" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}" class="delete customButton">删除</view>
           </view>
         </view>
       </view>

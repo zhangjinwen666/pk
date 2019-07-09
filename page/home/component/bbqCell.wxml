@@ -113,18 +113,18 @@
 <view catchtap="hideView" class="c_all_center c_backgroundView" data-view="showTips" wx:if="{{showTips}}">
     <view catchtap="none" class="tipView">
         <view class="tipsTitle">打赏</view>
-        <view class="tipsArrInfo">请选择打赏金额</view>
+        <view class="tipsArrInfo">请输入打赏金额</view>
         <view class="tipsItems">
-            <view catchtap="tipsClick" class="tipsItem {{tipsIndex==index?'selectedTips':'emptyTips'}}" data-index="{{index}}" wx:for="{{tips}}" wx:key="{{this}}">{{item.configkey}}元</view>
+            <view catchtap="tipsClick" class="tipsItem {{tipsIndex==index?'selectedTips':'emptyTips'}}" data-index="{{index}}" wx:for="{{tips}}" wx:key="{{this}}">{{item.configkey}}积分</view>
         </view>
-        <view class="tipsArrInfo">土豪请随意</view>
+        <!-- <view class="tipsArrInfo">土豪请随意</view> -->
         <form bindsubmit="tipsSubmit">
             <view class="tipsInputBtm">
-                <input bindfocus="startInputTips" name="tips" placeholder="请输入打赏金额，至少1元" style="width:400rpx" type="digit" value="{{tipInput}}"></input>
-                <view>元</view>
+                <input bindfocus="startInputTips" name="tips" placeholder="至少1积分" style="width:360rpx" type="digit" value="{{tipInput}}"></input>
+                <view>积分</view>
             </view>
             <view class="tipsButtonBottom">
-                <button class="tipsButton" formType="submit" size="mini">确认支付</button>
+                <button class="tipsButton" formType="submit" size="mini">确认</button>
             </view>
         </form>
     </view>
