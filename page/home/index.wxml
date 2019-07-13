@@ -48,7 +48,8 @@
         <!-- <view class="fixItem fixMargin" data-tabbar="/page/store/index">分享</view>
         <view catchtap="gotoTabbar" class="fixItem fixMargin" data-tabbar="/page/store/index">商城</view>
         <view catchtap="gotoTabbar" class="fixItem fixMargin" data-tabbar="/page/publish/index">发布</view> -->
-        <view catchtap="jumpComp" class="fixItem fixMargin">客服</view>
+        <!-- <view catchtap="jumpComp" class="fixItem fixMargin">客服</view> -->
+        <button bindtap="success" class="fixItem fixMargin"  openType="contact" sessionFrom="weapp" showMessageCard="true" style='padding:0;'>客服</button>
         <!-- <button class="share" openType="share"></button> -->
     </block>
 </view>
