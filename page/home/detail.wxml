@@ -8,7 +8,7 @@
                     <view class="submitTime">{{thread.createtime}}</view>
                 </view>
             </view>
-            <view class="cc">
+            <view class="cc" hidden='{{share}}'>
                 <view class="cachet">
                     <view>分享</view>
                     <image class="cachetImage" src="/image/wx_frend.png"></image>

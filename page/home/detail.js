@@ -27,6 +27,7 @@ function e(t) {
      
         var i = e.list;
         t.setData({
+          share:i.navid == '16' || i.navid == '17',
           thread: i,
           callcredit: e.callcredit
         }), a(t);
@@ -60,6 +61,7 @@ function s(t) {
 var o, r = getApp(), d = require("./block"),core = require('../../utils/core');
 Page((o = {
     data: {
+        share:false,
         showCommentView: !1,
         tipsIndex: 0,
         callcredit: 0
