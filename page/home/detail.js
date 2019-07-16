@@ -11,8 +11,8 @@ function a(t) {
     var a = getCurrentPages(), e = a[a.length - 2];
     if ("function" == typeof e.changeData) {
         var i = t.data.thread;
-        i.postlist = [];
-        for (var s in t.data.list) i.postlist.push(t.data.list[t.data.list.length - s - 1]);
+        // i.postlist = [];
+        // for (var s in t.data.list) i.postlist.push(t.data.list[t.data.list.length - s - 1]);
         i.postcnt = t.data.total;
         var o = {};
         o.index = t.index, o.reload = !0, o.data = i;

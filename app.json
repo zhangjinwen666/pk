@@ -22,6 +22,8 @@
     "page/user/shopManage/myShopList",
     "page/user/shopManage/releaseProduct",
     "page/user/shopManage/releaseDevice",
+    "page/user/shopManage/information",
+    "page/user/shopManage/preferential",
     "page/user/video/videoPlay",
     "page/user/collection/collection",
     "page/user/admiration/myAdmiration",

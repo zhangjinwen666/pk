@@ -43,6 +43,14 @@ Page({
       title: "发布设备",
       url: "releaseDevice"
     }, {
+        img: "/image/c-4.png",
+        title: "活动信息",
+        url: "information"
+      }, { 
+        img: "/image/c-4.png",
+        title: "优惠信息",
+        url: "preferential"
+      },{
       img: "/image/c-5.png",
       title: "新店入驻",
       url: ""

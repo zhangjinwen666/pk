@@ -1,5 +1,6 @@
 function t(t) {
   w.get('shopuser/index/shop_info',{shopid:n},function(a){
+    console.log(a);
     var e = a.data;
     t.setData({
         shopDetail: e,

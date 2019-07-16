@@ -1,5 +1,6 @@
 
 function t(a, e, s) {
+  console.log(a);
   var i = [];
   var os = w.getUrl("util/uploader/upload", {
     file: "file"
@@ -24,6 +25,7 @@ function t(a, e, s) {
       i.push(n.imageurl);
     }
   }
+  console.log(i);
   wx.hideLoading(), "function" == typeof e && e(i.join(";"));
 }
 
@@ -68,6 +70,7 @@ function a(t, a) {
   if (0 == a.data.userIDimgs.length) {
     return h.showError("请添加身份证反面照");
   }
+  return true;
 }
 
 function e(t) {
@@ -82,6 +85,7 @@ function s(t, a) {
   t.shopavatar = m, t.imagelist = v, t.cardlist = g, t.address = d, t.maplat = c,
     t.maplong = p, t.catid = f, t.shophourstart = a.data.shophourstart, t.shophourend = a.data.shophourend,
     t.userIDimg = u, t.userIDimgs = fu;
+    console.log(3333);
   w.post('shopuser/index/register', t, function (s) {
     if (s.error == 0) {
       wx.showToast({
@@ -223,6 +227,7 @@ Page({
         g = a, t(n.data.shopImgList, function (a) {
           v = a, t(n.data.userIDimg, function (a) {
             u = a, t(n.data.userIDimgs, function (t) {
+
               fu = t, null != n.data.shopInfo ? i(o, n) : s(o, n);
             }, "身份证反面照");
           }, "身份证正面照");

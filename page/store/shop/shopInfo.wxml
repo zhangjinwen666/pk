@@ -58,6 +58,14 @@
         </navigator>
     </block>
 </view>
+<block wx:if="{{shopDetail.information}}">
+<view class="view_item_title">活动信息</view>
+<view class="text_shop_info" style='margin-bottom:0;'><text>{{shopDetail.information.content}}</text></view>
+</block>
+<block wx:if="{{shopDetail.preferential}}">
+<view class="view_item_title">优惠信息</view>
+<view class="text_shop_info" style='margin-bottom:0;'><text>{{shopDetail.preferential.content}}</text></view>
+</block>
 <view class="view_item_title">商家介绍</view>
 <view class="text_shop_info">{{shopDetail.shopcontent}}</view>
 <view class="view_bottom_botton">

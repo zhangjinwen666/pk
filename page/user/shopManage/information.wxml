@@ -1,0 +1,28 @@
+<form bindsubmit="formSubmit">
+    <view class="button_padding_botttom">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea bindinput="inputchanged" class="weui-textarea" maxlength="200" name="content" placeholder="请输入活动信息" style="height: 5.2em;line-height:1.4em" value="{{brief}}"></textarea>
+                    <view class="weui-textarea-counter">{{textcount}}/500</view>
+                </view>
+            </view>
+            
+        </view>
+        <block >
+        <view class="view_title">状态</view>
+        <view class="weui-cells weui-cells_after-title">
+            <block >
+                <view class="weui-cell weui-cell_switch" >
+                    <view class="weui-cell__bd">是否显示</view>
+                    <view class="weui-cell__ft">
+                        <switch bindchange="bindWwitchChange" checked="{{checkvalue}}" color="#23c0f4" data-index="{{index}}" name="ischecked"></switch>
+                    </view>
+                </view>
+                
+            </block>
+        </view>
+    </block>
+    </view>
+    <button class="button_common" formType="submit" hoverClass="button_hover_class">{{posttext}}</button>
+</form>
