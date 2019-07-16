@@ -1,5 +1,5 @@
 function t() {
-  c = 0, l = 1, u = 20, h = 0, p = "", d = "";
+  c = 0, l = 1, u = 20, h = 0, p = "", d = "" ,i = '';
 }
 
 function a(t) {
@@ -65,7 +65,7 @@ function n(t) {
   });
 }
 
-function s(t) {
+function ss(t) {
   t.setData({
     loadMoreType: !0
   });
@@ -86,7 +86,7 @@ function s(t) {
   })
 }
 
-function i(t) {
+function ii(t) {
   var n = wx.getStorageSync('shopbanner');
   if ('object' == typeof n && (r.getCurrentTime() - (n.time || 0)) < r.catchtime) {
     t.setData({ banner: n.list });
@@ -100,7 +100,7 @@ function i(t) {
   }
 }
 
-var r = getApp(), c = 0, l = 1, u = 20, h = 0, p = "", d = "", w = r.requirejs('core');
+var r = getApp(), c = 0, l = 1, u = 20, h = 0, p = "", d = "", w = r.requirejs('core'),i = '';
 
 Page({
   data: {
@@ -117,7 +117,7 @@ Page({
     lookMobile:0
   },
   onLoad: function (a) {
-    t(), i(this), o(this), n(this);
+    t(), ii(this), o(this), n(this);
   },
   onScroll: function (t) {
     var a = t.detail.scrollTop;
@@ -182,7 +182,7 @@ Page({
   onTabSelect: function (t) {
     var a = t.currentTarget.dataset.index;
     0 == a ? (l = 1, p = "", n(this)) : 1 == a ? (l = 1, p = this.data.catTree[0].catpath,
-      n(this)) : 2 == a && s(this), this.setData({
+      n(this)) : 2 == a && ss(this), this.setData({
         tabSelect: a
       });
   },
@@ -236,13 +236,15 @@ Page({
   },
   onLoadMore: function (t) {
     this.data.tabSelect < 2 && this.data.shopList.length < h && (l++ , n(this));
-    this.data.tabSelect == 2 && this.data.productList.length < h && (l++ , s(this));
+    this.data.tabSelect == 2 && this.data.productList.length < h && (l++ , ss(this));
   },
   onReady: function () { },
   onShow: function () { },
   onHide: function () { },
   onUnload: function () { },
-  onPullDownRefresh: function () { },
+  onPullDownRefresh: function () { 
+    t(), o(this), n(this),ii(this);
+  },
   onReachBottom: function () { },
   onShareAppMessage: function () { }
 });
