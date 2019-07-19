@@ -22,7 +22,7 @@ body {
 }
 
 .search_position_fixed {
-    position: fixed;
+    /* position: fixed; */
 }
 
 .search_position_absolute {
