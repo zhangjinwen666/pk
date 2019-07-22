@@ -50,7 +50,7 @@ module.exports = {
                 o(t.data);
             }
         }), l.fail = function(t) {
-            i && d.hideLoading(), d.alert(t.errMsg);
+            i && d.hideLoading();
         }, wx.request(l);
     },
     post: function(t, e, n, o, i) {
