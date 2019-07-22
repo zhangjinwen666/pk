@@ -1,6 +1,6 @@
 {
     "enablePullDownRefresh": true,
-    "navigationBarTitleText": "社区",
+    "navigationBarTitleText": "帖子分类",
     "usingComponents": {
         "bbqCell": "/page/home/component/bbqCell",
         "loadmore": "/page/home/component/loadMore"

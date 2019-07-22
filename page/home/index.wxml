@@ -20,7 +20,7 @@
     </swiper-item>
 </swiper> 
 <view class="iconBottom" wx:if="{{icons.length>0}}">
-    <navigator bindtap="iconsClick" class="iconItem" data-isjump="{{item.jump}}" data-index="{{item.url}}&blockname={{item.navname}}" wx:for="{{icons}}" wx:key="{{this}}">
+    <navigator bindtap="iconsClick" class="iconItem" data-isjump="{{item.jump}}" data-index="{{item.url}}&blockname={{item.navname}}&id={{item.id}}" wx:for="{{icons}}" wx:key="{{this}}">
         <image class="icon" src="{{item.icon}}"></image>
         <view class="iconTitle">{{item.navname}}</view>
     </navigator>

@@ -33,7 +33,7 @@ top: 3px;
   color:#fff;
   font-size: 12px;
   padding: 2px 5px;
-  background:rgba(0, 0, 0, 0.1);
+  background:rgba(0, 0, 0, 0.3);
 }
 .av-time{
   position: absolute;
@@ -41,7 +41,7 @@ top: 3px;
   color:#fff;
   font-size: 10px;
   right: 8px;
-  background:rgba(0, 0, 0, 0.1);
+  background:rgba(0, 0, 0, 0.3);
 }
 .showimg{
   position: fixed;
@@ -61,5 +61,5 @@ top: 3px;
   position: absolute;
   bottom:0;
   left: 0;
-   background:rgba(0, 0, 0, 0.1);
+   background:rgba(0, 0, 0, 0.3);
 }

@@ -3,7 +3,7 @@
 <view class="av-list" wx:if="{{list.length > 0}}">  
     <view class="av-li" wx:for="{{list}}" wx:key="this">
         <view class="av-img" style="background:url({{item.thumb}}) no-repeat;  background-size:100% 100%;">
-            <text class="av-text">面值:{{item.num}}元</text>
+            <text class="av-text">{{item.num}}</text>
             <view class="av-quan" style="background:url('/image/quan.png')"></view>
             <text class="av-status">{{item.status_txt}}</text>
             <view class="av-time">{{item.createtime}}</view>

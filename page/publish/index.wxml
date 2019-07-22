@@ -9,7 +9,7 @@
     <!-- <image class="arrow" src="{{imageHeader}}arrow_gray_right.png"></image> -->
 </navigator>
 <view class="iconBottom">
-    <navigator bindtap="jupClick" class="iconItem" wx:for="{{icons}}" wx:key="{{this}}" data-isjump="{{item.mdurl}}&blockname={{item.navname}}">
+    <navigator bindtap="jupClick" class="iconItem" wx:for="{{icons}}" wx:key="{{this}}" data-isjump="{{item.mdurl}}&blockname={{item.navname}}&id={{item.id}}">
         <image class="icon" src="{{item.icon}}"></image>
         <view class="iconTitle">{{item.navname}}</view>
     </navigator>
