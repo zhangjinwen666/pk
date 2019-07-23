@@ -59,7 +59,7 @@
                 <view class="{{tabSelect==1?'view_tablayout_title':'view_tablayout_title_un'}}">{{catTree[0].catename}}</view>
             </view>
             <view bindtap="onTabSelect" class="view_tablayout_item" data-index="2">
-                <view class="{{tabSelect==2?'view_tablayout_title':'view_tablayout_title_un'}}">最新好车</view>
+                <view class="{{tabSelect==2?'view_tablayout_title':'view_tablayout_title_un'}}">二手车</view>
             </view>
         </view>
         <view wx:if="{{tabSelect<2}}">

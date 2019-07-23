@@ -14,7 +14,7 @@ function e(t){
     }
     var s = a.data;
     c.wxParse("article_content", "html", a.data.article_content, t, "0");
-    t.setData({ article: s, isshow: !0, clickupid: a.clickupid});
+    t.setData({ article: s, isshow: !0, clickupid: a.clickupid,hidden:!1});
   });
 }
 

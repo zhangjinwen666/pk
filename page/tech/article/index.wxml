@@ -1,4 +1,4 @@
-<loading bindchange="loadingChange" hidden="{{hidden}}">
+<loading bindchange="loadingChange" wx:if="{{hidden}}">
     加载中...
   </loading>
   <import src="/utils/wxParse/wxParse.wxml"></import>

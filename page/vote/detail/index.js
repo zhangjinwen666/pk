@@ -14,7 +14,7 @@ function e(t) {
     }
     var s = a.data;
     c.wxParse("article_content", "html", a.data.detail, t, "0");
-    t.setData({ article: s, isshow: !0, isclick: a.isclick, agree: a.agree, opposition: a.opposition});
+    t.setData({ article: s, isshow: !0, isclick: a.isclick, agree: a.agree, opposition: a.opposition, hidden:!1});
   });
 }
 

@@ -16,7 +16,7 @@ function e(t) {
     wx.setNavigationBarTitle({
       title: s.article_title
     });
-    t.setData({ article: s, isshow: !0 });
+    t.setData({ article: s, isshow: !0,hidden:!1 });
   });
 }
 
