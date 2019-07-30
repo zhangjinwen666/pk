@@ -89,8 +89,9 @@
                                             <text class="text_device_price">{{item.goodspricenum}}万</text>
                                             <text class="text_device_time">{{item.dateline}}</text>
                                         </view>
-                                        <view data-id="{{item.favoriteid}}" data-index="{{index}}"  catchtap="favorite" style="font-size:15px;height:20px;line-height:20px;position:absolute;right:50px;background:red;padding:0 6px;color:#fff;">取消收藏</view>
+                                        
                                     </view>
+                                    <view data-id="{{item.favoriteid}}" data-index="{{index}}"  catchtap="favorite" style="font-size:15px;height:20px;line-height:20px;position:absolute;right:50px;background:red;padding:0 6px;color:#fff;">取消收藏</view>
                                 </view>
                             </navigator>
                             <navigator url="/page/store/product/commodityDetail?goodsid={{item.id}}" wx:else>
@@ -104,9 +105,10 @@
                                         <view class="prodcut_row_three">
                                             <text class="product_price">￥{{item.goodspricenum}}</text>
                                         </view>
-                                        <view data-id="{{item.favoriteid}}" data-index="{{index}}"  catchtap="favorite" style="font-size:15px;height:20px;line-height:20px;position:absolute;right:50px;background:red;padding:0 6px;color:#fff;">取消收藏</view>
                                     </view>
+                                    <view data-id="{{item.favoriteid}}" data-index="{{index}}"  catchtap="favorite" style="font-size:15px;height:20px;line-height:20px;position:absolute;right:50px;background:red;padding:0 6px;color:#fff;">取消收藏</view>
                                 </view>
+                                
                             </navigator>
                         </block>
                     </view>
